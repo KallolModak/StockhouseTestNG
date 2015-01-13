@@ -36,6 +36,7 @@ public class Testcases {
    searchListPage = PageFactory.initElements(BrowserInstance.driver, SearchListPage.class);
    String propertyAddress=searchListPage.getPropertyText(1);
    String[] forGmailOperation = propertyAddress.split("\n");
+   
    System.out.println("###############3 "+forGmailOperation[0]);
    searchListPage.selectProperty(1);
    searchListPage.clickRequestShowing();
