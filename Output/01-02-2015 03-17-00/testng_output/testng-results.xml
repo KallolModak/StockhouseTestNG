@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Intellicus" duration-ms="10150" started-at="2015-01-02T09:48:12Z" finished-at="2015-01-02T09:48:22Z">
+    <groups>
+      <group name="BrowserCertificationTestCase">
+        <method signature="Testcases.BullboardViewByRating()[pri:0, instance:test.Testcases@19836ed]" name="BullboardViewByRating" class="test.Testcases"/>
+      </group> <!-- BrowserCertificationTestCase -->
+    </groups>
+    <test name="Dashboard widget" duration-ms="10150" started-at="2015-01-02T09:48:12Z" finished-at="2015-01-02T09:48:22Z">
+      <class name="test.LoginBeforeSuite">
+        <test-method status="PASS" signature="InitializeSuit()[pri:0, instance:test.LoginBeforeSuite@1b60280]" name="InitializeSuit" is-config="true" duration-ms="70451" started-at="2015-01-02T15:17:01Z" finished-at="2015-01-02T15:18:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InitializeSuit -->
+      </class> <!-- test.LoginBeforeSuite -->
+      <class name="test.Testcases">
+        <test-method status="PASS" signature="BullboardViewByRating()[pri:0, instance:test.Testcases@19836ed]" name="BullboardViewByRating" duration-ms="10130" started-at="2015-01-02T15:18:12Z" description="Modify operation on Job page. Verifying saved job details" finished-at="2015-01-02T15:18:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- BullboardViewByRating -->
+      </class> <!-- test.Testcases -->
+      <class name="test.CloseDriverAfterSuit">
+        <test-method status="PASS" signature="CloseDriverAndBrowser()[pri:0, instance:test.CloseDriverAfterSuit@79a2e7]" name="CloseDriverAndBrowser" is-config="true" duration-ms="503" started-at="2015-01-02T15:18:22Z" finished-at="2015-01-02T15:18:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CloseDriverAndBrowser -->
+      </class> <!-- test.CloseDriverAfterSuit -->
+    </test> <!-- Dashboard widget -->
+  </suite> <!-- Intellicus -->
+</testng-results>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="176533" started-at="2015-01-13T12:58:00Z" finished-at="2015-01-13T13:00:57Z">
+    <groups>
+      <group name="Regression Test">
+        <method signature="Testcases.Login()[pri:0, instance:test.Testcases@64bf091d]" name="Login" class="test.Testcases"/>
+      </group> <!-- Regression Test -->
+    </groups>
+    <test name="Default test" duration-ms="176533" started-at="2015-01-13T12:58:00Z" finished-at="2015-01-13T13:00:57Z">
+      <class name="test.BeforeSuiteClass">
+        <test-method status="PASS" signature="InitializeSuit()[pri:0, instance:test.BeforeSuiteClass@4aad93f6]" name="InitializeSuit" is-config="true" duration-ms="32694" started-at="2015-01-13T18:27:28Z" finished-at="2015-01-13T18:28:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- InitializeSuit -->
+      </class> <!-- test.BeforeSuiteClass -->
+      <class name="test.Testcases">
+        <test-method status="PASS" signature="Login()[pri:0, instance:test.Testcases@64bf091d]" name="Login" duration-ms="176516" started-at="2015-01-13T18:28:00Z" finished-at="2015-01-13T18:30:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login -->
+      </class> <!-- test.Testcases -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

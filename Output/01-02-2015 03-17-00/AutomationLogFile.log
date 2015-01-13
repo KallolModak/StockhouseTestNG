@@ -1,0 +1,18 @@
+INFO main IntellicusAutomation - Initiate driver.
+INFO main IntellicusAutomation - str_BrowserType  FIREFOX
+INFO main IntellicusAutomation - Initiate Firefox driver.
+INFO main IntellicusAutomation - Open Intellicus URL http://test.stockhouse.com.
+INFO main IntellicusAutomation - Suite initialized successfully.
+INFO main IntellicusAutomation - Login to intellicus portal successfully.
+INFO main IntellicusAutomation - 1 $$$$$$$$ 0 stars
+INFO main IntellicusAutomation - 2 $$$$$$$$ 0 stars
+INFO main IntellicusAutomation - 3 $$$$$$$$ 0 stars
+INFO main IntellicusAutomation - 4 $$$$$$$$ 0 stars
+INFO main IntellicusAutomation - 5 $$$$$$$$ 0 stars
+INFO main IntellicusAutomation - 6 $$$$$$$$ 5 stars
+INFO main IntellicusAutomation - 7 $$$$$$$$ 0 stars
+INFO main IntellicusAutomation - 8 $$$$$$$$ 0 stars
+INFO main IntellicusAutomation - 9 $$$$$$$$ 0 stars
+INFO main IntellicusAutomation - 10 $$$$$$$$ 0 stars
+INFO main IntellicusAutomation - Browser closed successfully.
+INFO main IntellicusAutomation - WebDriver object released successfully.
