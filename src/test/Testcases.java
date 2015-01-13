@@ -49,6 +49,7 @@ public class Testcases {
    gmailUtility.typePassword(ReadInputData.HM_inputData.get("EmailPassword"));
    gmailUtility.clickSignin();
    Thread.sleep(120000);
+   
    for (int i=1;i<=2;i++)
    {
 	   String emailSubject = gmailUtility.getTextOfEmailSubject(i);
