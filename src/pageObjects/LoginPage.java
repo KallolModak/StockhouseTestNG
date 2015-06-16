@@ -2,73 +2,201 @@ package pageObjects;
 
 import java.io.IOException;
 
-import javax.print.attribute.standard.Media;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import common.BrowserInstance;
 import common.ReadInputData;
 import common.WebdriverUtility;
 
+//public class LoginPage {
+//	//final  WebDriver driver;
+//	@FindBy(id = "login-user-name")
+//	private WebElement we_loginEdit;
+//	@FindBy(id = "login-user-password")
+//	private WebElement we_passwordEdit;
+//	@FindBy(id = "btnLoginUser")
+//	private WebElement we_loginButton;
+//	
+//	//@FindBy(xpath = "//div[@class='membership clearfix']/ul[@class='right']/li[@class='first']/a[@class='login-required']")
+//	private WebElement we_registration;
+//	@FindBy(xpath = "//div[@class='membership clearfix']/ul[@class='right']/li[@class='first']/a[@class='registration-required']")
+//	
+//	private WebElement we_signInLink;
+//
+//	private String str_UserId;
+//	private String str_Password;
+//		
+//	public LoginPage() {
+//	}
+//		
+//	public void setUserId(String prm_login) throws IOException {
+//		 we_loginEdit.sendKeys(prm_login);
+//		
+//	}
+//	public void setPassword(String prm_password) {
+//		we_passwordEdit.sendKeys(prm_password);
+//	}
+//	
+//	public void clickLoginButton() {
+//		//loginButton.click();
+////	 JavascriptExecutor executor = (JavascriptExecutor)BrowserInstance.driver;
+////	   executor.executeScript("arguments[0].click();", we_loginButton);
+////	   System.out.println("1****************");
+////	   
+//		we_loginButton.click();
+//	}
+//	
+//	public void clickToSignIn(){
+//		we_signInLink.click();
+//	}
+//	
+//	public void login() throws IOException {
+//		str_UserId = ReadInputData.HM_inputData.get("UserId");
+//		str_Password = ReadInputData.HM_inputData.get("Password");
+//		//str_organization = ReadInputData.HM_inputData.get("Organization");
+//		clickToSignIn();
+//		setUserId(str_UserId);
+//		setPassword(str_Password);
+//		clickLoginButton();
+//		
+//		//return PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+//	}
+////	
+//	  ********class for new registration ************
+	
 public class LoginPage extends WebdriverUtility{
 	
-	public LoginPage() {
-	}
-		
-	
 	/*
-	 * Locator for Email address text box.
+	 * Method for expanding Quick link and click the sub links
 	 */
-	private By emailAddressTxtBox(){
-		return By.id("user_email");
-	}
 	
+	public LoginPage()
+	{
+	}//End public LoginPage(WebDriver driver)
+
 	/*
-	 * Function to type email address in the email address text box.
+	 * Locator for join the community on the top of the page.
 	 */
-	public void setUserId(String userId){
-		safeType(emailAddressTxtBox(), userId, VERYLONGWAIT);
+	private By joinTheCommunity(){
+		return By.xpath("//input[@value='Join the Community']");
 	}
-	
 	/*
-	 * Locator for Password text box.
+	 * Function to click on the "Join The Community" on the top of the page.
 	 */
-	private By passwordTxtBox(){
-		return By.id("user_password");
+	public RegisterPage clickOnJoinTheCommunity(){
+		 safeClick(joinTheCommunity(), MEDIUMWAIT);
+		 return(PageFactory.initElements(BrowserInstance.driver, RegisterPage.class));
 	}
 	
 	/*
-	 * Function to type password in the password text box.
+	 * Locator for user name input box.
 	 */
-	public void setPassword(String pwd){
-		safeType(passwordTxtBox(), pwd, MEDIUMWAIT);
+	private By username(){
+		return By.xpath("//input[@id='p_lt_zoneContent_SubContent_p_lt_zoneLeft_SignIn_Login1_UserName']");
 	}
-	
 	/*
-	 * Locator for Login button.
+	 * Function to type User name.
 	 */
-	private By loginButton(){
-		return By.xpath("//header//div[@class='pull-right']/a[@class='btn btn-sm btn-header']");
-	}
-	
-	/*
-	 * Function to click on login button.
-	 */
-	public void clickLoginButton(){
-		safeClick(loginButton(), MEDIUMWAIT);
+	public void EnterUserName(String username){
+		 safeType(username(), username, MEDIUMWAIT);
 	}
 
-	
-	public void login() throws IOException {
-		String userId = ReadInputData.HM_inputData.get("UserId");
-		String password = ReadInputData.HM_inputData.get("Password");
-		setUserId(userId);
-		setPassword(password);
-		clickLoginButton();
+	/*
+	 * Locator for password input box.
+	 */
+	private By password(){
+		return By.xpath("//input[@id='p_lt_zoneContent_SubContent_p_lt_zoneLeft_SignIn_Login1_Password']");
+	}
+	/*
+	 * Function to type User name.
+	 */
+	public void EnterPassword(String username){
+		 safeType(password(), username, MEDIUMWAIT);
 	}
 	
+	/*
+	 * Locator for join the community on the top of the page.
+	 */
+	private By signInBtn(){
+		return By.xpath("//input[@id='p_lt_zoneContent_SubContent_p_lt_zoneLeft_SignIn_Login1_LoginButton']");
+	}
+	/*
+	 * Function to click on the "Join The Community" on the top of the page.
+	 */
+	public void clickOnSignInBtn(){
+		 safeClick(signInBtn(), MEDIUMWAIT);
+	}
+	
+	/*
+	 * Locator for join the community on the top of the page.
+	 */
+	private By logoutBtn(){
+		return By.xpath("//input[@id='p_lt_zoneContent_SubContent_p_lt_zoneLeft_SignIn_btnLogout']");
+	}
+	/*
+	 * Function to click on the "Join The Community" on the top of the page.
+	 */
+	public boolean isLogoutButtonPresent(){
+		 return isElementPresent(logoutBtn(), MEDIUMWAIT);
+	}
+	
+	
+//	//final  WebDriver driver;
+//	@FindBy(id = "membership-register-userEmail")
+//	private WebElement we_loginEdit;
+//	//@FindBy(id = "login-user-password")
+//	//private WebElement we_passwordEdit;
+//	@FindBy(id = "btnRegisterEmail")
+//	private WebElement we_loginButton;
+//	
+//	//@FindBy(xpath = "//div[@class='membership clearfix']/ul[@class='right']/li[@class='first']/a[@class='login-required']")
+//	//private WebElement we_registration;
+//	@FindBy(xpath = "//div[@class='membership clearfix']/ul[@class='right']/li[@class='first']/a[@class='registration-required']")
+//	
+//	private WebElement we_signInLink;
+//
+//	private String str_UserId;
+//	//private String str_Password;
+//		
+//	public LoginPage() {
+//	}
+//		
+//	public void setUserId(String prm_login) throws IOException {
+//		 we_loginEdit.sendKeys(prm_login);
+//		
+//	}
+//	public void setPassword(String prm_password) {
+//		//we_passwordEdit.sendKeys(prm_password);
+//	}
+//	
+//	public void clickLoginButton() {
+//		//loginButton.click();
+////	 JavascriptExecutor executor = (JavascriptExecutor)BrowserInstance.driver;
+////	   executor.executeScript("arguments[0].click();", we_loginButton);
+////	   System.out.println("1****************");
+////	   
+//		we_loginButton.click() ;
+//	}
+//	
+//	public void clickToSignIn(){
+//		we_signInLink.click();
+//	}
+//	
+//	public void login() throws IOException {
+//		str_UserId = ReadInputData.HM_inputData.get("registrationID");
+//		//str_Password = ReadInputData.HM_inputData.get("Password");
+//		//str_organization = ReadInputData.HM_inputData.get("Organization");
+//		clickToSignIn();
+//		setUserId(str_UserId);
+//		//setPassword(str_Password);
+//		clickLoginButton();
+//		
+//		//return PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+//	}
 	
 	}

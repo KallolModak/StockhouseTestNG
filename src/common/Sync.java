@@ -79,7 +79,7 @@ public class Sync implements TimeOuts{
 		} 
 		catch (Exception e) 
 		{
-			LoggerInstance.logger.error("jscondition not satisfied.");
+			////LoggerInstance.logger.error("jscondition not satisfied.");
 			Assert.fail("jscondition not satisfied."+ getStackTrace());
 		}
 		setImplicitWait(IMPLICITWAIT);
@@ -99,7 +99,7 @@ public class Sync implements TimeOuts{
 	{    	
     	boolean bFlag = false;	
     	nullifyImplicitWait();
-    	LoggerInstance.logger.info("Waiting for presence of element " + locator);
+    	////LoggerInstance.logger.info("Waiting for presence of element " + locator);
 		try
 		{
 			WebDriverWait wait = new WebDriverWait(driver, waitTime);
@@ -107,20 +107,20 @@ public class Sync implements TimeOuts{
 			if(driver.findElement(locator).isDisplayed()||driver.findElement(locator).isEnabled())
 			{
 				bFlag = true;
-				LoggerInstance.logger.info("Element " + locator + " is displayed");
+				////LoggerInstance.logger.info("Element " + locator + " is displayed");
 			}
 		}		
 		catch (NoSuchElementException e)
 		{
-			LoggerInstance.logger.info("Element " + locator + " was not found in DOM"+getStackTrace());			
+			//LoggerInstance.logger.info("Element " + locator + " was not found in DOM"+getStackTrace());			
 		}
 		catch (TimeoutException e)
 		{
-			LoggerInstance.logger.info("Element " + locator + " was not displayed in time - "+waitTime+getStackTrace());
+			//LoggerInstance.logger.info("Element " + locator + " was not displayed in time - "+waitTime+getStackTrace());
 		}
 		catch (Exception e)
 		{
-			LoggerInstance.logger.error("Element " + locator + " is not displayed"+getStackTrace());
+			//LoggerInstance.logger.error("Element " + locator + " is not displayed"+getStackTrace());
 			Assert.fail("Element " + locator + " is not displayed"+getStackTrace());
 		}
 		setImplicitWait(IMPLICITWAIT);
@@ -143,30 +143,30 @@ public class Sync implements TimeOuts{
     	nullifyImplicitWait();
 		try
 		{
-			LoggerInstance.logger.info("Waiting until element " + locator+" is clickable");
+			//LoggerInstance.logger.info("Waiting until element " + locator+" is clickable");
 			WebDriverWait wait = new WebDriverWait(driver, waitTime);
 			wait.until(ExpectedConditions.elementToBeClickable(locator));
 			 
 			if(driver.findElement((locator)).isDisplayed())
 			{
 				bFlag = true;
-				LoggerInstance.logger.info("Element " + locator + " is displayed and is clickable");
+				//LoggerInstance.logger.info("Element " + locator + " is displayed and is clickable");
 			}
 		}
 		
 		catch (NoSuchElementException e)
 		{
-			LoggerInstance.logger.error("Element " + locator + " was not displayed"+getStackTrace());
+			//LoggerInstance.logger.error("Element " + locator + " was not displayed"+getStackTrace());
 			Assert.fail("Element " + locator + " was not displayed"+getStackTrace());
 		}
 		catch (TimeoutException e)
 		{
-			LoggerInstance.logger.error("Element " + locator + " was not clickable in time - "+waitTime+getStackTrace());
+			//LoggerInstance.logger.error("Element " + locator + " was not clickable in time - "+waitTime+getStackTrace());
 			Assert.fail("Element " + locator + " was not clickable in time - "+waitTime+getStackTrace());
 		}
 		catch (Exception e)
 		{
-			LoggerInstance.logger.error("Element " + locator + " was not clickable"+getStackTrace());		
+			//LoggerInstance.logger.error("Element " + locator + " was not clickable"+getStackTrace());		
 			Assert.fail("Element " + locator + " was not clickable" +getStackTrace());
 		}
 		setImplicitWait(IMPLICITWAIT);
@@ -188,28 +188,28 @@ public class Sync implements TimeOuts{
     	nullifyImplicitWait();
 		try
 		{
-			LoggerInstance.logger.info("Waiting until element " + locator+" is clickable");
+			//LoggerInstance.logger.info("Waiting until element " + locator+" is clickable");
 			WebDriverWait wait = new WebDriverWait(driver, waitTime);
 			wait.until(ExpectedConditions.elementToBeClickable(locator));
 			 
 			if(driver.findElement((locator)).isDisplayed())
 			{
 				bFlag = true;
-				LoggerInstance.logger.info("Element " + locator + " is displayed and is clickable");
+				//LoggerInstance.logger.info("Element " + locator + " is displayed and is clickable");
 			}
 		}
 		
 		catch (NoSuchElementException e)
 		{
-			LoggerInstance.logger.error("Element " + locator + " was not displayed"+getStackTrace());			
+			//LoggerInstance.logger.error("Element " + locator + " was not displayed"+getStackTrace());			
 		}
 		catch (TimeoutException e)
 		{
-			LoggerInstance.logger.error("Element " + locator + " was not clickable in time - "+waitTime+getStackTrace());			
+			//LoggerInstance.logger.error("Element " + locator + " was not clickable in time - "+waitTime+getStackTrace());			
 		}
 		catch (Exception e)
 		{
-			LoggerInstance.logger.error("Element " + locator + " was not clickable"+getStackTrace());		
+			//LoggerInstance.logger.error("Element " + locator + " was not clickable"+getStackTrace());		
 			Assert.fail("Element " + locator + " was not clickable" +getStackTrace());
 		}
 		setImplicitWait(IMPLICITWAIT);
@@ -231,7 +231,7 @@ public class Sync implements TimeOuts{
 		int waitTime =  getWaitTime(optionWaitTime);
 		boolean bFlag = false;
 		nullifyImplicitWait(); 
-		LoggerInstance.logger.info("Waiting until element " + locator+" is visible");
+		//LoggerInstance.logger.info("Waiting until element " + locator+" is visible");
 		try
 		{			
 			WebDriverWait wait = new WebDriverWait(driver, waitTime);
@@ -240,21 +240,21 @@ public class Sync implements TimeOuts{
 			if(driver.findElement((locator)).isDisplayed())
 			{
 				bFlag = true;
-			LoggerInstance.logger.info("Element " + locator + " is displayed");
+			//LoggerInstance.logger.info("Element " + locator + " is displayed");
 			}
 		}
 		catch (NoSuchElementException e)
 		{	
-			LoggerInstance.logger.info("Element " + locator + " was not displayed"+getStackTrace());			
+			//LoggerInstance.logger.info("Element " + locator + " was not displayed"+getStackTrace());			
 		}
 		catch (TimeoutException e)
 		{
-			LoggerInstance.logger.info("Element " + locator + " was not visible in time - "+waitTime+getStackTrace());
+			//LoggerInstance.logger.info("Element " + locator + " was not visible in time - "+waitTime+getStackTrace());
 		}
 		
 		catch (Exception e)
 		{	
-			LoggerInstance.logger.error("Element " + locator + " was not displayed"+getStackTrace());	
+			//LoggerInstance.logger.error("Element " + locator + " was not displayed"+getStackTrace());	
 			Assert.fail("Element " + locator + " was not displayed."+ getStackTrace());
 		}
 		return bFlag;
@@ -273,7 +273,7 @@ public class Sync implements TimeOuts{
     {   
 		int waitTime =  getWaitTime(optionWaitTime);
 		boolean isNotVisible = false;
-		LoggerInstance.logger.info("Waiting until element " + locator+" is invisible");
+		//LoggerInstance.logger.info("Waiting until element " + locator+" is invisible");
 		try
 		{						
 			nullifyImplicitWait(); 
@@ -283,7 +283,7 @@ public class Sync implements TimeOuts{
 		}
 		catch(Exception e)
 		{           
-			LoggerInstance.logger.error("Element " + locator + " is not disappearing"+getStackTrace());			
+			//LoggerInstance.logger.error("Element " + locator + " is not disappearing"+getStackTrace());			
 			Assert.fail("Element " + locator + " is not disappearing." + getStackTrace());
 		}
 		setImplicitWait(IMPLICITWAIT); 
@@ -299,7 +299,7 @@ public class Sync implements TimeOuts{
     * */
 	public boolean waitForJQueryProcessing(int timeOutInSeconds)
 	{
-		LoggerInstance.logger.info("Waiting ajax processing to complete.");
+		//LoggerInstance.logger.info("Waiting ajax processing to complete.");
 		boolean jQcondition = false;
 		try 
 		{
@@ -318,7 +318,7 @@ public class Sync implements TimeOuts{
 		} 
 		catch (Exception e) 
 		{
-			LoggerInstance.logger.error("Page Loading is not completed"+ getStackTrace());
+			//LoggerInstance.logger.error("Page Loading is not completed"+ getStackTrace());
 			Assert.fail("Page Loading is not completed"+ getStackTrace());
 		}
 		return jQcondition;
@@ -333,7 +333,7 @@ public class Sync implements TimeOuts{
 	 */
 	public void waitForPageToLoad(final String text) throws Exception
 	{
-		LoggerInstance.logger.info("Waiting for page to be loaded..");
+		//LoggerInstance.logger.info("Waiting for page to be loaded..");
 		nullifyImplicitWait(); 
 		(new WebDriverWait(driver, 20)).until(new ExpectedCondition<WebElement>() {
 		    public WebElement apply(WebDriver d) 
@@ -355,7 +355,7 @@ public class Sync implements TimeOuts{
 	*/
 	public boolean waitForPageToLoad(int timeOutInSeconds)
 	{
-		LoggerInstance.logger.info("Waiting for page to be loaded..");
+		//LoggerInstance.logger.info("Waiting for page to be loaded..");
 		boolean isPageLoadComplete = false;
 		nullifyImplicitWait(); //nullify implicitlyWait()
 		try
@@ -370,7 +370,7 @@ public class Sync implements TimeOuts{
 		}
 		catch(Exception e)
 	   	{		
-			LoggerInstance.logger.error("Unable to load web page"+getStackTrace());
+			//LoggerInstance.logger.error("Unable to load web page"+getStackTrace());
 			Assert.fail("unable to load webpage"+"\n"+getStackTrace());
 	   	}
 		setImplicitWait(IMPLICITWAIT);
@@ -387,7 +387,7 @@ public class Sync implements TimeOuts{
 	
 	public void waitForPageToLoad()
 	{
-		LoggerInstance.logger.info("Waiting for page to be loaded..");
+		//LoggerInstance.logger.info("Waiting for page to be loaded..");
 		try
 		{
 			int waitTime = 0;
@@ -409,13 +409,13 @@ public class Sync implements TimeOuts{
 			if(!isPageLoadComplete)
 			{	
 
-				LoggerInstance.logger.error("Unable to load webpage with in default timeout 250 seconds");
+				//LoggerInstance.logger.error("Unable to load webpage with in default timeout 250 seconds");
 				Assert.fail("unable to load webpage with in default timeout 250 seconds");
 			}
 		}
 		catch(Exception e)
 		{		
-			LoggerInstance.logger.error("Unable to load web page"+getStackTrace());
+			//LoggerInstance.logger.error("Unable to load web page"+getStackTrace());
 			Assert.fail("unable to load webpage"+"\n"+e.getMessage());
 		}
 
@@ -423,14 +423,14 @@ public class Sync implements TimeOuts{
 
     public boolean isElementPresent(By locator)
     {
-    	LoggerInstance.logger.info("Waiting for presence of element " + locator);
+    	//LoggerInstance.logger.info("Waiting for presence of element " + locator);
     	setImplicitWait(IMPLICITWAIT);
     	return driver.findElements(locator).size()>0;	
     }
 	
     public boolean isElementDisplayed(By locator)
     {
-    	LoggerInstance.logger.info("Verifying if element " + locator+ " is displayed");
+    	//LoggerInstance.logger.info("Verifying if element " + locator+ " is displayed");
     	boolean isDisplayed = false;
     	setImplicitWait(IMPLICITWAIT);
     	
@@ -443,14 +443,14 @@ public class Sync implements TimeOuts{
     	} 
  		catch (Exception e)
  		{
- 			LoggerInstance.logger.error("Exception occured while determining state of " + locator +getStackTrace());			
+ 			//LoggerInstance.logger.error("Exception occured while determining state of " + locator +getStackTrace());			
  		}	
     	return isDisplayed;
     }
     
     public boolean isElementNotDisplayed(By locator)
     {
-    	LoggerInstance.logger.info("Verifying if element " + locator+ " is not displayed");
+    	//LoggerInstance.logger.info("Verifying if element " + locator+ " is not displayed");
     	boolean isDisplayed = false;
     	setImplicitWait(0);
     	
@@ -463,14 +463,14 @@ public class Sync implements TimeOuts{
     	} 
  		catch (Exception e)
  		{
- 			LoggerInstance.logger.error("Exception occured while determining state of " + locator +getStackTrace());			
+ 			//LoggerInstance.logger.error("Exception occured while determining state of " + locator +getStackTrace());			
  		}	
     	return !(isDisplayed);
     }
     
     public boolean isElementEnabled(By locator)
     {
-    	LoggerInstance.logger.info("Verifying if element " + locator+ " is enabled");
+    	//LoggerInstance.logger.info("Verifying if element " + locator+ " is enabled");
     	boolean isEnabled = false;
     	setImplicitWait(IMPLICITWAIT);
     	try
@@ -482,14 +482,14 @@ public class Sync implements TimeOuts{
     	} 
  		catch (Exception e)
  		{
- 			LoggerInstance.logger.error("Exception occured while determining state of " + locator +getStackTrace());			
+ 			//LoggerInstance.logger.error("Exception occured while determining state of " + locator +getStackTrace());			
  		}
     	return isEnabled;
     }
 
     public boolean isElementSelected(By locator)
     {
-    	LoggerInstance.logger.info("Verifying if element " + locator+ " is selected");
+    	//LoggerInstance.logger.info("Verifying if element " + locator+ " is selected");
     	boolean isSelected = false;
     	setImplicitWait(IMPLICITWAIT);
     	try
@@ -501,7 +501,7 @@ public class Sync implements TimeOuts{
     	}
  		catch (Exception e)
  		{
- 			LoggerInstance.logger.error("Exception occured while determining state of " + locator +getStackTrace());	
+ 			//LoggerInstance.logger.error("Exception occured while determining state of " + locator +getStackTrace());	
  		}
     	return isSelected;
     }

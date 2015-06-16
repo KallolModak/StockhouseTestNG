@@ -1,5 +1,31 @@
-java -cp "../lib/testng-6.8.7-sources.jar:bin" org.testng.TestNG CompleteSuite.xml
+<!-- This xml file define classes and testcases to be executed. -->
+<suite name="StockHouse"   verbose="9">
+<test name="HomePage Testcases" >
+  		<!-- Included classes here will be executed.-->
+		<classes>
+			<class  name="test.HomePageTC" ></class>
+		</classes>
+	</test>
+	<test name="Navigation Testcases" >
+  		<!-- Included classes here will be executed.-->
+		<classes>
+			<class  name="test.NavigationTestCases" ></class>
+		</classes>
+	</test>
+	
+	<test name="Registry and Login Testcases" >
+  		<!-- Included classes here will be executed.-->
+		<classes>
+			<class  name="test.RegistryAndLogin" ></class>
+		</classes>
+	</test>
+	<test name="BullBoard Testcases" >
+  		<!-- Included classes here will be executed.-->
+		<classes>
+			<class  name="test.BullBoardTestcases" ></class>
+		</classes>
+	</test>
+</suite>
 
-java -cp C:\Users\Rupesh-Pooja\git\ranker-selenium-tests\RANKER SELENIUM FRAMEWORK\TestNGSuites\lib*;C:\Users\Rupesh-Pooja\git\ranker-selenium-tests\RANKER SELENIUM FRAMEWORK\bin org.testng.TestNG CompleteSuite.xml
 
-C:\Users\Rupesh-Pooja\git\ranker-selenium-tests\RANKER SELENIUM FRAMEWORK\TestNGSuites
+

@@ -17,8 +17,6 @@
 		<antcall target="InitialiseSuite"></antcall>
 		<antcall target="CompileSuite"></antcall>
 	    <antcall target="RunSuit"></antcall>
-		<antcall target="GenerateReport"></antcall>
-	    <antcall target="EmailResult"></antcall>
 	</target>
 	
 	<!-- This target is used to generate current time to create new folder for result files.-->
@@ -27,6 +25,7 @@
 		    <format property="current.time" pattern="MM-dd-yyyy hh-mm-ss"/> 
 	 	</tstamp> 
 	 	<property name="CurruntTime" value="${current.time}"/>
+		
 	</target>
 	
 	<!-- This target is used to generate classes files.-->
@@ -45,42 +44,16 @@
 	
 	<!-- This target to run the suite and create testng reports.-->
     <target name="RunSuit">
-	    <mkdir dir="Output/${CurruntTime}/testng_output"/><!-- Create the output directory. -->
-    	<testng outputdir="Output/${CurruntTime}/testng_output" classpathref="classpath">
+    	<echo message="RUN THE SUITE ######################################"/>
+	    <mkdir dir="Output/${CurruntTime}/${CurruntTime}"/><!-- Create the output directory. -->
+    	<testng outputdir="Output/${CurruntTime}/${CurruntTime}" classpathref="classpath" useDefaultListeners="false"
+            listeners="org.uncommons.reportng.HTMLReporter,org.uncommons.reportng.JUnitXMLReporter">
+             <sysproperty key="org.uncommons.reportng.title" value="Stockhouse Report"/>
 	    	<classpath location="${classes.dir}" />
     		<xmlfileset dir="." includes="Suite.xml"/>
-			<sysproperty key="LogFolder" value="${CurruntTime}"/>
+			<sysproperty key="OutputFolder" value="${CurruntTime}"/>
     	</testng>
 	</target>
-	
-	<!-- This target generate testng-xslt reports.-->
-	<target name="GenerateReport">
-		<mkdir dir="${basedir}/Output/${CurruntTime}/testng-xslt"></mkdir>
-		<xslt in="Output/testng_output/${CurruntTime}/testng-results.xml" style="lib/testng-results.xsl"
-				 out="${basedir}/Output/${CurruntTime}/testng-xslt/index.html">
-		   	<param expression="${basedir}/Output/${CurruntTime}/testng-xslt/" name="testNgXslt.outputDir" />
-			<param expression="true" name="testNgXslt.sortTestCaseLinks" />
-			<param expression="FAIL,SKIP,PASS,CONF,BY_CLASS" name="testNgXslt.testDetailsFilter" />
-			<param expression="true" name="testNgXslt.showRuntimeTotals" />
-			<classpath refid="classpath"></classpath>
-		</xslt>
-	</target>
-	
-	<!-- This target email generated report after completion of suite.-->
-	<target name="EmailResult">
-		<mail mailhost="192.168.100.35" mailport="25" subject="Automation Log" user="pooja.toshniwal@intellicus.com" password="123abc" encoding="mime" >
-			<from address="pooja.toshniwal@intellicus.com"/>
-			<replyto address="pooja.toshniwal@intellicus.com"/>
-			<to address="pooja.toshniwal@intellicus.com"/>
-			<message>The nightly build has completed</message>
-			<attachments>
-				<fileset dir="${emailFileLocation}/${CurruntTime}">
-					<include name="AutomationLogFile.log"/>
-				</fileset>
-			</attachments>
-		</mail>
-	</target>
-				
 </project>
 	 
 	

@@ -3,11 +3,15 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="test.Testcases">
+      <class name="test.HomePageTC">
         <methods>
-          <include name="Login"/>
+          <include name="VideoShowcase"/>
+          <include name="InitialiseTest"/>
+          <include name="quit"/>
+          <include name="InitializeSuit"/>
+          <include name="CloseDriverAndBrowser"/>
         </methods>
-      </class> <!-- test.Testcases -->
+      </class> <!-- test.HomePageTC -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

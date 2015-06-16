@@ -50,7 +50,7 @@ import com.google.common.collect.Sets.SetView;
 public class WebdriverUtility extends Sync{
 	
 	//Local WebDriver instance
-	WebDriver driver;
+	protected WebDriver driver;
 	Logger log =Logger.getLogger("SafeActions");
 	//ConfigManager sys = new ConfigManager();
 	//Constructor to initialize the local WebDriver variable with the WebDriver variable that,
@@ -78,7 +78,7 @@ public class WebdriverUtility extends Sync{
 				element = driver.findElement(locator);
 				setHighlight(element);
 				element.click();		
-				log.info("Clicked on the element " + locator);
+				//log.info("Clicked on the element " + locator);
 			}
 			else
 			{
@@ -142,7 +142,7 @@ public class WebdriverUtility extends Sync{
 				setHighlight(element);
 				Actions userAction = new Actions(driver).doubleClick(element);
 				userAction.build().perform();
-				log.info("Double clicked the element " + locator);
+				//log.info("Double clicked the element " + locator);
 			}
 			else
 			{			
@@ -187,7 +187,7 @@ public class WebdriverUtility extends Sync{
 				setHighlight(element);
 				element.clear();
 				element.sendKeys(text);
-				log.info("Cleared the field and entered - '"+text+" in the element - " + locator);
+				//log.info("Cleared the field and entered - '"+text+" in the element - " + locator);
 			}
 			else
 			{			
@@ -273,7 +273,7 @@ public class WebdriverUtility extends Sync{
 				WebElement element = driver.findElement(locator);
 				setHighlight(element);
 				element.click();		
-				log.info("Clicked on element " + locator);
+				//log.info("Clicked on element " + locator);
 			}
 			else			
 			{
@@ -316,8 +316,9 @@ public class WebdriverUtility extends Sync{
 				scrollIntoElementView(locator);
 				WebElement checkBox = driver.findElement(locator);
 				setHighlight(checkBox);
-				if(checkBox.isSelected())
-					log.info("CheckBox " + locator + "is already selected");
+				if(checkBox.isSelected()){
+					//log.info("CheckBox " + locator + "is already selected");
+				}
 				else
 					checkBox.click();
 			}
@@ -366,9 +367,9 @@ public class WebdriverUtility extends Sync{
 				setHighlight(checkBox);
 				if(checkBox.isSelected())
 					checkBox.click();
-				else
-					log.info("CheckBox " + locator + "is already deselected");
-	
+				else{
+					//log.info("CheckBox " + locator + "is already deselected");
+				}
 			}
 			else
 			{			
@@ -415,8 +416,9 @@ public class WebdriverUtility extends Sync{
 				setHighlight(checkBox);		
 				if((checkBox.isSelected()==true && checkOption == false)||(checkBox.isSelected()==false && checkOption == true))
 					checkBox.click();
-				else
-					log.info("CheckBox " + locator + "is already deselected");
+				else{
+					//log.info("CheckBox " + locator + "is already deselected");
+				}
 			}
 			else
 			{			
@@ -510,10 +512,12 @@ public class WebdriverUtility extends Sync{
 					scrollIntoElementView(currentLocator);
 					WebElement checkBox = driver.findElement(currentLocator);
 					setHighlight(checkBox);
-					if(checkBox.isSelected())
-						log.info("CheckBox " + currentLocator + " is already selected");
-					else
+					if(checkBox.isSelected()){
+						//log.info("CheckBox " + currentLocator + " is already selected");
+					}
+					else{
 						checkBox.click();
+					}
 				}
 			}
 			else
@@ -546,48 +550,48 @@ public class WebdriverUtility extends Sync{
 	 * @throws Exception
 	 * @functionCall - DeselectMultipleCheckboxs(MEDIUMWAIT, By.id("Checkbox1"),By.id("Checkbox2"), By.xpath("checkbox")); u can pass 'N' number of locators at a time
 	 */
-	public void safeDeselectCheckboxes(int waitTime ,By...locator)
-	{	
-		By check = null;
-		try
-		{
-			if(locator.length>0)
-			{		
-				for(By currentLocator:locator)
-				{
-					check = currentLocator;
-					waitUntilClickable(currentLocator,  waitTime);
-					WebElement checkBox = driver.findElement(currentLocator);
-					scrollIntoElementView(currentLocator);
-					setHighlight(checkBox);
-					if(checkBox.isSelected())
-						checkBox.click();
-					else					
-						log.info("CheckBox " + currentLocator + " is already deselected");
-				}
-			}
-			else
-			{
-				log.error("Expected atleast one locator as argument to safeDeselectCheckboxes function"+getStackTrace());
-				Assert.fail("Expected atleast one locator as argument to safeDeselectCheckboxes function"+getStackTrace());
-			}
-		}
-		catch(StaleElementReferenceException e)
-		{
-			log.error("Element with " + check + " is not attached to the page document"+getStackTrace());
-			Assert.fail("Element with " + check + " is not attached to the page document"+getStackTrace());
-		}
-		catch (NoSuchElementException e)
-		{
-			log.error("Element " + check + " was not found in DOM"+getStackTrace());	
-			Assert.fail("Element " + check + " was not found in DOM"+getStackTrace());
-		}
-		catch(Exception e)
-		{
-			log.error("Unable to deselect checkbox " + check+getStackTrace());	
-			Assert.fail("Unable to deselect checkbox " + check+getStackTrace());
-		}
-	}
+//	public void safeDeselectCheckboxes(int waitTime ,By...locator)
+//	{	
+//		By check = null;
+//		try
+//		{
+//			if(locator.length>0)
+//			{		
+//				for(By currentLocator:locator)
+//				{
+//					check = currentLocator;
+//					waitUntilClickable(currentLocator,  waitTime);
+//					WebElement checkBox = driver.findElement(currentLocator);
+//					scrollIntoElementView(currentLocator);
+//					setHighlight(checkBox);
+//					if(checkBox.isSelected())
+//						checkBox.click();
+//					else					
+//						//log.info("CheckBox " + currentLocator + " is already deselected");
+//				}
+//			}
+//			else
+//			{
+//				log.error("Expected atleast one locator as argument to safeDeselectCheckboxes function"+getStackTrace());
+//				Assert.fail("Expected atleast one locator as argument to safeDeselectCheckboxes function"+getStackTrace());
+//			}
+//		}
+//		catch(StaleElementReferenceException e)
+//		{
+//			log.error("Element with " + check + " is not attached to the page document"+getStackTrace());
+//			Assert.fail("Element with " + check + " is not attached to the page document"+getStackTrace());
+//		}
+//		catch (NoSuchElementException e)
+//		{
+//			log.error("Element " + check + " was not found in DOM"+getStackTrace());	
+//			Assert.fail("Element " + check + " was not found in DOM"+getStackTrace());
+//		}
+//		catch(Exception e)
+//		{
+//			log.error("Unable to deselect checkbox " + check+getStackTrace());	
+//			Assert.fail("Unable to deselect checkbox " + check+getStackTrace());
+//		}
+//	}
 	
 	
 
@@ -621,7 +625,7 @@ public class WebdriverUtility extends Sync{
 						if (option.getText().contains(optionToSelect))
 						{ 
 							option.click(); 
-							log.info("Selected " + option + " from " + locator + " dropdown");
+							//log.info("Selected " + option + " from " + locator + " dropdown");
 							break; 
 						}
 					}
@@ -705,7 +709,7 @@ public class WebdriverUtility extends Sync{
 				setHighlight(selectElement);
 				Select select = new Select(selectElement);
 				select.selectByIndex(iIndexofOptionToSelect);
-				log.info("Selected option from " + locator + " dropdown");
+				//log.info("Selected option from " + locator + " dropdown");
 			}
 			else
 			{
@@ -750,7 +754,7 @@ public class WebdriverUtility extends Sync{
 				setHighlight(selectElement);
 				Select select = new Select(selectElement);
 				select.selectByValue(sValuefOptionToSelect);
-				log.info("Selected option from " + locator + " dropdown");
+				//log.info("Selected option from " + locator + " dropdown");
 			}
 			else
 			{
@@ -795,7 +799,7 @@ public class WebdriverUtility extends Sync{
 				setHighlight(selectElement);
 				Select select = new Select(selectElement);
 				select.selectByVisibleText(sVisibleTextOptionToSelect);
-				log.info("Selected option from " + locator + " dropdown");
+				//log.info("Selected option from " + locator + " dropdown");
 			}
 			else
 			{
@@ -853,7 +857,7 @@ public class WebdriverUtility extends Sync{
 						if (option.getText().contains(sOptionToSelect))
 						{ 
 							option.click(); 
-							log.info("Selected " + option + " from " + locator + " Listbox");
+							//log.info("Selected " + option + " from " + locator + " Listbox");
 							bExists = true;
 							break; 
 						}						
@@ -910,7 +914,7 @@ public class WebdriverUtility extends Sync{
 				} catch (InterruptedException e) {
 					log.error("Exception occurred while waiting"+getStackTrace());
 				}
-			    log.info("Hovered on element " + locator);
+			    //log.info("Hovered on element " + locator);
 		    }
 		    else
 			{	    
@@ -958,7 +962,7 @@ public class WebdriverUtility extends Sync{
 				}
 			    WebElement element = driver.findElement(byOptionlocator);
 			    element.click();
-			    log.info("Hovered on element and select the Option" + locator);
+			    //log.info("Hovered on element and select the Option" + locator);
 		    }
 		    else
 			{	    
@@ -1000,7 +1004,7 @@ public class WebdriverUtility extends Sync{
 			    String mouseOverScript = "if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('mouseover', true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject) { arguments[0].fireEvent('onmouseover');}";
 			    ((JavascriptExecutor) driver).executeScript(mouseOverScript, HoverElement);
 			    Thread.sleep(4000);	
-			    log.info("Hovered on element " + locator);
+			    //log.info("Hovered on element " + locator);
 	        }
 	        else
 	        {
@@ -1061,7 +1065,7 @@ public class WebdriverUtility extends Sync{
         			WebElement elementToCheck = driver.findElement(locatorToCheck);
         			if(elementToCheck.isDisplayed())
         			{
-                        log.info("Clicked on element " + locatorToClick);
+                        //log.info("Clicked on element " + locatorToClick);
         				break;
         			}
         			else
@@ -1073,7 +1077,7 @@ public class WebdriverUtility extends Sync{
             } 
             catch(Exception e) 
             {            	
-            	log.info("Attempt: "+iAttempts +"\n Unable to click on element " + locatorToClick);
+            	//log.info("Attempt: "+iAttempts +"\n Unable to click on element " + locatorToClick);
             }
             iAttempts++;
         }
@@ -1103,7 +1107,7 @@ public class WebdriverUtility extends Sync{
 					  WebElement destination = driver.findElement(Destinationlocator);
 					  Actions action = new Actions(driver);
 					  action.dragAndDrop(source, destination).build().perform();
-					  log.info("Dragged the element "+ Sourcelocator + " and dropped in to " + Destinationlocator);
+					  //log.info("Dragged the element "+ Sourcelocator + " and dropped in to " + Destinationlocator);
 				  }
 				  else
 				  {
@@ -1159,7 +1163,7 @@ public class WebdriverUtility extends Sync{
 	        		log.error("Exception occured while waiting for an alert using thread sleep method "+getStackTrace());
 				}
 	        	alert.accept();
-	        	log.info("Alert is displayed and accepted successfully");
+	        	//log.info("Alert is displayed and accepted successfully");
 	            bAlert = true;
 	            break;
 	        }
@@ -1193,7 +1197,7 @@ public class WebdriverUtility extends Sync{
 		  Alert alert = driver.switchTo().alert();
 		  String sText = alert.getText();		 
 		  alert.accept();
-		  log.info("Accepted the alert:"+ sText);
+		  //log.info("Accepted the alert:"+ sText);
 		}
 		catch(NoAlertPresentException e)
 	    {
@@ -1221,7 +1225,7 @@ public class WebdriverUtility extends Sync{
 			Alert alert = driver.switchTo().alert();
 			String sText = alert.getText();			
 			alert.dismiss();	
-			log.info("Dismissed the alert:"+ sText);
+			//log.info("Dismissed the alert:"+ sText);
 		}
 		catch(NoAlertPresentException e)
 	    {
@@ -1307,7 +1311,7 @@ public class WebdriverUtility extends Sync{
 				WebElement element=driver.findElement(locator);
 				setHighlight(element);
 				element.sendKeys(filePath);
-				log.info("Entered - '"+filePath+" in the element - " + locator);
+				//log.info("Entered - '"+filePath+" in the element - " + locator);
 				hasTyped = true;
 			}
 			else
@@ -1484,7 +1488,7 @@ public class WebdriverUtility extends Sync{
 					    robot.keyPress(KeyEvent.VK_ENTER);
 					    robot.keyRelease(KeyEvent.VK_ENTER);
 					    Thread.sleep(5000);
-					    log.info("Uploaded file using Robot Functionality");
+					    //log.info("Uploaded file using Robot Functionality");
 				}
 				else
 				{
@@ -1533,7 +1537,7 @@ public class WebdriverUtility extends Sync{
 			if(isElementPresent(locator, waitTime))
 			{
 				setImplicitWait(waitTime);
-				log.info("Clicking on element with " + locator+ " using java script click");
+				//log.info("Clicking on element with " + locator+ " using java script click");
 				//waitUntilClickable(locator,waitTime);
 				scrollIntoElementView(locator);
 				WebElement element = driver.findElement(locator);
@@ -1924,7 +1928,7 @@ public class WebdriverUtility extends Sync{
 		try
 		{
 			driver.switchTo().frame(frame);
-			log.info("Navigated to frame with id " + frame);	
+			//log.info("Navigated to frame with id " + frame);	
 		}
 		catch(NoSuchFrameException e)
 		{
@@ -1950,7 +1954,7 @@ public class WebdriverUtility extends Sync{
 		try
 		{
 			driver.switchTo().frame(ParentFrame).switchTo().frame(ChildFrame);
-			log.info("Navigated to innerframe with id " + ChildFrame + "which is present on frame with id" + ParentFrame);
+			//log.info("Navigated to innerframe with id " + ChildFrame + "which is present on frame with id" + ParentFrame);
 		}
 		catch(NoSuchFrameException e)
 		{
@@ -1979,7 +1983,7 @@ public class WebdriverUtility extends Sync{
 			{
 				WebElement Frame = driver.findElement(Framelocator);             
 			    driver.switchTo().frame(Frame);
-			    log.info("Navigated to frame with locator " + Framelocator);	
+			    //log.info("Navigated to frame with locator " + Framelocator);	
 			}
 			else
 			{
@@ -2009,7 +2013,7 @@ public class WebdriverUtility extends Sync{
 		try
 		{
 			driver.switchTo().defaultContent();
-			log.info("Navigated to back to webpage from frame");
+			//log.info("Navigated to back to webpage from frame");
 		}
 		catch(Exception e)
 		{
@@ -2140,7 +2144,7 @@ public class WebdriverUtility extends Sync{
 			int numWindow = driver.getWindowHandles().size();
 			String[] window = (String[])driver.getWindowHandles().toArray(new String[numWindow]);
 			driver.switchTo().window(window[num]);
-			log.info("Navigated succesfsully to window with sepcified number: "+num);
+			//log.info("Navigated succesfsully to window with sepcified number: "+num);
 		}
 		catch(NoSuchWindowException e)
 		{
@@ -2174,7 +2178,7 @@ public class WebdriverUtility extends Sync{
 			for(String windowHandle:windowHandles){
 				if(!windowHandle.equals(window)){
 					driver.switchTo().window(windowHandle);
-					log.info("Navigated succesfsully to new window");
+					//log.info("Navigated succesfsully to new window");
 				}
 			}
 		}
@@ -2257,7 +2261,7 @@ public class WebdriverUtility extends Sync{
 			i++;
 			if(i>15)break;
 			}
-			log.info("url : "+sUrl);
+			//log.info("url : "+sUrl);
 		}
 		catch(Exception e)
 		{
@@ -2379,6 +2383,45 @@ public class WebdriverUtility extends Sync{
 			else try{Thread.sleep(50);}catch(Exception e){}
 		}
 		return s;
+	}
+	
+	/*
+	 * Function to wait for page to load
+	 */
+	public static void waitForPageLoaded() {
+
+		ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver driver) {
+				return ((JavascriptExecutor) driver).executeScript(
+						"return document.readyState").equals("complete");
+			}
+		};
+
+		Wait<WebDriver> wait = new WebDriverWait(BrowserInstance.driver, 180);
+		try {
+			wait.until(expectation);
+		} catch (Throwable error) {
+			Assert.assertFalse(true,
+					"Timeout waiting for Page Load Request to complete.");
+		}// End catch(Exception e)
+	}// End public static void waitForPageLoaded(WebDriver driver)
+	
+	/*
+	 * Function to select From Dropdown used with @FindBY
+	 */
+	public static void selectFromDropDown(String prm_itemToSelect,
+			WebElement prm_we_select) {
+		try {
+			prm_we_select.sendKeys(prm_itemToSelect);
+		} catch (Exception e) {
+			Assert.fail("Failed to select" + e);
+		}// END of catch (Exception e)
+	}// End public static void selectFromDropDown(String
+		// str_itemToSelect,WebElement we_selectTimeZone)
+
+	
+	public void switchToDefaultFrame(){
+		BrowserInstance.driver.switchTo().defaultContent();
 	}
 	
 }// END class WebdriverUtility

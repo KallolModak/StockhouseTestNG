@@ -51,7 +51,8 @@ public class BrowserInstance {
 					     driver = new InternetExplorerDriver(caps);
 					     logger.info("Initiate InternetExplorer driver.");
 						 break;
-				case 3:  System.setProperty("webdriver.chrome.driver", "tools/chromedriver.exe");
+				case 3: 
+					System.setProperty("webdriver.chrome.driver", "tools/chromedriver.exe");
 						 driver = new ChromeDriver();
 				 		 logger.info("Initiate Chrome driver.");
 						 break;
@@ -60,10 +61,11 @@ public class BrowserInstance {
 						 break;
 				}//End of switch (int_BrowserType)
 			//It will open intellicus link in browser.
-			String str_intellicusURL=ReadInputData.HM_inputData.get("URL");
-			driver.get(str_intellicusURL);
-			logger.info("Open Intellicus URL "+str_intellicusURL+".");
-			}//End of if (driver==null)
+				System.out.println("abcd");
+			String url=ReadInputData.HM_inputData.get("URL");
+			driver.get(url);
+		}//End of if (driver==null)
+			System.out.println("xyz");
 		}//End of try
 		catch (Exception e)
 		{
