@@ -131,7 +131,12 @@ public class LoginPage extends WebdriverUtility{
 	public void clickOnSignInBtn(){
 		 safeClick(signInBtn(), MEDIUMWAIT);
 	}
-	
+	/*
+	 * Function to check the presence of signin button.
+	 */
+	public boolean isSigninBtnPresent(){
+		return isElementPresent(signInBtn(), MEDIUMWAIT);
+	}
 	/*
 	 * Locator for join the community on the top of the page.
 	 */
@@ -139,12 +144,65 @@ public class LoginPage extends WebdriverUtility{
 		return By.xpath("//input[@id='p_lt_zoneContent_SubContent_p_lt_zoneLeft_SignIn_btnLogout']");
 	}
 	/*
-	 * Function to click on the "Join The Community" on the top of the page.
+	 * Function to check the presence of logout button on login page.
 	 */
 	public boolean isLogoutButtonPresent(){
 		 return isElementPresent(logoutBtn(), MEDIUMWAIT);
 	}
-	
+	/*
+	 * Function to click on logout button on login page.
+	 */
+	public void clickOnLogoutButton(){
+		 safeClick(logoutBtn(), MEDIUMWAIT);
+	}
+	/*
+	 * Locator for forgot password.
+	 */
+	private By forgotPassword(){
+		return By.xpath("//div[@id='p_lt_zoneContent_SubContent_p_lt_zoneLeft_SignIn_Login1_pnlLogin']/div[3]/a[text()='Forgot password?']");
+	}
+	/*
+	 * Function to click on forgot password.
+	 */
+	public void clickOnForgotPassword(){
+		 safeClick(forgotPassword(), MEDIUMWAIT);
+	}
+	/*
+	 * Locator for user name box for resetting password.
+	 */
+	private By resetPwdUserName(){
+		return By.xpath("//div[@class='form-section']/input");
+	}
+	/*
+	 * Function to type in user name box for resetting password.
+	 */
+	public void putResetPwdUserName(String text){
+		safeType(resetPwdUserName(), text, MEDIUMWAIT);
+	}
+	/*
+	 * Locator for 'send password' on reset password page.
+	 */
+	private By sendPassword(){
+		return By.xpath("//div[@class='login-retrieval']//input[@type='submit']");
+	}
+	/*
+	 * Function to click on 'send password' on reset password page.
+	 */
+	public void clickOnSendPassword(){
+		safeClick(sendPassword(), MEDIUMWAIT);
+	}
+	/*
+	 * Locator for message generated after 'send password' click.
+	 */
+	private By ResetPasswordMsg(){
+		return By.xpath("//div[@class='login-retrieval']//span[@id='p_lt_zoneContent_SubContent_p_lt_zoneLeft_SignIn_lblResult']");
+	}
+	/*
+	 * Function to get text of message generated after 'send password' click.
+	 */
+	public String getTextOfResetPasswordMsg(){
+		return safeGetText(ResetPasswordMsg(), MEDIUMWAIT);
+	}
 	
 //	//final  WebDriver driver;
 //	@FindBy(id = "membership-register-userEmail")

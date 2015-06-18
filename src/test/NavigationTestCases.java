@@ -52,555 +52,555 @@ import common.ReadInputData;
 
 public class NavigationTestCases extends BaseSetup {
 
-//	/*
-//	 * Test case to check ETFs link on navigation bar.
-//	 * Check URL after clicking the EFTs.
-//	 * Check presence of "More ETF Articles" text on the page.
-//	 * Check presence of "ETF Performance Overview" on the page.
-//	 */
-//	@Test( priority =1)
-//	public void ETFsLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationLink(8);
-//			ETFsPage etfsPage =  PageFactory.initElements(BrowserInstance.driver, ETFsPage.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/etfs");
-//			Assert.assertTrue(etfsPage.isMoreETFArticlesPresent());
-//			System.out.println("##################################3");
-//			Assert.assertTrue(etfsPage.isTopStoryPresent());
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void ETFsLink()
-//
-//	/*
-//	 * Test case to check video link on navigation bar.
-//	 * Check URL after clicking the Video.
-//	 * Check presence of "Video cover" section.
-//	 * Check presence of thumbnails.
-//	 */
-//	@Test( priority =2)
-//	public void VideoLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationLink(7);
-//			Thread.sleep(10000);
-//			VideoPage videoPage =  PageFactory.initElements(BrowserInstance.driver, VideoPage.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),"http://www.stockhouse.tv/");
-//			Assert.assertTrue(videoPage.isVideoCoverPresent());
-//			System.out.println("##################################3");
-//			Assert.assertEquals(videoPage.numberOfThumbnailPresent(), 6);
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void ETFsLink()
-//	
-//	/*
-//	 * Test case to check Portfolio link on navigation bar.
-//	 * Check URL after clicking the Portfolio.
-//	 * Check presence of "Portfolio" text.
-//	 * Check presence of "Portfolio Tracker" text.
-//	 */
-//	@Test( priority =3)
-//	public void PortfolioLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationLink(6);
-//			Thread.sleep(10000);
-//			Portfolio portfolio =  PageFactory.initElements(BrowserInstance.driver, Portfolio.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio");
-//			Assert.assertTrue(portfolio.isPortfolioTxtPresent());
-//			System.out.println("##################################3");
-//			Assert.assertTrue(portfolio.isPortfolioTrackerTxtPresent());
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void ETFsLink()
-//	
-//	/*
-//	 * Test case to check Portfolio > StockStream link on navigation bar.
-//	 * Check URL after clicking the Portfolio.
-//	 * Check presence of "Portfolio" text.
-//	 * Check presence of "Portfolio Tracker" text.
-//	 */
-//	@Test( priority =4)
-//	public void PortfolioStockStreamLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(6,1);
-//			Thread.sleep(10000);
-//			homepage.switchToNewWindow();
-//			StockStreamPage stockStream=  PageFactory.initElements(BrowserInstance.driver, StockStreamPage.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio/stockstream-promo");
-//			Assert.assertNotNull(stockStream.getTxtOfModuleContent(1));
-//			System.out.println("##################################3");
-//			Assert.assertNotNull(stockStream.getTxtOfModuleContent(2));
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
-//	
-//	/*
-//	 * Test case to check Portfolio > StockScreener link on navigation bar.
-//	 * Check URL after clicking the Portfolio.
-//	 * Check presence of "Featured Company" text.
-//	 * Check presence of "Search Options" text.
-//	 */
-//	@Test( priority =5)
-//	public void PortfolioStockScreenerLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(6,2);
-//			Thread.sleep(10000);
-//			StockScreener stockScreener=  PageFactory.initElements(BrowserInstance.driver, StockScreener.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio/stock-screener");
-//			Assert.assertTrue(stockScreener.isFeaturedCompanyTxtPresent());
-//			System.out.println("##################################3");
-//			Assert.assertTrue(stockScreener.isSearchOptionsTxtPresent());
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
-//	
-//	/*
-//	 * Test case to check Portfolio > SymbolLookup link on navigation bar.
-//	 * Check URL after clicking the SymbolLookup.
-//	 * Check presence of "Symbol Lookup" text.
-//	 */
-//	@Test( priority =6)
-//	public void PortfolioSymbolLookupLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(6,3);
-//			Thread.sleep(10000);
-//			SymbolLookup symbolLookup=  PageFactory.initElements(BrowserInstance.driver, SymbolLookup.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio/symbol-lookup");
-//			Assert.assertTrue(symbolLookup.isSymbolLookupTxtPresent());
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
-//	
-//	/*
-//	 * Test case to check Portfolio > ShowcaseCompanies companies link on navigation bar.
-//	 * Check URL after clicking the ShowcaseCompanies.
-//	 * Check presence of "ShowcaseCompanies" text.
-//	 * Check presence of "FeaturedCompany" text.
-//	 */
-//	@Test( priority =7)
-//	public void PortfolioShowcaseCompaniesLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(6,4);
-//			Thread.sleep(10000);
-//			ShowcaseCompanies showcaseCompanies=  PageFactory.initElements(BrowserInstance.driver, ShowcaseCompanies.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"companies/showcase");
-//			Assert.assertTrue(showcaseCompanies.isShowcaseCompaniesTxtPresent());
-//			System.out.println("########################3");
-//			Assert.assertTrue(showcaseCompanies.isFeaturedCompanyTxtPresent());
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
-//	
-//	/*
-//	 * Test case to check Opinion link on navigation bar.
-//	 * Check URL after clicking the Opinion.
-//	 * Check presence of "Stockhouse Reports" text.
-//	 * Check presence of "Independent Reports" text.
-//	 */
-//	@Test( priority =8)
-//	public void OpinionLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationLink(5);
-//			Thread.sleep(10000);
-//			OpenionPage openionPage =  PageFactory.initElements(BrowserInstance.driver, OpenionPage.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion");
-//			Assert.assertTrue(openionPage.isStockhouseReportsTxtPresent());
-//			System.out.println("##################################3");
-//			Assert.assertTrue(openionPage.isIndependentReportsTxtPresent());
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void ETFsLink()
-//	
-//	/*
-//	 * Test case to check Opinion > PrivateEquity companies link on navigation bar.
-//	 * Check URL after clicking the Private equity.
-//	 * Check presence of "Articles" text.
-//	 * Check links are not blank.
-//	 */
-//	@Test( priority =9)
-//	public void OpinionPrivateEquityLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(5,1);
-//			Thread.sleep(10000);
-//			PrivateEquity privateEquity=  PageFactory.initElements(BrowserInstance.driver, PrivateEquity.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/private-equity");
-//			Assert.assertTrue(privateEquity.isArticleTxtPresent());
-//			System.out.println("########################3");
-//			Assert.assertNotNull(privateEquity.getTextOfArticleList(1));
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
-//	
-//	/*
-//	 * Test case to check Opinion > Short Report companies link on navigation bar.
-//	 * Check URL after clicking the Short Report.
-//	 * Check links are not blank.
-//	 */
-//	@Test( priority =10)
-//	public void OpinionShortReportLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(5,2);
-//			Thread.sleep(10000);
-//			ShortReportPage shortReportPage=  PageFactory.initElements(BrowserInstance.driver, ShortReportPage.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/short-report");
-//			Assert.assertNotNull(shortReportPage.getTextOfReportList(1));
-//			System.out.println("########################3");
-//			Assert.assertNotNull(shortReportPage.getTextOfReportList(2));
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
-//	
-//	/*
-//	 * Test case to check Opinion > TickerTrax companies link on navigation bar.
-//	 * Check URL after clicking the TickerTrax.
-//	 * Check links are not blank.
-//	 */
-//	@Test( priority =11)
-//	public void OpinionTickerTraxLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(5,3);
-//			Thread.sleep(10000);
-//			TickerTraxPage tickerTraxPage=  PageFactory.initElements(BrowserInstance.driver, TickerTraxPage.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/ticker-trax");
-//			Assert.assertNotNull(tickerTraxPage.getTextOfReportList(1));
-//			System.out.println("########################3");
-//			Assert.assertNotNull(tickerTraxPage.getTextOfReportList(2));
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
-//	/*
-//	 * Test case to check Opinion > Interviews companies link on navigation bar.
-//	 * Check URL after clicking the Interviews.
-//	 * Check links are not blank.
-//	 */
-//	@Test( priority =12)
-//	public void OpinionInterviewsLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(5,4);
-//			Thread.sleep(10000);
-//			InterviewPage interviewPage=  PageFactory.initElements(BrowserInstance.driver, InterviewPage.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/interviews");
-//			Assert.assertNotNull(interviewPage.getTextOfReportList(1));
-//			System.out.println("########################3");
-//			Assert.assertNotNull(interviewPage.getTextOfReportList(2));
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
-//	
-//	/*
-//	 * Test case to check Opinion > Independent Reports companies link on navigation bar.
-//	 * Check URL after clicking the Independent Reports.
-//	 * Check Independent Reports Text present.
-//	 * Check links are not blank.
-//	 */
-//	@Test( priority =13)
-//	public void OpinionIndependentReportsLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(5,5);
-//			Thread.sleep(10000);
-//			IndependentReports indepedentReports=  PageFactory.initElements(BrowserInstance.driver, IndependentReports.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/independent-reports");
-//			Assert.assertTrue(indepedentReports.isIndependentReportsTxtPresent());
-//			Assert.assertNotNull(indepedentReports.getTextOfReportList(1));
-//			System.out.println("########################3");
-//			Assert.assertNotNull(indepedentReports.getTextOfReportList(2));
-//			
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
-//	
-//	/*
-//	 * Test case to check Opinion > MoversAndShakers link on navigation bar.
-//	 * Check URL after clicking the MoversAndShakers.
-//	 * Check links are not blank.
-//	 */
-//	@Test( priority =14)
-//	public void OpinionMoversAndShakersLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(5,6);
-//			Thread.sleep(10000);
-//			MoversAndShakers moversAndShakers=  PageFactory.initElements(BrowserInstance.driver, MoversAndShakers.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/movers-shakers");
-//			Assert.assertNotNull(moversAndShakers.getTextOfReportList(1));
-//			System.out.println("########################3");
-//			Assert.assertNotNull(moversAndShakers.getTextOfReportList(2));
-//			
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
-//	
-//	/*
-//	 * Test case to check Opinion > BestOfBoardsAndBlogs link on navigation bar.
-//	 * Check URL after clicking the BestOfBoardsAndBlogs.
-//	 * Check presence of text BestOfBoardsAndBlogs.
-//	 * Check links are not blank.
-//	 */
-//	@Test( priority =15)
-//	public void OpinionBestOfBoardsAndBlogsLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(5,7);
-//			Thread.sleep(10000);
-//			BestOfBoardsAndBlogs bestOfBoardsAndBlogs=  PageFactory.initElements(BrowserInstance.driver, BestOfBoardsAndBlogs.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/best-of-boards-blogs");
-//			Assert.assertTrue(bestOfBoardsAndBlogs.isBestOfBoardsAndBlogTxtPresent());
-//			Assert.assertNotNull(bestOfBoardsAndBlogs.getTextOfReportList(1));
-//			System.out.println("########################3");
-//			Assert.assertNotNull(bestOfBoardsAndBlogs.getTextOfReportList(2));
-//			
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
-//	
-//	/*
-//	 * Test case to check News link on navigation bar.
-//	 * Check URL after clicking the News.
-//	 * Check presence of "News" text.
-//	 * Check presence of "Featured News" text.
-//	 */
-//	@Test( priority =16)
-//	public void NewsLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationLink(4);
-//			Thread.sleep(10000);
-//			NewsPage newsPage =  PageFactory.initElements(BrowserInstance.driver, NewsPage.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news");
-//			Assert.assertTrue(newsPage.isNewsTxtPresent());
-//			System.out.println("##################################3");
-//			Assert.assertTrue(newsPage.isFeaturedNewsTxtPresent());
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void NewsLink()
-//	
-//	/*
-//	 * Test case to check News > Featured News companies link on navigation bar.
-//	 * Check URL after clicking the Featured News.
-//	 * Check presence of "Featured News" text.
-//	 * Check links are not blank.
-//	 */
-//	@Test( priority =17)
-//	public void newsFeaturedNewsLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(4,1);
-//			Thread.sleep(10000);
-//			FeaturedNews featuredNews=  PageFactory.initElements(BrowserInstance.driver, FeaturedNews.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/newswire");
-//			Assert.assertTrue(featuredNews.isFeaturedNewsTxtPresent());
-//			System.out.println("########################3");
-//			Assert.assertNotNull(featuredNews.getTextOfReportList(1));
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
-//	
-//	/*
-//	 * Test case to check News > NaturalResources link on navigation bar.
-//	 * Check URL after clicking the NaturalResources.
-//	 * Check NaturalResources text presence.
-//	 * Check RefineYourSearch text presence.
-//	 */
-//	@Test( priority =18)
-//	public void NewsNaturalResourcesLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(4,2);
-//			Thread.sleep(10000);
-//			NaturalResources naturalResources=  PageFactory.initElements(BrowserInstance.driver, NaturalResources.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/natural-resources");
-//			Assert.assertTrue(naturalResources.isNaturalResourcesTxtPresent());
-//			System.out.println("########################3");
-//			Assert.assertTrue(naturalResources.isRefineYourSearchTxtPresent());
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
-//	
-//	/*
-//	 * Test case to check News > BreakingNews companies link on navigation bar.
-//	 * Check URL after clicking the BreakingNews.
-//	 * Check links are not blank.
-//	 * Check presence of Breaking news text.
-//	 */
-//	@Test( priority =19)
-//	public void NewsBreakingNews()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(4,3);
-//			Thread.sleep(10000);
-//			BreakingNews breakingNews=  PageFactory.initElements(BrowserInstance.driver, BreakingNews.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/bulletins");
-//			Assert.assertTrue(breakingNews.isBreakingNewsTxtPresent());
-//			System.out.println("########################3");
-//			Assert.assertNotNull(breakingNews.getTextOfReportList(1));
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
-//	/*
-//	 * Test case to check News > Micro Cap Report link on navigation bar.
-//	 * Check URL after clicking the Micro Cap Report.
-//	 * Check links are not blank.
-//	 */
-//	@Test( priority =20)
-//	public void NewsMicroCapReport()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(4,4);
-//			Thread.sleep(10000);
-//			MicroCapReport microCapReport=  PageFactory.initElements(BrowserInstance.driver, MicroCapReport.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/micro-cap-report");
-//			Assert.assertNotNull(microCapReport.getTextOfReportList(1));
-//			System.out.println("########################3");
-//			Assert.assertNotNull(microCapReport.getTextOfReportList(2));
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
-//	
-//	/*
-//	 * Test case to check News > Canadian Press Releases link on navigation bar.
-//	 * Check URL after clicking the Independent Reports.
-//	 * Check Canadian Press Release Text present.
-//	 * Check links are not blank.
-//	 */
-//	@Test( priority =21)
-//	public void NewsCanadianPressReleaseLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(4,5);
-//			Thread.sleep(10000);
-//			CanadianPressRelease canadianPressRelease=  PageFactory.initElements(BrowserInstance.driver, CanadianPressRelease.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/canadian-press-releases");
-//			Assert.assertTrue(canadianPressRelease.isCanadianPressReleasesTxtPresent());
-//			System.out.println("########################3");
-//			Assert.assertNotNull(canadianPressRelease.getTextOfReportList(1));
-//			System.out.println("########################3");
-//			Assert.assertNotNull(canadianPressRelease.getTextOfReportList(2));
-//			
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
-//	
-//	/*
-//	 * Test case to check News > US Press Releases link on navigation bar.
-//	 * Check URL after clicking the US Press Releases.
-//	 * Check presence of US Press Releases text.
-//	 * Check links are not blank.
-//	 */
-//	@Test( priority =22)
-//	public void NewsUSPressReleaseLink()
-//	{
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(30000);
-//			homepage.clickOnNavigationSubLink(4,6);
-//			Thread.sleep(10000);
-//			USPressRelease uSPressRelease=  PageFactory.initElements(BrowserInstance.driver, USPressRelease.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/us-press-releases");
-//			Assert.assertTrue(uSPressRelease.isUSPressReleasesTxtPresent());
-//			Assert.assertNotNull(uSPressRelease.getTextOfReportList(1));
-//			System.out.println("########################3");
-//			Assert.assertNotNull(uSPressRelease.getTextOfReportList(2));
-//			
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void PortfolioStockStreamLink()
+	/*
+	 * Test case to check ETFs link on navigation bar.
+	 * Check URL after clicking the EFTs.
+	 * Check presence of "More ETF Articles" text on the page.
+	 * Check presence of "ETF Performance Overview" on the page.
+	 */
+	@Test( priority =1)
+	public void ETFsLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationLink(8);
+			ETFsPage etfsPage =  PageFactory.initElements(BrowserInstance.driver, ETFsPage.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/etfs");
+			Assert.assertTrue(etfsPage.isMoreETFArticlesPresent());
+			System.out.println("##################################3");
+			Assert.assertTrue(etfsPage.isTopStoryPresent());
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void ETFsLink()
+
+	/*
+	 * Test case to check video link on navigation bar.
+	 * Check URL after clicking the Video.
+	 * Check presence of "Video cover" section.
+	 * Check presence of thumbnails.
+	 */
+	@Test( priority =2)
+	public void VideoLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationLink(7);
+			Thread.sleep(10000);
+			VideoPage videoPage =  PageFactory.initElements(BrowserInstance.driver, VideoPage.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),"http://www.stockhouse.tv/");
+			Assert.assertTrue(videoPage.isVideoCoverPresent());
+			System.out.println("##################################3");
+			Assert.assertEquals(videoPage.numberOfThumbnailPresent(), 6);
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void ETFsLink()
+	
+	/*
+	 * Test case to check Portfolio link on navigation bar.
+	 * Check URL after clicking the Portfolio.
+	 * Check presence of "Portfolio" text.
+	 * Check presence of "Portfolio Tracker" text.
+	 */
+	@Test( priority =3)
+	public void PortfolioLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationLink(6);
+			Thread.sleep(10000);
+			Portfolio portfolio =  PageFactory.initElements(BrowserInstance.driver, Portfolio.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio");
+			Assert.assertTrue(portfolio.isPortfolioTxtPresent());
+			System.out.println("##################################3");
+			Assert.assertTrue(portfolio.isPortfolioTrackerTxtPresent());
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void ETFsLink()
+	
+	/*
+	 * Test case to check Portfolio > StockStream link on navigation bar.
+	 * Check URL after clicking the Portfolio.
+	 * Check presence of "Portfolio" text.
+	 * Check presence of "Portfolio Tracker" text.
+	 */
+	@Test( priority =4)
+	public void PortfolioStockStreamLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(6,1);
+			Thread.sleep(10000);
+			homepage.switchToNewWindow();
+			StockStreamPage stockStream=  PageFactory.initElements(BrowserInstance.driver, StockStreamPage.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio/stockstream-promo");
+			Assert.assertNotNull(stockStream.getTxtOfModuleContent(1));
+			System.out.println("##################################3");
+			Assert.assertNotNull(stockStream.getTxtOfModuleContent(2));
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
+	
+	/*
+	 * Test case to check Portfolio > StockScreener link on navigation bar.
+	 * Check URL after clicking the Portfolio.
+	 * Check presence of "Featured Company" text.
+	 * Check presence of "Search Options" text.
+	 */
+	@Test( priority =5)
+	public void PortfolioStockScreenerLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(6,2);
+			Thread.sleep(10000);
+			StockScreener stockScreener=  PageFactory.initElements(BrowserInstance.driver, StockScreener.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio/stock-screener");
+			Assert.assertTrue(stockScreener.isFeaturedCompanyTxtPresent());
+			System.out.println("##################################3");
+			Assert.assertTrue(stockScreener.isSearchOptionsTxtPresent());
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
+	
+	/*
+	 * Test case to check Portfolio > SymbolLookup link on navigation bar.
+	 * Check URL after clicking the SymbolLookup.
+	 * Check presence of "Symbol Lookup" text.
+	 */
+	@Test( priority =6)
+	public void PortfolioSymbolLookupLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(6,3);
+			Thread.sleep(10000);
+			SymbolLookup symbolLookup=  PageFactory.initElements(BrowserInstance.driver, SymbolLookup.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio/symbol-lookup");
+			Assert.assertTrue(symbolLookup.isSymbolLookupTxtPresent());
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
+	
+	/*
+	 * Test case to check Portfolio > ShowcaseCompanies companies link on navigation bar.
+	 * Check URL after clicking the ShowcaseCompanies.
+	 * Check presence of "ShowcaseCompanies" text.
+	 * Check presence of "FeaturedCompany" text.
+	 */
+	@Test( priority =7)
+	public void PortfolioShowcaseCompaniesLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(6,4);
+			Thread.sleep(10000);
+			ShowcaseCompanies showcaseCompanies=  PageFactory.initElements(BrowserInstance.driver, ShowcaseCompanies.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"companies/showcase");
+			Assert.assertTrue(showcaseCompanies.isShowcaseCompaniesTxtPresent());
+			System.out.println("########################3");
+			Assert.assertTrue(showcaseCompanies.isFeaturedCompanyTxtPresent());
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
+	
+	/*
+	 * Test case to check Opinion link on navigation bar.
+	 * Check URL after clicking the Opinion.
+	 * Check presence of "Stockhouse Reports" text.
+	 * Check presence of "Independent Reports" text.
+	 */
+	@Test( priority =8)
+	public void OpinionLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationLink(5);
+			Thread.sleep(10000);
+			OpenionPage openionPage =  PageFactory.initElements(BrowserInstance.driver, OpenionPage.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion");
+			Assert.assertTrue(openionPage.isStockhouseReportsTxtPresent());
+			System.out.println("##################################3");
+			Assert.assertTrue(openionPage.isIndependentReportsTxtPresent());
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void ETFsLink()
+	
+	/*
+	 * Test case to check Opinion > PrivateEquity companies link on navigation bar.
+	 * Check URL after clicking the Private equity.
+	 * Check presence of "Articles" text.
+	 * Check links are not blank.
+	 */
+	@Test( priority =9)
+	public void OpinionPrivateEquityLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(5,1);
+			Thread.sleep(10000);
+			PrivateEquity privateEquity=  PageFactory.initElements(BrowserInstance.driver, PrivateEquity.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/private-equity");
+			Assert.assertTrue(privateEquity.isArticleTxtPresent());
+			System.out.println("########################3");
+			Assert.assertNotNull(privateEquity.getTextOfArticleList(1));
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
+	
+	/*
+	 * Test case to check Opinion > Short Report companies link on navigation bar.
+	 * Check URL after clicking the Short Report.
+	 * Check links are not blank.
+	 */
+	@Test( priority =10)
+	public void OpinionShortReportLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(5,2);
+			Thread.sleep(10000);
+			ShortReportPage shortReportPage=  PageFactory.initElements(BrowserInstance.driver, ShortReportPage.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/short-report");
+			Assert.assertNotNull(shortReportPage.getTextOfReportList(1));
+			System.out.println("########################3");
+			Assert.assertNotNull(shortReportPage.getTextOfReportList(2));
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
+	
+	/*
+	 * Test case to check Opinion > TickerTrax companies link on navigation bar.
+	 * Check URL after clicking the TickerTrax.
+	 * Check links are not blank.
+	 */
+	@Test( priority =11)
+	public void OpinionTickerTraxLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(5,3);
+			Thread.sleep(10000);
+			TickerTraxPage tickerTraxPage=  PageFactory.initElements(BrowserInstance.driver, TickerTraxPage.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/ticker-trax");
+			Assert.assertNotNull(tickerTraxPage.getTextOfReportList(1));
+			System.out.println("########################3");
+			Assert.assertNotNull(tickerTraxPage.getTextOfReportList(2));
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
+	/*
+	 * Test case to check Opinion > Interviews companies link on navigation bar.
+	 * Check URL after clicking the Interviews.
+	 * Check links are not blank.
+	 */
+	@Test( priority =12)
+	public void OpinionInterviewsLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(5,4);
+			Thread.sleep(10000);
+			InterviewPage interviewPage=  PageFactory.initElements(BrowserInstance.driver, InterviewPage.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/interviews");
+			Assert.assertNotNull(interviewPage.getTextOfReportList(1));
+			System.out.println("########################3");
+			Assert.assertNotNull(interviewPage.getTextOfReportList(2));
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
+	
+	/*
+	 * Test case to check Opinion > Independent Reports companies link on navigation bar.
+	 * Check URL after clicking the Independent Reports.
+	 * Check Independent Reports Text present.
+	 * Check links are not blank.
+	 */
+	@Test( priority =13)
+	public void OpinionIndependentReportsLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(5,5);
+			Thread.sleep(10000);
+			IndependentReports indepedentReports=  PageFactory.initElements(BrowserInstance.driver, IndependentReports.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/independent-reports");
+			Assert.assertTrue(indepedentReports.isIndependentReportsTxtPresent());
+			Assert.assertNotNull(indepedentReports.getTextOfReportList(1));
+			System.out.println("########################3");
+			Assert.assertNotNull(indepedentReports.getTextOfReportList(2));
+			
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
+	
+	/*
+	 * Test case to check Opinion > MoversAndShakers link on navigation bar.
+	 * Check URL after clicking the MoversAndShakers.
+	 * Check links are not blank.
+	 */
+	@Test( priority =14)
+	public void OpinionMoversAndShakersLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(5,6);
+			Thread.sleep(10000);
+			MoversAndShakers moversAndShakers=  PageFactory.initElements(BrowserInstance.driver, MoversAndShakers.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/movers-shakers");
+			Assert.assertNotNull(moversAndShakers.getTextOfReportList(1));
+			System.out.println("########################3");
+			Assert.assertNotNull(moversAndShakers.getTextOfReportList(2));
+			
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
+	
+	/*
+	 * Test case to check Opinion > BestOfBoardsAndBlogs link on navigation bar.
+	 * Check URL after clicking the BestOfBoardsAndBlogs.
+	 * Check presence of text BestOfBoardsAndBlogs.
+	 * Check links are not blank.
+	 */
+	@Test( priority =15)
+	public void OpinionBestOfBoardsAndBlogsLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(5,7);
+			Thread.sleep(10000);
+			BestOfBoardsAndBlogs bestOfBoardsAndBlogs=  PageFactory.initElements(BrowserInstance.driver, BestOfBoardsAndBlogs.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/best-of-boards-blogs");
+			Assert.assertTrue(bestOfBoardsAndBlogs.isBestOfBoardsAndBlogTxtPresent());
+			Assert.assertNotNull(bestOfBoardsAndBlogs.getTextOfReportList(1));
+			System.out.println("########################3");
+			Assert.assertNotNull(bestOfBoardsAndBlogs.getTextOfReportList(2));
+			
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
+	
+	/*
+	 * Test case to check News link on navigation bar.
+	 * Check URL after clicking the News.
+	 * Check presence of "News" text.
+	 * Check presence of "Featured News" text.
+	 */
+	@Test( priority =16)
+	public void NewsLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationLink(4);
+			Thread.sleep(10000);
+			NewsPage newsPage =  PageFactory.initElements(BrowserInstance.driver, NewsPage.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news");
+			Assert.assertTrue(newsPage.isNewsTxtPresent());
+			System.out.println("##################################3");
+			Assert.assertTrue(newsPage.isFeaturedNewsTxtPresent());
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void NewsLink()
+	
+	/*
+	 * Test case to check News > Featured News companies link on navigation bar.
+	 * Check URL after clicking the Featured News.
+	 * Check presence of "Featured News" text.
+	 * Check links are not blank.
+	 */
+	@Test( priority =17)
+	public void newsFeaturedNewsLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(4,1);
+			Thread.sleep(10000);
+			FeaturedNews featuredNews=  PageFactory.initElements(BrowserInstance.driver, FeaturedNews.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/newswire");
+			Assert.assertTrue(featuredNews.isFeaturedNewsTxtPresent());
+			System.out.println("########################3");
+			Assert.assertNotNull(featuredNews.getTextOfReportList(1));
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
+	
+	/*
+	 * Test case to check News > NaturalResources link on navigation bar.
+	 * Check URL after clicking the NaturalResources.
+	 * Check NaturalResources text presence.
+	 * Check RefineYourSearch text presence.
+	 */
+	@Test( priority =18)
+	public void NewsNaturalResourcesLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(4,2);
+			Thread.sleep(10000);
+			NaturalResources naturalResources=  PageFactory.initElements(BrowserInstance.driver, NaturalResources.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/natural-resources");
+			Assert.assertTrue(naturalResources.isNaturalResourcesTxtPresent());
+			System.out.println("########################3");
+			Assert.assertTrue(naturalResources.isRefineYourSearchTxtPresent());
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
+	
+	/*
+	 * Test case to check News > BreakingNews companies link on navigation bar.
+	 * Check URL after clicking the BreakingNews.
+	 * Check links are not blank.
+	 * Check presence of Breaking news text.
+	 */
+	@Test( priority =19)
+	public void NewsBreakingNews()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(4,3);
+			Thread.sleep(10000);
+			BreakingNews breakingNews=  PageFactory.initElements(BrowserInstance.driver, BreakingNews.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/bulletins");
+			Assert.assertTrue(breakingNews.isBreakingNewsTxtPresent());
+			System.out.println("########################3");
+			Assert.assertNotNull(breakingNews.getTextOfReportList(1));
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
+	/*
+	 * Test case to check News > Micro Cap Report link on navigation bar.
+	 * Check URL after clicking the Micro Cap Report.
+	 * Check links are not blank.
+	 */
+	@Test( priority =20)
+	public void NewsMicroCapReport()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(4,4);
+			Thread.sleep(10000);
+			MicroCapReport microCapReport=  PageFactory.initElements(BrowserInstance.driver, MicroCapReport.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/micro-cap-report");
+			Assert.assertNotNull(microCapReport.getTextOfReportList(1));
+			System.out.println("########################3");
+			Assert.assertNotNull(microCapReport.getTextOfReportList(2));
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
+	
+	/*
+	 * Test case to check News > Canadian Press Releases link on navigation bar.
+	 * Check URL after clicking the Independent Reports.
+	 * Check Canadian Press Release Text present.
+	 * Check links are not blank.
+	 */
+	@Test( priority =21)
+	public void NewsCanadianPressReleaseLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(4,5);
+			Thread.sleep(10000);
+			CanadianPressRelease canadianPressRelease=  PageFactory.initElements(BrowserInstance.driver, CanadianPressRelease.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/canadian-press-releases");
+			Assert.assertTrue(canadianPressRelease.isCanadianPressReleasesTxtPresent());
+			System.out.println("########################3");
+			Assert.assertNotNull(canadianPressRelease.getTextOfReportList(1));
+			System.out.println("########################3");
+			Assert.assertNotNull(canadianPressRelease.getTextOfReportList(2));
+			
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
+	
+	/*
+	 * Test case to check News > US Press Releases link on navigation bar.
+	 * Check URL after clicking the US Press Releases.
+	 * Check presence of US Press Releases text.
+	 * Check links are not blank.
+	 */
+	@Test( priority =22)
+	public void NewsUSPressReleaseLink()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnNavigationSubLink(4,6);
+			Thread.sleep(10000);
+			USPressRelease uSPressRelease=  PageFactory.initElements(BrowserInstance.driver, USPressRelease.class);
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/us-press-releases");
+			Assert.assertTrue(uSPressRelease.isUSPressReleasesTxtPresent());
+			Assert.assertNotNull(uSPressRelease.getTextOfReportList(1));
+			System.out.println("########################3");
+			Assert.assertNotNull(uSPressRelease.getTextOfReportList(2));
+			
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
+				Assert.fail("Test case ETFsLink is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void PortfolioStockStreamLink()
 	
 	
 	/*
@@ -644,11 +644,12 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Bullboard bullBoard= PageFactory.initElements(BrowserInstance.driver, Bullboard.class);
-			Thread.sleep(30000);
+			Thread.sleep(80000);
 			homepage.clickOnNavigationSubLink(2,1);
 			Thread.sleep(30000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"community/bullboards");
 			Assert.assertTrue(bullBoard.isOrderByHeadPresent());
+			System.out.println("@!!!!!!!!!!!!!!!Q ");
 			Assert.assertTrue(bullBoard.isdisplayBullBoardsHeadPresent());
 			
 			}catch(Exception e){
@@ -773,7 +774,7 @@ public class NavigationTestCases extends BaseSetup {
 			Thread.sleep(30000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/market-movers");
 			Assert.assertTrue(marketMovers.isExchangeHeadPresent());
-			Assert.assertTrue(marketMovers.isVolActivitiesHeadPresent(1));
+			Assert.assertTrue(marketMovers.isMarketMoverHeadPresent());
 			
 			}catch(Exception e){
 				LoggerInstance.logger.info("Test case MarketMoversLink is failed. "+e); 
@@ -1040,7 +1041,7 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			StockScreenerPage stockScreen= PageFactory.initElements(BrowserInstance.driver, StockScreenerPage.class);
-			Thread.sleep(30000);
+			Thread.sleep(40000);
 			homepage.clickOnNavigationSubLink(3,8);
 			
 			Thread.sleep(30000);

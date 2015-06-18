@@ -11,7 +11,7 @@ import pageObjects.LoginPage;
 import pageObjects.MailinatorInbox;
 import pageObjects.RegisterPage;
 import pageObjects.RegistrationPage;
-
+import pageObjects.ResetPasswordPage;
 import common.BaseSetup;
 import common.BrowserInstance;
 import common.JavaUtility;
@@ -224,7 +224,6 @@ public class RegistryAndLogin extends BaseSetup {
 	@Test(groups={"BrowserCertificationTestCase"}, priority =4)
 	public void SignInFromHomePage()
 	{
-		
 		try{
 			
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
@@ -279,7 +278,7 @@ public class RegistryAndLogin extends BaseSetup {
 	}// End public void SignInFromLoginPage()
 	
 	/*
-	 * Test case to check functionality of login from Slyin bar.
+	 * Test case to check functionality of login from Flyin Side bar.
 	 */
 	@Test(groups={"BrowserCertificationTestCase"}, priority =6)
 	public void SignInFromFlyinSideBar()
@@ -350,4 +349,305 @@ public class RegistryAndLogin extends BaseSetup {
 				Assert.fail("Test case SignInFromBullboard is failed. "+e);
 		}//End catch(Exception e)
 	}// End public void SignInFromBullboard()
+	/*
+	 * Test case to check Sign out functionality from navigation on home page.
+	 */
+	@Test(groups={"BrowserCertificationTestCase"}, priority =7)
+	public void SignOutFromHomePage()
+	{
+		
+		try{
+			
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);
+			homepage.clickOnSignIn();
+			Thread.sleep(10000);
+			homepage.typeUserIdOnSignInPopup("testForLogin@mailinator.com");
+			homepage.typePasswordOnSignInPopup("M()dak12");
+			homepage.clickOnSignInBtnOnSigninPopup();
+			Thread.sleep(20000);
+			homepage.clickOnLoggedinUser(5);
+			homepage.clickOnLogout();
+			Thread.sleep(10000);
+			String txt=homepage.getTextOfSignIn();
+			Assert.assertEquals(txt, "Sign In");
+			
+			
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case SignOutFromHomePage is failed. "+e); 
+				Assert.fail("Test case SignOutFromHomePage is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void SignInFromHomePage()
+	/*
+	 * Test case to check sign out functionality from login page.
+	 */
+	@Test(groups={"BrowserCertificationTestCase"}, priority =8)
+	public void SignOutFromLoginPage()
+	{
+		
+		try{
+			BrowserInstance.driver.get(ReadInputData.HM_inputData.get("URL")+"login");
+			Thread.sleep(20000);
+			LoginPage loginPage = PageFactory.initElements(BrowserInstance.driver, LoginPage.class);
+			loginPage.EnterUserName("testForLogin@mailinator.com");
+			loginPage.EnterPassword("M()dak12");
+			loginPage.clickOnSignInBtn();
+			Thread.sleep(20000);
+			loginPage.clickOnLogoutButton();
+			Thread.sleep(10000);
+			Assert.assertTrue(loginPage.isSigninBtnPresent());
+			
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case SignOutFromLoginPage is failed. "+e); 
+				Assert.fail("Test case SignOutFromLoginPage is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void SignInFromLoginPage()
+	/*
+	 * Test case to check functionality of log out from Flyin Side bar.
+	 */
+	@Test(groups={"BrowserCertificationTestCase"}, priority =9)
+	public void SignOutFromFlyinSideBar()
+	{
+		try{
+			FlyinSideBar flyingSideBar = PageFactory.initElements(BrowserInstance.driver, FlyinSideBar.class);
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Thread.sleep(30000);  
+			flyingSideBar.selectCheckboxes(1);
+			flyingSideBar.selectCheckboxes(2);
+			flyingSideBar.typeEmailAddress("testForLogin@mailinator.com");
+			flyingSideBar.clickSubmitButton();
+			Thread.sleep(5000);  
+			flyingSideBar.typePassword("M()dak12");
+			homepage.scrollUSPressRelease();
+			Thread.sleep(5000);  
+			flyingSideBar.clickSubmitButton();
+			Thread.sleep(40000);  
+			homepage.clickOnLoggedinUser(5);
+			homepage.clickOnLogout();
+			Thread.sleep(10000);
+			String txt=homepage.getTextOfSignIn();
+			Assert.assertEquals(txt, "Sign In");
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case SignOutFromFlyinSideBar is failed. "+e); 
+				Assert.fail("Test case SignOutFromFlyinSideBar is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void SignInFromFlyinSideBar()
+	/*
+	 * Test case to check log out functionality from bullboard page.
+	 */
+	@Test(groups={"BrowserCertificationTestCase"}, priority =10)
+	public void SignOutFromBullboard()
+	{
+		try{
+			BrowserInstance.driver.get(ReadInputData.HM_inputData.get("URL")+"companies/bullboard/t.bb/blackberry");
+			Thread.sleep(40000);
+			Bullboard bullBoard = PageFactory.initElements(BrowserInstance.driver, Bullboard.class);
+			bullBoard.clickOnNewPostButton();
+			Thread.sleep(10000);
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			homepage.typeUserIdOnSignInPopup("testForLogin@mailinator.com");
+			homepage.typePasswordOnSignInPopup("M()dak12");
+			homepage.clickOnSignInBtnOnSigninPopup();
+			Thread.sleep(20000);
+			homepage.clickOnLoggedinUser(5);
+			homepage.clickOnLogout();
+			Thread.sleep(10000);
+			String txt=homepage.getTextOfSignIn();
+			Assert.assertEquals(txt, "Sign In");
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case SignOutFromBullboard is failed. "+e); 
+				Assert.fail("Test case SignOutFromBullboard is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void SignInFromBullboard()
+	/*
+	 * Test case for forgot password.
+	 * Go to Sign in and select for I don't know password.
+	 * Send mail to email address for recovering forgotten password.
+	 */
+	@Test(groups={"BrowserCertificationTestCase"}, priority =11)
+	public void HomePageForgotPassword()
+	{
+		try{
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			MailinatorInbox mailinator= PageFactory.initElements(BrowserInstance.driver, MailinatorInbox.class);
+			ResetPasswordPage resetPassword= PageFactory.initElements(BrowserInstance.driver, ResetPasswordPage.class);
+			
+			Thread.sleep(30000);
+			homepage.clickOnSignIn();
+			Thread.sleep(10000);
+			homepage.typeUserIdOnSignInPopup("testForForgotPassword@mailinator.com");
+			Thread.sleep(5000);
+			homepage.clickOnForgotPassword();
+			Thread.sleep(10000);
+			homepage.clickOnSubmitForgotPassword();
+			Thread.sleep(10000);
+			String txt=homepage.getTextOfResetPasswordMsg();
+			Assert.assertNotNull(txt);
+			//homepage.clickOnResetPasswordClose();
+			Thread.sleep(10000);
+			//
+			BrowserInstance.driver.get("https://mailinator.com/inbox.jsp?to=testForForgotPassword");
+			//homepage.switchToNewWindow();
+			mailinator.clickOnForgotPasswordRequest();
+			Thread.sleep(10000);
+			mailinator.clickOnLinkForGenerateNewPassword();
+			Thread.sleep(20000);
+			resetPassword.putTextInNewPasswordBox("M()dak11");
+			resetPassword.putTextInConfirmNewPasswordBox("M()dak11");
+			resetPassword.clickOnResetButton();
+			Thread.sleep(20000);
+			//
+			homepage.clickOnSignIn();
+			Thread.sleep(10000);
+			homepage.typeUserIdOnSignInPopup("testForForgotPassword@mailinator.com");
+			homepage.typePasswordOnSignInPopup("M()dak11");
+			homepage.clickOnSignInBtnOnSigninPopup();
+			Thread.sleep(20000);
+			Assert.assertEquals(homepage.getTxtOfLoggedinUser(), "forgotPassword");
+			
+			// Reset the changes.
+			homepage.clickOnLoggedinUser(5);
+			homepage.clickOnLogout();
+			resetPasswordHomePage();
+			
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case HomePageForgotPassword is failed. "+e); 
+				Assert.fail("Test case HomePageForgotPassword is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void HomePageForgotPassword()
+	/*
+	 * Test case for forgot password for login page.
+	 * Go to Login page and select for forgot password.
+	 * Send mail to email address for recovering forgotten password.
+	 */
+	@Test(groups={"BrowserCertificationTestCase"}, priority =12)
+	public void LoginPageForgotPassword()
+	{
+		try{
+			LoginPage loginPage = PageFactory.initElements(BrowserInstance.driver, LoginPage.class);
+			ResetPasswordPage resetPassword= PageFactory.initElements(BrowserInstance.driver, ResetPasswordPage.class);
+			
+			BrowserInstance.driver.get(ReadInputData.HM_inputData.get("URL")+"login");
+			Thread.sleep(30000);
+			loginPage.EnterUserName("testForForgotPassword@mailinator.com");
+			loginPage.clickOnForgotPassword();
+			Thread.sleep(10000);
+			loginPage.putResetPwdUserName("testForForgotPassword@mailinator.com");
+			loginPage.clickOnSendPassword();
+			
+			String txt=loginPage.getTextOfResetPasswordMsg();
+			Assert.assertNotNull(txt);
+			Thread.sleep(10000);
+			//
+			BrowserInstance.driver.get("https://mailinator.com/inbox.jsp?to=testForForgotPassword");
+			MailinatorInbox mailinator= PageFactory.initElements(BrowserInstance.driver, MailinatorInbox.class);
+			mailinator.clickOnForgotPasswordRequest();
+			Thread.sleep(10000);
+			mailinator.clickOnLinkForGenerateNewPassword();
+			Thread.sleep(20000);
+			resetPassword.putTextInNewPasswordBox("M()dak11");
+			resetPassword.putTextInConfirmNewPasswordBox("M()dak11");
+			resetPassword.clickOnResetButton();
+			resetPassword.clickOnThisPageLink();
+			Thread.sleep(40000);
+			//
+			loginPage.EnterUserName("testForForgotPassword@mailinator.com");
+			loginPage.EnterPassword("M()dak11");
+			loginPage.clickOnSignInBtn();
+			Thread.sleep(20000);
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Assert.assertEquals(homepage.getTxtOfLoggedinUser(), "forgotPassword");
+			
+			
+			
+			// Reset the changes.
+			homepage.clickOnLoggedinUser(5);
+			Thread.sleep(2000);
+			homepage.clickOnLogout();
+			Thread.sleep(2000);
+			resetPasswordLoginPage();
+			
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case LoginPageForgotPassword is failed. "+e); 
+				Assert.fail("Test case LoginPageForgotPassword is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void LoginPageForgotPassword()
+	/*
+	 * Function for resetting the password.
+	 */
+		public void resetPasswordHomePage(){
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			MailinatorInbox mailinator= PageFactory.initElements(BrowserInstance.driver, MailinatorInbox.class);
+			ResetPasswordPage resetPassword= PageFactory.initElements(BrowserInstance.driver, ResetPasswordPage.class);
+			try{
+				
+				homepage.clickOnSignIn();
+				Thread.sleep(10000);
+				homepage.typeUserIdOnSignInPopup("testForForgotPassword@mailinator.com");
+				Thread.sleep(5000);
+				homepage.clickOnForgotPassword();
+				Thread.sleep(10000);
+				homepage.clickOnSubmitForgotPassword();
+				Thread.sleep(10000);
+				 String txt=homepage.getTextOfResetPasswordMsg();
+				Assert.assertNotNull(txt);
+				//homepage.clickOnResetPasswordClose();
+				Thread.sleep(10000);
+				//
+				BrowserInstance.driver.get("https://mailinator.com/inbox.jsp?to=testForForgotPassword");
+				//homepage.switchToNewWindow();
+				mailinator.clickOnForgotPasswordRequest();
+				Thread.sleep(10000);
+				mailinator.clickOnLinkForGenerateNewPassword();
+				Thread.sleep(20000);
+				resetPassword.putTextInNewPasswordBox("M()dak12");
+				resetPassword.putTextInConfirmNewPasswordBox("M()dak12");
+				resetPassword.clickOnResetButton();
+				Thread.sleep(10000);
+				//
+				homepage.clickOnSignIn();
+				Thread.sleep(10000);
+				homepage.typeUserIdOnSignInPopup("testForForgotPassword@mailinator.com");
+				homepage.typePasswordOnSignInPopup("M()dak12");
+				homepage.clickOnSignInBtnOnSigninPopup();
+				Thread.sleep(20000);
+				Assert.assertEquals(homepage.getTxtOfLoggedinUser(), "forgotPassword");
+			}catch(Exception e){}
+	}
+    public void resetPasswordLoginPage(){
+    	try{
+    		LoginPage loginPage = PageFactory.initElements(BrowserInstance.driver, LoginPage.class);
+			ResetPasswordPage resetPassword= PageFactory.initElements(BrowserInstance.driver, ResetPasswordPage.class);
+			
+			BrowserInstance.driver.get(ReadInputData.HM_inputData.get("URL")+"login");
+			Thread.sleep(30000);
+			loginPage.EnterUserName("testForForgotPassword@mailinator.com");
+			loginPage.clickOnForgotPassword();
+			Thread.sleep(10000);
+			loginPage.putResetPwdUserName("testForForgotPassword@mailinator.com");
+			loginPage.clickOnSendPassword();
+			String txt=loginPage.getTextOfResetPasswordMsg();
+			Assert.assertNotNull(txt);
+			Thread.sleep(10000);
+			//
+			BrowserInstance.driver.get("https://mailinator.com/inbox.jsp?to=testForForgotPassword");
+			MailinatorInbox mailinator= PageFactory.initElements(BrowserInstance.driver, MailinatorInbox.class);
+			mailinator.clickOnForgotPasswordRequest();
+			Thread.sleep(10000);
+			mailinator.clickOnLinkForGenerateNewPassword();
+			Thread.sleep(20000);
+			resetPassword.putTextInNewPasswordBox("M()dak12");
+			resetPassword.putTextInConfirmNewPasswordBox("M()dak12");
+			resetPassword.clickOnResetButton();
+			resetPassword.clickOnThisPageLink();
+			Thread.sleep(30000);
+			//
+			loginPage.EnterUserName("testForForgotPassword@mailinator.com");
+			loginPage.EnterPassword("M()dak12");
+			loginPage.clickOnSignInBtn();
+			Thread.sleep(20000);
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			Assert.assertEquals(homepage.getTxtOfLoggedinUser(), "forgotPassword");
+    	}catch(Exception e){}
+    }
 }

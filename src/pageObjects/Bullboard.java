@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.server.handler.FindElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
@@ -62,7 +63,18 @@ public class Bullboard extends WebdriverUtility {
 		return safeGetText(txtOfPostDate(rowNumber), MEDIUMWAIT);
 		
 	}
-	
+	/*
+	 * Locator for messages already posted.
+	 */
+	private By postedMessage(){
+		return By.xpath("//div[@class='post-list']/div");
+	}
+	/*
+	 * Function to get size of messages already posted.
+	 */
+	public int getSizeOfPostedMessage(){
+		return driver.findElements(postedMessage()).size();
+	}
 	
 	private By newPostButton(){
 		return By.id("p_lt_zoneContent_SubContent_p_lt_zoneLeft_Stockhouse_CompanyBullboard_viewerForum_threadsElem_lnkNew");
@@ -84,8 +96,8 @@ public class Bullboard extends WebdriverUtility {
 		switchToDefaultFrame();
 	}
 	
-	public void clickOnPost(){
-		BrowserInstance.driver.findElement(By.id("p_lt_zoneContent_SubContent_p_lt_zoneLeft_Stockhouse_CompanyBullboard_viewerForum_editElem_forumEdit_btnOk"));
+	public void clickOnPost(int num){
+		BrowserInstance.driver.findElement(By.xpath("//div[@class='FormPadding']/table/tbody/tr["+num+"]//div[@class='right']/input")).click();
 	}
 	
 	private By addToFavouritesButton(){
@@ -143,12 +155,72 @@ public class Bullboard extends WebdriverUtility {
 	  * Locator for 'displaying all bullboards' header.
 	  */
 	 private By displayBullBoards(){
-	  return By.xpath("//h4[text()='Displaying all bullboards']");
+	  return By.xpath("//h4[contains(text(),'Displaying all bullboards')]");
 	 }
 	 /*
 	  * Function to check the presence of 'displaying all bullboards' header.
 	  */
 	 public boolean isdisplayBullBoardsHeadPresent(){
 	  return isElementPresent(displayBullBoards(), MEDIUMWAIT);
+	 }
+	 /*
+	  * Locator for date of posts.
+	  */
+	 private By dateOfPost(int num){
+		 return By.xpath("//div[@class='post-list']/div["+num+"]/div[@class='post-info']//span");
+	 }
+	 /*
+	  * Function to get text of date.
+	  */
+	 public String getTextOfDate(int num){
+		 return safeGetText(dateOfPost(num), MEDIUMWAIT);
+	 }
+	 /*
+	  * Locator for heading of posts.(under option threaded)
+	  */
+	 private By postsHead(int num){
+		 return By.xpath("//div[@class='bullboard-content']//div[@class='post-header']["+num+"]/h3/a");
+	 }
+	 /*
+	  * Function to get text of heading of posts.(under option threaded).
+	  */
+	 public String getTextOfPostsHead(int num){
+		 return safeGetText(postsHead(num), MEDIUMWAIT);
+	 }
+	 /*
+	  * Locator for upper pagination.
+	  */
+	 private By pagination(){
+		 return By.xpath("//div[@class='pager'][1]/span/following-sibling::*[1]");
+	 }
+	 /*
+	  * Function to click on upper pagination.
+	  */
+	 public void clickOnPagination(){
+		 safeClick(pagination(), MEDIUMWAIT);
+	 }
+	 /*
+	  * Function to get href of pages in upper pagination.
+	  */
+	 public String getHrefOfPagination(){
+		 return driver.findElement(pagination()).getAttribute("href");
+	 }
+	 /*
+	  * Locator for bull board page navigation links.
+	  */
+	 private By BBNavLink(int num){
+		 return By.xpath("//div[@class='comp-nav-container']/a["+num+"]");
+	 }
+	 /*
+	  * Function to click on bull board page navigation links.
+	  */
+	 public void clickOnBBNavLink(int num){
+		 safeClick(BBNavLink(num), MEDIUMWAIT);
+	 }
+	 /*
+	  * Function to get text of bull board page navigation links.
+	  */
+	 public String getTextOfBBNavLink(int num){
+		 return safeGetText(BBNavLink(num), MEDIUMWAIT);
 	 }
 }

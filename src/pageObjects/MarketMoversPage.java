@@ -27,15 +27,15 @@ public class MarketMoversPage extends WebdriverUtility{
 		return isElementPresent(exchangeHead(),MEDIUMWAIT);
 	}
 	/*
-	 *Locator for TSX Volume Activities header. 
+	 *Locator for Market movers page header. 
 	 */
-	private By volActivitiesHead(int num){
-		return By.xpath("//table[@id='market_mover']/tbody/tr["+num+"]/");
+	private By marketMoverHead(){
+		return By.xpath("//h1[contains(text(),'Market Movers')]");
 	}
 	/*
-	 * Function to check the presence of TSX Volume Activities header.
+	 * Function to check the presence of Market movers page header. 
 	 */
-	public boolean isVolActivitiesHeadPresent(int num){
-		return isElementPresent(volActivitiesHead(num),MEDIUMWAIT);
+	public boolean isMarketMoverHeadPresent(){
+		return isElementPresent(marketMoverHead(),MEDIUMWAIT);
 	}
 }

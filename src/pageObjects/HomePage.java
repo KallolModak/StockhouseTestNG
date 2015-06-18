@@ -525,6 +525,12 @@ private By USPressRelease(){
 	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][3]");
 }
 /*
+ * Function to scroll the US press release block into view.
+ */
+public void scrollUSPressRelease(){
+	scrollIntoElementView(USPressRelease());
+}
+/*
  * Function to find size of US Press Releases block.
  */
 public int getSizeOfUSPressRelease(){
@@ -734,6 +740,12 @@ private By signIn(){
 public void clickOnSignIn(){
 	 safeClick(signIn(), MEDIUMWAIT);
 }
+/*
+ * Function to check the presence of 'sign in' option after logging out.
+ */
+public String getTextOfSignIn(){
+	return safeGetText(signIn(), MEDIUMWAIT);
+}
 
 /*
  * Locator for email input box on join the community popup.
@@ -811,6 +823,18 @@ private By txtOfLoggedinUser(){
  */
 public String getTxtOfLoggedinUser(){
 	 return safeGetText(txtOfLoggedinUser(), MEDIUMWAIT);
+}
+/*
+ * Locator for logged in user on the top of the page.(after logging in)
+ */
+private By LoggedinUser(int num){
+	return By.xpath("//div[@class='membership clearfix']/ul[@class='right']/li["+num+"]/a");
+}
+/*
+ * Function to click on logged in user on the top of the page.
+ */
+public void clickOnLoggedinUser(int num){
+	safeClick(LoggedinUser(num), MEDIUMWAIT);
 }
 /*
  * Function to get text of logged in user on the top of the page.
@@ -891,18 +915,79 @@ public void clickOnNavigationSubLink(int num,int sub){
 	safeClick(NavigationSubLink(num,sub), MEDIUMWAIT);
 }
 
-/*
- * Locator for sub links of market under 'stocks' header.
- */
-private By StocksSubLink(int num, int sub){
-	return By.xpath("//ul[@id='menuElem']/li["+num+"]/ul/li[1]/ul/li["+sub+"]/a");
-	 
-}
-public void clickOnStocksSubLink(int num, int sub){
-	mouseHover(NavigationLink(num), MEDIUMWAIT);
-	 try{
-	  Thread.sleep(1000);
-	 }catch(Exception e){}
-	 safeClick(StocksSubLink(num,sub), MEDIUMWAIT); 
-}
+	/*
+	 * Locator for sub links of market under 'stocks' header.
+	 */
+	private By StocksSubLink(int num, int sub){
+		return By.xpath("//ul[@id='menuElem']/li["+num+"]/ul/li[1]/ul/li["+sub+"]/a");
+		 
+	}
+	public void clickOnStocksSubLink(int num, int sub){
+		mouseHover(NavigationLink(num), MEDIUMWAIT);
+		 try{
+		  Thread.sleep(1000);
+		 }catch(Exception e){}
+		 safeClick(StocksSubLink(num,sub), MEDIUMWAIT); 
+	}
+	/*
+	 * Locator for logout.
+	 */
+	private By logout(){
+		return By.xpath("//a[text()='Logout']");
+	}
+	/*
+	 * Function to click on logout.
+	 */
+	public void clickOnLogout(){
+		safeClick(logout(), MEDIUMWAIT);
+	}
+	/*
+	 * Locator for 'i don't know password' on sign in popup.
+	 */
+	private By forgotPassword(){
+		return By.linkText("I don't know my password");
+	}
+	/*
+	 * Function to click on 'i don't know password' on sign in popup.
+	 */
+	public void clickOnForgotPassword(){
+		safeClick(forgotPassword(), MEDIUMWAIT);
+	}
+	/*
+	 * Locator for submit button for recovering password.
+	 */
+	private By submitForgotPassword(){
+		return By.id("btnResetPassword");
+	}
+	/*
+	 * Function to click on submit button for recovering password.
+	 */
+	public void clickOnSubmitForgotPassword(){
+		safeClick(submitForgotPassword(), MEDIUMWAIT);
+	}
+	/*
+	 * Locator for message appearing for reset password.
+	 */
+	private By ResetPasswordMsg(){
+		return By.xpath("//div[@id='reset-password-msg']/div[1]/span");
+	}
+	/*
+	 * Function to get text of message appearing for reset password.
+	 */
+	public String getTextOfResetPasswordMsg(){
+		return safeGetText(ResetPasswordMsg(), MEDIUMWAIT);
+	}
+	/*
+	 * Locator for close on reset password message popup.
+	 */
+	private By ResetPasswordClose(){
+		return By.xpath("//div[@id='reset-password-msg']/div[2]/button");
+	}
+	/*
+	 * Function to click on close on reset password message popup.
+	 */
+	public void clickOnResetPasswordClose(){
+		safeClick(ResetPasswordClose(), MEDIUMWAIT);
+	}
+	
 }

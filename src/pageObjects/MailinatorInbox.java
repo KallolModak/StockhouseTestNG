@@ -44,6 +44,39 @@ public class MailinatorInbox extends WebdriverUtility{
 		  switchToNewWindow();
 		  return(PageFactory.initElements(driver, RegistrationPage.class));
 	}
+	/*
+	 * Locator for forgot password reset link.
+	 */
+	private By forgotPasswordRequest(){
+		return By.xpath("//div[contains(text(),'Stockhouse password reset request')]");
+	}
+	/*
+	 * Function to click on the forgot password reset link.
+	 */
+	public void clickOnForgotPasswordRequest(){
+		  safeClick(forgotPasswordRequest(), MEDIUMWAIT);
+	}
+	/*
+	 * Locator for the link for generating new password.
+	 */
+	private By linkForGenerateNewPassword(){
+		return By.xpath("//a[text()='click here']");
+	}
+	/*
+	 * Function to click on the link for generating new password.
+	 */
+	public ResetPasswordPage clickOnLinkForGenerateNewPassword(){
+			driver.switchTo().frame("rendermail");
+		  safeClick(linkForGenerateNewPassword(), MEDIUMWAIT);
+		 
+		  switchToDefaultFrame();
+		  try{
+			  Thread.sleep(2000);
+		  }catch(Exception e){}
+		  switchToNewWindow();
+		  return(PageFactory.initElements(driver, ResetPasswordPage.class));
+	}
+	
 	
 	
 }

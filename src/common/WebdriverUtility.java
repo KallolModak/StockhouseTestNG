@@ -16,6 +16,7 @@ import java.util.NoSuchElementException;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
 import common.ReadInputData;
 import net.jsourcerer.webdriver.jserrorcollector.JavaScriptError;
 
@@ -2423,5 +2424,12 @@ public class WebdriverUtility extends Sync{
 	public void switchToDefaultFrame(){
 		BrowserInstance.driver.switchTo().defaultContent();
 	}
-	
+	public void scrollIntoViewThroughJavaScriptExecuter(By locator){
+		WebElement element = driver.findElement(locator);
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		try{
+		Thread.sleep(500);}
+		catch(Exception e)
+		{}
+	}
 }// END class WebdriverUtility
