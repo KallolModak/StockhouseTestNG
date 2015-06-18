@@ -32,7 +32,7 @@ public class MailinatorInbox extends WebdriverUtility{
 	 * Locator for the link for registration present in the mail.
 	 */
 	private By linkForRegistration(){
-		return By.xpath("//a[contains(@href,'http://test.stockhouse.com/registration/email-confirmation')]");
+		return By.xpath("//a[contains(@href,'/registration/email-confirmation')]");
 	}
 	/*
 	 * Function to click on the link for registration present in the mail.
@@ -41,7 +41,11 @@ public class MailinatorInbox extends WebdriverUtility{
 			driver.switchTo().frame("rendermail");
 		  safeClick(linkForRegistration(), MEDIUMWAIT);
 		  switchToDefaultFrame();
+		  try{
+			  Thread.sleep(2000);
+		  }catch(Exception e){}
 		  switchToNewWindow();
+		 
 		  return(PageFactory.initElements(driver, RegistrationPage.class));
 	}
 	/*

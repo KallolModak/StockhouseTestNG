@@ -42,7 +42,7 @@ public class GroupsPage extends WebdriverUtility{
 	 * Locator for sort by combo box.
 	 */
 	private By sortByCombo(){
-		return By.xpath("//div[@class='bullboard-posts-header clearfix']/select");
+		return By.xpath("//div[@class='bullboard-posts-header clearfix']//select");
 	}
 	/*
 	 * Function to select an option from sort by combo box.
@@ -111,14 +111,14 @@ public class GroupsPage extends WebdriverUtility{
 	/*
 	 * Locator for option displayed on group page after selecting from filter groups by sectors.
 	 */
-	private By filterSectorOptionOnPage(){
-		return By.xpath("//div[@class='groups-sector-filter']/div[@class='clear']");
+	private By filterSectorOptionOnPage(String txt){
+		return By.xpath("//div[@class='groups-page']/div[text()='"+txt+"']");
 	}
 	/*
 	 * Function to get text of option displayed on group page after selecting from filter groups by sectors.
 	 */
-	public boolean isFilterSectorOptionOnPagePresent(){
-		return isElementPresent(filterSectorOptionOnPage(), MEDIUMWAIT);
+	public boolean isFilterSectorOptionOnPagePresent(String txt){
+		return isElementPresent(filterSectorOptionOnPage(txt), MEDIUMWAIT);
 	}
 
 }

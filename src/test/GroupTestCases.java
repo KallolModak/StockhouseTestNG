@@ -20,9 +20,11 @@ public class GroupTestCases extends BaseSetup {
 	 * Go to Group page from navigation link community.
 	 * Check For the presence of Most Active Members Block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=1)
+	@Test(priority=1)
+	
 	public void MostActiveMembersBlock()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
@@ -44,9 +46,10 @@ public class GroupTestCases extends BaseSetup {
 	 * Go to Group page from navigation link community.
 	 * Check For the presence of Read Block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=2)
+	@Test(priority=2)
 	public void ReadBlock()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				CommonSections common=PageFactory.initElements(BrowserInstance.driver, CommonSections.class);
@@ -66,9 +69,10 @@ public class GroupTestCases extends BaseSetup {
 	 * Go to Group page from navigation link community.
 	 * Check For the presence of Shared Block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=3)
+	@Test(priority=3)
 	public void ShareBlock()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 3!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				CommonSections common=PageFactory.initElements(BrowserInstance.driver, CommonSections.class);
@@ -88,9 +92,10 @@ public class GroupTestCases extends BaseSetup {
 	 * Go to Group page from navigation link community.
 	 * Check For the presence of Discuss Block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=4)
+	@Test(priority=4)
 	public void DiscussBlock()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 4 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				CommonSections common=PageFactory.initElements(BrowserInstance.driver, CommonSections.class);
@@ -112,9 +117,10 @@ public class GroupTestCases extends BaseSetup {
 	 * Go to Group page from navigation link community.
 	 * Select 'size' mode from sort by combo.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=5)
+	@Test(priority=5)
 	public void SortBySize()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 5 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				GroupsPage groupPage=PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
@@ -138,9 +144,10 @@ public class GroupTestCases extends BaseSetup {
 	 * Go to Group page from navigation link community.
 	 * Select 'Popularity' mode from sort by combo.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=6)
+	@Test(priority=6)
 	public void SortByPopularity()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 6 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				GroupsPage groupPage=PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
@@ -162,9 +169,10 @@ public class GroupTestCases extends BaseSetup {
 	 * Go to Group page from navigation link community.
 	 * Select 'CreatedDate' mode from sort by combo.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=7)
+	@Test(priority=7)
 	public void SortByCreatedDate()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 7 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				GroupsPage groupPage=PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
@@ -186,9 +194,10 @@ public class GroupTestCases extends BaseSetup {
 	 * Go to Group page from navigation link community.
 	 * Select 'UpdateDate' mode from sort by combo.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=8)
+	@Test(priority=8)
 	public void SortByUpdateDate()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 8 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				GroupsPage groupPage=PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
@@ -211,9 +220,10 @@ public class GroupTestCases extends BaseSetup {
 	 * Select sorting arrow for sorting the list accordingly.
 	 * Check for sorted list.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=9)
+	@Test(priority=9)
 	public void SortingArrow()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 9 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				GroupsPage groupPage=PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
@@ -236,9 +246,10 @@ public class GroupTestCases extends BaseSetup {
 	 * Select Agriculture option from filter groups by sectors.
 	 * Check for filtered list.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=10)
+	@Test(priority=10)
 	public void FilterBySectorsAgriculture()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 10 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				GroupsPage groupPage=PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
@@ -251,7 +262,7 @@ public class GroupTestCases extends BaseSetup {
 				Thread.sleep(10000);
 				String txt2=groupPage.getTextOptionInFilterBySectors(2,1,"label");
 				groupPage.clickOnSubmitFilterBySectors();
-				groupPage.isFilterSectorOptionOnPagePresent();
+				groupPage.isFilterSectorOptionOnPagePresent(txt2);
 				Thread.sleep(40000);
 				Assert.assertEquals(txt2, "Agriculture");
 				String txt3= groupPage.getTextOfVariousGroupsHead(1);
@@ -267,9 +278,10 @@ public class GroupTestCases extends BaseSetup {
 	 * Select Energy option from filter groups by sectors.
 	 * Check for filtered list.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=11)
+	@Test(priority=11)
 	public void FilterBySectorsEnergy()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 11 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				GroupsPage groupPage=PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
@@ -281,7 +293,7 @@ public class GroupTestCases extends BaseSetup {
 				groupPage.selectOptionInFilterBySectors(2,2,"button");
 				String txt2=groupPage.getTextOptionInFilterBySectors(2,2,"label");
 				groupPage.clickOnSubmitFilterBySectors();
-				groupPage.isFilterSectorOptionOnPagePresent();
+				groupPage.isFilterSectorOptionOnPagePresent(txt2);
 				Thread.sleep(30000);
 				Assert.assertEquals(txt2, "Energy");
 				String txt3= groupPage.getTextOfVariousGroupsHead(1);

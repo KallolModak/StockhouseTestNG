@@ -25,7 +25,7 @@ public class BullBoardTestcases extends BaseSetup {
 	private String jobName,reportName,frquency,jobType,selectTask;
 	
 
-	@Test(groups={"BrowserCertificationTestCase"}, priority=1)
+	@Test(priority=1)
 	public void BullboardViewByRating()
 	{
 		try{
@@ -48,7 +48,7 @@ public class BullBoardTestcases extends BaseSetup {
 	/*
 	 * New post functionality is checked.
 //	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=2)
+	@Test(priority=2)
 	public void BullboardNewPost()
 	{
 		try{
@@ -87,7 +87,7 @@ public class BullBoardTestcases extends BaseSetup {
 	/*
 	 * Check add to favorite and remove from favorite.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=3)
+	@Test(priority=3)
 	public void AddRemoveFromFavorite()
 	{
 		try{
@@ -138,7 +138,7 @@ public class BullBoardTestcases extends BaseSetup {
 	/*
 	 * Check the bull board list by view by mode (oldest to newest).
 	 */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=4)
+	 @Test(priority=4)
 	 public void ViewByModeOldToNew()
 	 {
 	  try{
@@ -199,7 +199,7 @@ public class BullBoardTestcases extends BaseSetup {
 	 /*
 	  * Check the bull board list by view by mode (newest to oldest).
 	  */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=5)
+	 @Test(priority=5)
 	 public void ViewByModeNewToOld()
 	 {
 		 try{
@@ -259,7 +259,7 @@ public class BullBoardTestcases extends BaseSetup {
 	 /*
 	  * Check the bull board list by view by mode (Threaded).
 	  */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=6)
+	 @Test(priority=6)
 	 public void ViewByModeThreaded()
 	 {
 		 try{
@@ -271,7 +271,7 @@ public class BullBoardTestcases extends BaseSetup {
 				 System.out.println("################### "+i);
 				 String txt=bullboardPage.getTextOfPostsHead(i);
 				 System.out.println("&&&&&&&&&&&&&&&&&&& "+txt);
-				 if(txt.contains("RE"))
+				 if(txt.contains("RE:"))
 				 {
 					 Assert.assertEquals(1, 0);
 				 }
@@ -287,7 +287,7 @@ public class BullBoardTestcases extends BaseSetup {
 	 /*
 	  * Check the bull board list by pagination.
 	  */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=7)
+	 @Test(priority=7)
 	 public void Pagination()
 	 {
 		 try{
@@ -309,7 +309,7 @@ public class BullBoardTestcases extends BaseSetup {
 	 /*
 	  * Check the bull board page navigation links QuoteLink.
 	  */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=8)
+	 @Test(priority=8)
 	 public void QuoteLink()
 	 {
 		 try{
@@ -332,7 +332,7 @@ public class BullBoardTestcases extends BaseSetup {
 	 /*
 	  * Check the bull board page navigation links BullBoardLink.
 	  */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=9)
+	 @Test(priority=9)
 	 public void BullBoardLink()
 	 {
 		 try{
@@ -355,7 +355,7 @@ public class BullBoardTestcases extends BaseSetup {
 	 /*
 	  * Check the bull board page navigation links NewsLink.
 	  */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=10)
+	 @Test(priority=10)
 	 public void NewsLink()
 	 {
 		 try{
@@ -378,7 +378,7 @@ public class BullBoardTestcases extends BaseSetup {
 	 /*
 	  * Check the bull board page navigation links Opinion.
 	  */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=11)
+	 @Test(priority=11)
 	 public void OpinionLink()
 	 {
 		 try{
@@ -401,7 +401,7 @@ public class BullBoardTestcases extends BaseSetup {
 	 /*
 	  * Check the bull board page navigation links Level II.
 	  */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=12)
+	 @Test(priority=12)
 	 public void LevelLink()
 	 {
 		 try{
@@ -424,7 +424,7 @@ public class BullBoardTestcases extends BaseSetup {
 	 /*
 	  * Check the bull board page navigation links ChartsLink.
 	  */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=13)
+	 @Test(priority=13)
 	 public void ChartsLink()
 	 {
 		 try{
@@ -447,7 +447,7 @@ public class BullBoardTestcases extends BaseSetup {
 	 /*
 	  * Check the bull board page navigation links ProfileLink.
 	  */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=14)
+	 @Test(priority=14)
 	 public void ProfileLink()
 	 {
 		 try{
@@ -470,7 +470,7 @@ public class BullBoardTestcases extends BaseSetup {
 	 /*
 	  * Check the bull board page navigation links FinancialLink.
 	  */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=15)
+	 @Test(priority=15)
 	 public void FinancialLink()
 	 {
 		 try{
@@ -493,7 +493,7 @@ public class BullBoardTestcases extends BaseSetup {
 	 /*
 	  * Check the bull board page navigation links OptionsLink.
 	  */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=16)
+	 @Test(priority=16)
 	 public void OptionsLink()
 	 {
 		 try{
@@ -516,7 +516,7 @@ public class BullBoardTestcases extends BaseSetup {
 	 /*
 	  * Check the bull board page navigation links PriceHistoryLink.
 	  */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=17)
+	 @Test(priority=17)
 	 public void PriceHistoryLink()
 	 {
 		 try{
@@ -539,7 +539,7 @@ public class BullBoardTestcases extends BaseSetup {
 	 /*
 	  * Check the bull board page navigation links AnalystsLink.
 	  */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=18)
+	 @Test(priority=18)
 	 public void AnalystsLink()
 	 {
 		 try{
@@ -562,7 +562,7 @@ public class BullBoardTestcases extends BaseSetup {
 	 /*
 	  * Check the bull board page navigation links EarningsLink.
 	  */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=19)
+	 @Test(priority=19)
 	 public void EarningsLink()
 	 {
 		 try{
@@ -585,7 +585,7 @@ public class BullBoardTestcases extends BaseSetup {
 	 /*
 	  * Check the bull board page navigation links InsidersLink.
 	  */
-	 @Test(groups={"BrowserCertificationTestCase"}, priority=20)
+	 @Test(priority=20)
 	 public void InsidersLink()
 	 {
 		 try{

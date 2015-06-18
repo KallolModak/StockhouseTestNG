@@ -179,7 +179,7 @@ public class Bullboard extends WebdriverUtility {
 	  * Locator for heading of posts.(under option threaded)
 	  */
 	 private By postsHead(int num){
-		 return By.xpath("//div[@class='bullboard-content']//div[@class='post-header']["+num+"]/h3/a");
+		 return By.xpath("//div[@class='bullboard-content']/div[@class='post-list']/div[@class='post-header']["+num+"]/h3/a");
 	 }
 	 /*
 	  * Function to get text of heading of posts.(under option threaded).

@@ -17,13 +17,13 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case to check commodity section's items should not be null.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority =1)
+	@Test(priority =1)
 	public void CheckCommoditySection()
 	{
-		
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(40000);
+			Thread.sleep(50000);
 			homepage.clickCommoditiesCurrencyTab("commodity");
 			for (int i=1;i<=3;i++)
 			{
@@ -41,9 +41,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case to check Currencies section's items should not be null.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority =2)
+	@Test(priority =2)
 	public void CheckCurrenciesSection()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 2 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(40000);
@@ -66,9 +67,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case to check Markets section's items should not be null.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=3)
+	@Test(priority=3)
 	public void CheckMarketSection()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 3 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(40000);
@@ -88,9 +90,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case to check Intial Market section's items not be null.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=4)
+	@Test(priority=4)
 	public void CheckInitialMarketSection()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 4 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(50000);
@@ -109,9 +112,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case for functionality of option under commodity.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=5)
+	@Test(priority=5)
 	public void Commodity()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 5 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			 HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			 Thread.sleep(40000);
@@ -135,9 +139,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case for functionality of option under currency.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=6)
+	@Test(priority=6)
 	public void Currencies()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 6 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(40000);
@@ -164,9 +169,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case for functionality of option under Market.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=7)
+	@Test(priority=7)
 	public void Market()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 7 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(40000);
@@ -194,9 +200,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case for functionality of option under InitialMarket.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=8)
+	@Test(priority=8)
 	public void InitialMarket()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 8 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(40000);
@@ -217,9 +224,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case for Market Update block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=9)
+	@Test(priority=9)
 	public void MarketUpdate()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 9 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(40000);
@@ -237,12 +245,13 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case for Columnists block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=10)
+	@Test(priority=10)
 	public void Columnists()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 10 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			  Thread.sleep(40000);
+			  Thread.sleep(50000);
 			  int num=homepage.getSizeOfColumnists();
 			  Assert.assertNotEquals(num,0);
 			  String href=homepage.getHrefOfColumnistsLink(1);
@@ -257,9 +266,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case for breaking news block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=11)
+	@Test(priority=11)
 	public void BreakingNews()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 11 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(40000);
@@ -279,9 +289,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case for Interviews block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=12)
+	@Test(priority=12)
 	public void Interviews()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 12 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(80000);
@@ -300,7 +311,7 @@ public class HomePageTC  extends BaseSetup {
 ////	/*
 ////	 * Test case for Featured News block.
 ////	 */
-////	@Test(groups={"BrowserCertificationTestCase"}, priority=13)
+////	@Test(priority=13)
 ////	public void FeaturedNews()
 ////	{
 ////		try{
@@ -325,9 +336,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case for Opinion and Analysis block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=14)
+	@Test(priority=14)
 	public void OpinionAndAnalysis()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 14 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(40000);
@@ -347,9 +359,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case for Canadian Press Releases block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=15)
+	@Test(priority=15)
 	public void CanadianPressReleases()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 15 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(40000);
@@ -367,9 +380,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case for US Press Releases block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=16)
+	@Test(priority=16)
 	public void USPressReleases()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 16 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(40000);
@@ -387,9 +401,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case for Showcase News Releases block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=17)
+	@Test(priority=17)
 	public void ShowcaseNewsRelease()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 17 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(40000);
@@ -407,9 +422,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case for Featured Company block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=18)
+	@Test(priority=18)
 	public void FeaturedCompany()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 18 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(40000);
@@ -427,9 +443,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case for Video Showcase block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=19)
+	@Test(priority=19)
 	public void VideoShowcase()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 19 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(40000);
@@ -446,9 +463,10 @@ public class HomePageTC  extends BaseSetup {
 	/*
 	 * Test case for Private Equity block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=20)
+	@Test(priority=20)
 	public void PrivateEquity()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 20 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(40000);
@@ -465,4 +483,3 @@ public class HomePageTC  extends BaseSetup {
 		}
 	}// End of PrivateEquity()
 }
-

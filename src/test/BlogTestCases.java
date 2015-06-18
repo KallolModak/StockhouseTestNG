@@ -19,9 +19,10 @@ public class BlogTestCases extends BaseSetup {
 	 * Go to Blog page from navigation link community.
 	 * Check For the presence of Most Active Members Block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=1)
+	@Test(priority=1)
 	public void MostActiveMembersBlock()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
@@ -44,9 +45,10 @@ public class BlogTestCases extends BaseSetup {
 	 * Go to Blog page from navigation link community.
 	 * Check For the presence of Read Block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=2)
+	@Test(priority=2)
 	public void ReadBlock()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 2 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				CommonSections common=PageFactory.initElements(BrowserInstance.driver, CommonSections.class);
@@ -66,9 +68,10 @@ public class BlogTestCases extends BaseSetup {
 	 * Go to Blog page from navigation link community.
 	 * Check For the presence of Read Block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=3)
+	@Test(priority=3)
 	public void ShareBlock()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 3 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				CommonSections common=PageFactory.initElements(BrowserInstance.driver, CommonSections.class);
@@ -88,9 +91,10 @@ public class BlogTestCases extends BaseSetup {
 	 * Go to Blog page from navigation link community.
 	 * Check For the presence of Read Block.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=4)
+	@Test(priority=4)
 	public void DiscussBlock()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 4 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				CommonSections common=PageFactory.initElements(BrowserInstance.driver, CommonSections.class);
@@ -112,16 +116,17 @@ public class BlogTestCases extends BaseSetup {
 	 * Go to Blog page from navigation link community.
 	 * Select 'date created' mode from order by combo.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=5)
+	@Test(priority=5)
 	public void OrderByDateCreated()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 5 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				Blog blog= PageFactory.initElements(BrowserInstance.driver, Blog.class);
 				Thread.sleep(60000);
 				homepage.clickOnNavigationSubLink(2, 2);
 				Thread.sleep(30000);
-				blog.selectViewMode("Trending");
+				blog.selectViewMode("Blog name");
 				Thread.sleep(30000);
 				String txt2= blog.getTextOfBlogSummaryHead(1);
 				blog.selectViewMode("Date created");
@@ -138,9 +143,10 @@ public class BlogTestCases extends BaseSetup {
 	 * Go to Blog page from navigation link community.
 	 * Select 'Blog Name' mode from order by combo.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=6)
+	@Test(priority=6)
 	public void OrderByBlogName()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 6 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				Blog blog= PageFactory.initElements(BrowserInstance.driver, Blog.class);
@@ -164,9 +170,10 @@ public class BlogTestCases extends BaseSetup {
 	 * Go to Blog page from navigation link community.
 	 * Select 'Trending' mode from order by combo.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=7)
+	@Test(priority=7)
 	public void OrderByTrending()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 7 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				Blog blog= PageFactory.initElements(BrowserInstance.driver, Blog.class);
@@ -188,9 +195,10 @@ public class BlogTestCases extends BaseSetup {
 	 * Go to Blog page from navigation link community.
 	 * Select 'Author Name' mode from order by combo.
 	 */
-	@Test(groups={"BrowserCertificationTestCase"}, priority=8)
+	@Test(priority=8)
 	public void OrderByAuthorName()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 8 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				Blog blog= PageFactory.initElements(BrowserInstance.driver, Blog.class);

@@ -61,6 +61,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =1)
 	public void ETFsLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -85,6 +86,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =2)
 	public void VideoLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 2 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -110,6 +112,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =3)
 	public void PortfolioLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 3 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -118,7 +121,6 @@ public class NavigationTestCases extends BaseSetup {
 			Portfolio portfolio =  PageFactory.initElements(BrowserInstance.driver, Portfolio.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio");
 			Assert.assertTrue(portfolio.isPortfolioTxtPresent());
-			System.out.println("##################################3");
 			Assert.assertTrue(portfolio.isPortfolioTrackerTxtPresent());
 			}catch(Exception e){
 				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
@@ -135,9 +137,10 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =4)
 	public void PortfolioStockStreamLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 4 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
+			Thread.sleep(50000);
 			homepage.clickOnNavigationSubLink(6,1);
 			Thread.sleep(10000);
 			homepage.switchToNewWindow();
@@ -161,21 +164,21 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =5)
 	public void PortfolioStockScreenerLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 5 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
+			Thread.sleep(50000);
 			homepage.clickOnNavigationSubLink(6,2);
 			Thread.sleep(10000);
 			StockScreener stockScreener=  PageFactory.initElements(BrowserInstance.driver, StockScreener.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio/stock-screener");
 			Assert.assertTrue(stockScreener.isFeaturedCompanyTxtPresent());
-			System.out.println("##################################3");
 			Assert.assertTrue(stockScreener.isSearchOptionsTxtPresent());
 			}catch(Exception e){
 				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
 				Assert.fail("Test case ETFsLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void PortfolioStockStreamLink()
+	}// End public void PortfolioStockScreenerLink()
 	
 	/*
 	 * Test case to check Portfolio > SymbolLookup link on navigation bar.
@@ -185,9 +188,10 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =6)
 	public void PortfolioSymbolLookupLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 6 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
+			Thread.sleep(50000);
 			homepage.clickOnNavigationSubLink(6,3);
 			Thread.sleep(10000);
 			SymbolLookup symbolLookup=  PageFactory.initElements(BrowserInstance.driver, SymbolLookup.class);
@@ -197,7 +201,7 @@ public class NavigationTestCases extends BaseSetup {
 				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
 				Assert.fail("Test case ETFsLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void PortfolioStockStreamLink()
+	}// End public void PortfolioSymbolLookupLink()
 	
 	/*
 	 * Test case to check Portfolio > ShowcaseCompanies companies link on navigation bar.
@@ -208,9 +212,10 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =7)
 	public void PortfolioShowcaseCompaniesLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 7 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
+			Thread.sleep(50000);
 			homepage.clickOnNavigationSubLink(6,4);
 			Thread.sleep(10000);
 			ShowcaseCompanies showcaseCompanies=  PageFactory.initElements(BrowserInstance.driver, ShowcaseCompanies.class);
@@ -222,7 +227,7 @@ public class NavigationTestCases extends BaseSetup {
 				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
 				Assert.fail("Test case ETFsLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void PortfolioStockStreamLink()
+	}// End public void PortfolioShowcaseCompaniesLink()
 	
 	/*
 	 * Test case to check Opinion link on navigation bar.
@@ -233,6 +238,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =8)
 	public void OpinionLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 8 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -247,7 +253,7 @@ public class NavigationTestCases extends BaseSetup {
 				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
 				Assert.fail("Test case ETFsLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void ETFsLink()
+	}// End public void OpinionLink()
 	
 	/*
 	 * Test case to check Opinion > PrivateEquity companies link on navigation bar.
@@ -258,6 +264,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =9)
 	public void OpinionPrivateEquityLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 9 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -272,7 +279,7 @@ public class NavigationTestCases extends BaseSetup {
 				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
 				Assert.fail("Test case ETFsLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void PortfolioStockStreamLink()
+	}// End public void OpinionPrivateEquityLink()
 	
 	/*
 	 * Test case to check Opinion > Short Report companies link on navigation bar.
@@ -282,6 +289,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =10)
 	public void OpinionShortReportLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 10 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -296,7 +304,7 @@ public class NavigationTestCases extends BaseSetup {
 				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
 				Assert.fail("Test case ETFsLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void PortfolioStockStreamLink()
+	}// End public void OpinionShortReportLink()
 	
 	/*
 	 * Test case to check Opinion > TickerTrax companies link on navigation bar.
@@ -306,6 +314,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =11)
 	public void OpinionTickerTraxLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 11 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -320,7 +329,7 @@ public class NavigationTestCases extends BaseSetup {
 				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
 				Assert.fail("Test case ETFsLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void PortfolioStockStreamLink()
+	}// End public void OpinionTickerTraxLink()
 	/*
 	 * Test case to check Opinion > Interviews companies link on navigation bar.
 	 * Check URL after clicking the Interviews.
@@ -329,6 +338,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =12)
 	public void OpinionInterviewsLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 12 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -343,7 +353,7 @@ public class NavigationTestCases extends BaseSetup {
 				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
 				Assert.fail("Test case ETFsLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void PortfolioStockStreamLink()
+	}// End public void OpinionInterviewsLink()
 	
 	/*
 	 * Test case to check Opinion > Independent Reports companies link on navigation bar.
@@ -354,6 +364,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =13)
 	public void OpinionIndependentReportsLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 13 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -370,7 +381,7 @@ public class NavigationTestCases extends BaseSetup {
 				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
 				Assert.fail("Test case ETFsLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void PortfolioStockStreamLink()
+	}// End public void OpinionIndependentReportsLink()
 	
 	/*
 	 * Test case to check Opinion > MoversAndShakers link on navigation bar.
@@ -380,6 +391,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =14)
 	public void OpinionMoversAndShakersLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 14 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -395,7 +407,7 @@ public class NavigationTestCases extends BaseSetup {
 				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
 				Assert.fail("Test case ETFsLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void PortfolioStockStreamLink()
+	}// End public void OpinionMoversAndShakersLink()
 	
 	/*
 	 * Test case to check Opinion > BestOfBoardsAndBlogs link on navigation bar.
@@ -406,6 +418,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =15)
 	public void OpinionBestOfBoardsAndBlogsLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 15 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -422,7 +435,7 @@ public class NavigationTestCases extends BaseSetup {
 				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
 				Assert.fail("Test case ETFsLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void PortfolioStockStreamLink()
+	}// End public void OpinionBestOfBoardsAndBlogsLink()
 	
 	/*
 	 * Test case to check News link on navigation bar.
@@ -433,6 +446,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =16)
 	public void NewsLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 16 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -444,8 +458,8 @@ public class NavigationTestCases extends BaseSetup {
 			System.out.println("##################################3");
 			Assert.assertTrue(newsPage.isFeaturedNewsTxtPresent());
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case NewsLink is failed. "+e); 
+				Assert.fail("Test case NewsLink is failed. "+e);
 		}//End catch(Exception e)
 	}// End public void NewsLink()
 	
@@ -458,6 +472,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =17)
 	public void newsFeaturedNewsLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 17 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -469,10 +484,10 @@ public class NavigationTestCases extends BaseSetup {
 			System.out.println("########################3");
 			Assert.assertNotNull(featuredNews.getTextOfReportList(1));
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case newsFeaturedNewsLink is failed. "+e); 
+				Assert.fail("Test case newsFeaturedNewsLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void PortfolioStockStreamLink()
+	}// End public void newsFeaturedNewsLink()
 	
 	/*
 	 * Test case to check News > NaturalResources link on navigation bar.
@@ -483,6 +498,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =18)
 	public void NewsNaturalResourcesLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 18 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -491,13 +507,12 @@ public class NavigationTestCases extends BaseSetup {
 			NaturalResources naturalResources=  PageFactory.initElements(BrowserInstance.driver, NaturalResources.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/natural-resources");
 			Assert.assertTrue(naturalResources.isNaturalResourcesTxtPresent());
-			System.out.println("########################3");
 			Assert.assertTrue(naturalResources.isRefineYourSearchTxtPresent());
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case NewsNaturalResourcesLink is failed. "+e); 
+				Assert.fail("Test case NewsNaturalResourcesLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void PortfolioStockStreamLink()
+	}// End public void NewsNaturalResourcesLink()
 	
 	/*
 	 * Test case to check News > BreakingNews companies link on navigation bar.
@@ -508,6 +523,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =19)
 	public void NewsBreakingNews()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 19 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -516,13 +532,12 @@ public class NavigationTestCases extends BaseSetup {
 			BreakingNews breakingNews=  PageFactory.initElements(BrowserInstance.driver, BreakingNews.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/bulletins");
 			Assert.assertTrue(breakingNews.isBreakingNewsTxtPresent());
-			System.out.println("########################3");
 			Assert.assertNotNull(breakingNews.getTextOfReportList(1));
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case NewsBreakingNews is failed. "+e); 
+				Assert.fail("Test case NewsBreakingNews is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void PortfolioStockStreamLink()
+	}// End public void NewsBreakingNews()
 	/*
 	 * Test case to check News > Micro Cap Report link on navigation bar.
 	 * Check URL after clicking the Micro Cap Report.
@@ -531,6 +546,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =20)
 	public void NewsMicroCapReport()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 20 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -539,13 +555,12 @@ public class NavigationTestCases extends BaseSetup {
 			MicroCapReport microCapReport=  PageFactory.initElements(BrowserInstance.driver, MicroCapReport.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/micro-cap-report");
 			Assert.assertNotNull(microCapReport.getTextOfReportList(1));
-			System.out.println("########################3");
 			Assert.assertNotNull(microCapReport.getTextOfReportList(2));
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case NewsMicroCapReport is failed. "+e); 
+				Assert.fail("Test case NewsMicroCapReport is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void PortfolioStockStreamLink()
+	}// End public void NewsMicroCapReport()
 	
 	/*
 	 * Test case to check News > Canadian Press Releases link on navigation bar.
@@ -556,6 +571,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =21)
 	public void NewsCanadianPressReleaseLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 21 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -564,16 +580,14 @@ public class NavigationTestCases extends BaseSetup {
 			CanadianPressRelease canadianPressRelease=  PageFactory.initElements(BrowserInstance.driver, CanadianPressRelease.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/canadian-press-releases");
 			Assert.assertTrue(canadianPressRelease.isCanadianPressReleasesTxtPresent());
-			System.out.println("########################3");
 			Assert.assertNotNull(canadianPressRelease.getTextOfReportList(1));
-			System.out.println("########################3");
 			Assert.assertNotNull(canadianPressRelease.getTextOfReportList(2));
 			
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case NewsCanadianPressReleaseLink is failed. "+e); 
+				Assert.fail("Test case NewsCanadianPressReleaseLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void PortfolioStockStreamLink()
+	}// End public void NewsCanadianPressReleaseLink()
 	
 	/*
 	 * Test case to check News > US Press Releases link on navigation bar.
@@ -584,6 +598,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =22)
 	public void NewsUSPressReleaseLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 22 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(30000);
@@ -593,14 +608,13 @@ public class NavigationTestCases extends BaseSetup {
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/us-press-releases");
 			Assert.assertTrue(uSPressRelease.isUSPressReleasesTxtPresent());
 			Assert.assertNotNull(uSPressRelease.getTextOfReportList(1));
-			System.out.println("########################3");
 			Assert.assertNotNull(uSPressRelease.getTextOfReportList(2));
 			
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case NewsUSPressReleaseLink is failed. "+e); 
+				Assert.fail("Test case NewsUSPressReleaseLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void PortfolioStockStreamLink()
+	}// End public void NewsUSPressReleaseLink()
 	
 	
 	/*
@@ -613,9 +627,10 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =23)
 	public void CommunityLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 23 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
+			Thread.sleep(50000);
 			CommunityPage communityPage=PageFactory.initElements(BrowserInstance.driver, CommunityPage.class);
 			homepage.clickOnNavigationLink(2);
 			Thread.sleep(30000);
@@ -641,6 +656,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =24)
 	public void BullBoardLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 24 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Bullboard bullBoard= PageFactory.initElements(BrowserInstance.driver, Bullboard.class);
@@ -667,6 +683,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =25)
 	public void BlogLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 25 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Blog blog= PageFactory.initElements(BrowserInstance.driver, Blog.class);
@@ -692,6 +709,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =26)
 	public void GroupLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 26 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			GroupsPage group= PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
@@ -700,7 +718,6 @@ public class NavigationTestCases extends BaseSetup {
 			Thread.sleep(30000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"groups");
 			Assert.assertTrue(group.isSortByHeadPresent());
-			System.out.println("111111111111111111111111 ");
 			Assert.assertNotNull(group.getTextOfVariousGroupsHead(1));
 			
 			}catch(Exception e){
@@ -718,6 +735,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =27)
 	public void MarketsLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 27 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			MarketPage market= PageFactory.initElements(BrowserInstance.driver, MarketPage.class);
@@ -742,6 +760,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =28)
 	public void CommoditiesLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 28 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			CommoditiesPage commodities= PageFactory.initElements(BrowserInstance.driver, CommoditiesPage.class);
@@ -766,6 +785,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =29)
 	public void MarketMoversLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 29 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			MarketMoversPage marketMovers= PageFactory.initElements(BrowserInstance.driver, MarketMoversPage.class);
@@ -789,6 +809,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =30)
 	public void CurrenciesLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 30 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			CurrenciesPage currencies= PageFactory.initElements(BrowserInstance.driver, CurrenciesPage.class);
@@ -811,6 +832,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =31)
 	public void BondsLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 31 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			BondsPage bonds= PageFactory.initElements(BrowserInstance.driver, BondsPage.class);
@@ -834,6 +856,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =32)
 	public void TSXLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 32 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			TSXPage tsx= PageFactory.initElements(BrowserInstance.driver, TSXPage.class);
@@ -856,6 +879,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =33)
 	public void TSXVLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 33 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			TSXVPage tsxv= PageFactory.initElements(BrowserInstance.driver, TSXVPage.class);
@@ -878,6 +902,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =34)
 	public void CSELink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 34 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			CSEPage cse= PageFactory.initElements(BrowserInstance.driver, CSEPage.class);
@@ -900,6 +925,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =35)
 	public void NYSELink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 35 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			NYSEPage nyse= PageFactory.initElements(BrowserInstance.driver, NYSEPage.class);
@@ -922,6 +948,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =36)
 	public void NASDAQLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 36 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			NASDAQPage nasdaq= PageFactory.initElements(BrowserInstance.driver, NASDAQPage.class);
@@ -944,6 +971,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =37)
 	public void AMEXLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 37 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			AMEXPage amex= PageFactory.initElements(BrowserInstance.driver, AMEXPage.class);
@@ -966,6 +994,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =38)
 	public void DJIALink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 38 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			DJIAPage djia= PageFactory.initElements(BrowserInstance.driver, DJIAPage.class);
@@ -989,6 +1018,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =39)
 	public void ETFSubLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 39 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			ETFsPage etf= PageFactory.initElements(BrowserInstance.driver, ETFsPage.class);
@@ -1013,6 +1043,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =40)
 	public void FundsLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 40 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			FundsPage funds= PageFactory.initElements(BrowserInstance.driver, FundsPage.class);
@@ -1038,6 +1069,7 @@ public class NavigationTestCases extends BaseSetup {
 	@Test( priority =41)
 	public void StockScreenerLink()
 	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 41 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			StockScreenerPage stockScreen= PageFactory.initElements(BrowserInstance.driver, StockScreenerPage.class);
