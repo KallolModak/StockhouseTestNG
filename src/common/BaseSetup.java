@@ -83,7 +83,6 @@ public class BaseSetup {
 			//This will initiate browser instance and driver object.
 			String url=ReadInputData.HM_inputData.get("URL");
 			BrowserInstance.driver.get(url);
-		//	BrowserInstance.driver.get(url);
 		 }//End of try block
 		 catch (Exception e)
 		 {
@@ -94,8 +93,9 @@ public class BaseSetup {
 	 
 	 @AfterMethod(alwaysRun=true)
 	    public void quit(ITestResult result)  throws Exception{
+		 try{
 	    	System.out.println(result.getStatus());
-		    		
+	    	if(BrowserInstance.driver==null){}else{
 		    		if(result.getStatus()==2){
 		    				
 			    			File file1 = new File(failureScreenshotPath);
@@ -108,9 +108,13 @@ public class BaseSetup {
 			    			//FileUtils.moveFile(Imagefile, screenshotDestDirectory);
 			    			FileUtils.copyFile(Imagefile, new File(failureScreenshotPath+File.separator+ FailureImageFileName));
 		    		}
+		    		BrowserInstance.driver.close();
 		    		BrowserInstance.driver.quit();
-		    		BrowserInstance.driver=null;
-	    	
+		    		}
+	    	BrowserInstance.driver=null;
+	    	}catch(Exception e){
+	    		BrowserInstance.driver=null;
+	    	}
 	    }
 
 //	 @AfterMethod(alwaysRun = true)
