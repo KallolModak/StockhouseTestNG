@@ -9,6 +9,7 @@ import pageObjects.FlyinSideBar;
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
 import pageObjects.MailinatorInbox;
+import pageObjects.ProfilePage;
 import pageObjects.RegisterPage;
 import pageObjects.RegistrationPage;
 import pageObjects.ResetPasswordPage;
@@ -567,6 +568,47 @@ public class RegistryAndLogin extends BaseSetup {
 				Assert.fail("Test case LoginPageForgotPassword is failed. "+e);
 		}//End catch(Exception e)
 	}// End public void LoginPageForgotPassword()
+	
+	/*
+	 * Test case for check my profile for a user.
+	 * Go to Login page and do login.
+	 * Click on View profile page and verify name and my profile information.
+	 */
+	@Test( priority =13)
+	public void ViewProfile()
+	{
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 13 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		try{
+			LoginPage loginPage = PageFactory.initElements(BrowserInstance.driver, LoginPage.class);
+			
+			BrowserInstance.driver.get(ReadInputData.HM_inputData.get("URL")+"login");
+			Thread.sleep(30000);
+			String username = "kallol1";
+			loginPage.EnterUserName(username);
+			loginPage.EnterPassword("M()dak12");
+			loginPage.clickOnSignInBtn();
+			Thread.sleep(20000);
+			
+			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+			homepage.clickOnLoggedinUser(5);
+			ProfilePage profilePage= homepage.clickOnMyProfile();
+			Thread.sleep(20000);
+			Assert.assertTrue(profilePage.isUserNameInHeaderPresent(username));
+			Assert.assertTrue(profilePage.isMyProfilePresent());
+			Assert.assertTrue(profilePage.isMyProfileDetailsPresent());
+			Assert.assertTrue(profilePage.isAboutMePresent());
+			Assert.assertTrue(profilePage.isMyRatingPresent());
+			Assert.assertTrue(profilePage.isConnectionsPresent());
+			}catch(Exception e){
+				LoggerInstance.logger.info("Test case LoginPageForgotPassword is failed. "+e); 
+				Assert.fail("Test case LoginPageForgotPassword is failed. "+e);
+		}//End catch(Exception e)
+	}// End public void LoginPageForgotPassword()
+	
+	
+	
+	
+	
 	/*
 	 * Function for resetting the password.
 	 */

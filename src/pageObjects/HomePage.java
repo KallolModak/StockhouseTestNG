@@ -941,6 +941,20 @@ public void clickOnNavigationSubLink(int num,int sub){
 	public void clickOnLogout(){
 		safeClick(logout(), MEDIUMWAIT);
 	}
+	
+	/*
+	 * Locator for My Profile.
+	 */
+	private By myProfile(){
+		return By.xpath("//a[text()='My Profile']");
+	}
+	/*
+	 * Function to click on My Profile.
+	 */
+	public ProfilePage clickOnMyProfile(){
+		safeClick(myProfile(), MEDIUMWAIT);
+		return PageFactory.initElements(BrowserInstance.driver, ProfilePage.class);
+	}
 	/*
 	 * Locator for 'i don't know password' on sign in popup.
 	 */
