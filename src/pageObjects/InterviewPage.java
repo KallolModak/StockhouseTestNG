@@ -16,16 +16,16 @@ public class InterviewPage extends WebdriverUtility{
 	
 	
 	/*
-	 * Locator for the portfolio text.
+	 * Locator for the interview list text.
 	 */
-	public By reportListTxt(int i){
+	public By interviewListTxt(int i){
 		 return By.xpath("//div[@class='column span-3']/div[@class='hub-article-container']["+i+"]//a");
 	}
 	/*
-	 * Function to check presence of the portfolio tracker text.
+	 * Function to get text of interview list text
 	 */
-	public String getTextOfReportList(int i){
-		 return safeGetText(reportListTxt(i), MEDIUMWAIT);
+	public String getTextOfInterviewList(int i){
+		 return safeGetText(interviewListTxt(i), MEDIUMWAIT);
 	}
 
 

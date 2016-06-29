@@ -41,5 +41,13 @@ public class FeaturedNews extends WebdriverUtility{
 		 return isElementPresent(featuredNewsTxt(), MEDIUMWAIT);
 	}
 
+	private By textOfItem(int num){
+		return By.xpath("//div[@class='hub-article-container']["+num+"]/h3/a");
+	}
+	
+	public String getTextOfItem(int num){
+		return safeGetText(textOfItem(num), MEDIUMWAIT);
+	}
+
 
 }

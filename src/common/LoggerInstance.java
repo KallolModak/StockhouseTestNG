@@ -10,17 +10,17 @@ public class LoggerInstance {
 	public static Logger logger;
 	File directory = new File ("");
 	String absolutepath	=	directory.getAbsolutePath();
-	//This is to get location for creating log file. This value is comming from build.xml 
-	Properties Sys_property = System.getProperties();
-	String str_LocationForLogFileToCreate = Sys_property.getProperty("LogFolder");
-	String str_logFilePath = absolutepath+File.separator+"Output"+File.separator+str_LocationForLogFileToCreate+File.separator+"AutomationLogFile.log";
+	//This is to get location for creating log file. This value is coming from build.xml 
+	public static Properties Sys_property = System.getProperties();
+	public static String str_LocationForLogFileToCreate = Sys_property.getProperty("logFolder");
+	String str_logFilePath = absolutepath+File.separator+str_LocationForLogFileToCreate+File.separator+"AutomationLogFile.log";
 	
 	public LoggerInstance()
 	{
 	if(logger==null)
 		{
 		try{
-			logger = Logger.getLogger("IntellicusAutomation");
+			logger = Logger.getLogger("Automation");
 			FileAppender apndr = new FileAppender(new PatternLayout("%p %t %c - %m%n"),str_logFilePath,true);
 			//apndr.setAppend(true);
 			logger.addAppender(apndr);

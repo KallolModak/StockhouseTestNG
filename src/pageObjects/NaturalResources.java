@@ -41,5 +41,12 @@ public class NaturalResources extends WebdriverUtility{
 		 return isElementPresent(refineYourSearchTxt(), MEDIUMWAIT);
 	}
 
+	private By textOfItem(int num){
+		return By.xpath("//ul[@class='article-list']/li["+num+"]/h3/a");
+	}
+	
+	public String getTextOfItem(int num){
+		return safeGetText(textOfItem(num), MEDIUMWAIT);
+	}
 
 }

@@ -29,9 +29,10 @@ public class GroupTestCases extends BaseSetup {
 			
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			CommonSections common=PageFactory.initElements(BrowserInstance.driver, CommonSections.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(2, 3);
-			Thread.sleep(30000);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(2,"Community",3,"Groups");//2,3
+			Thread.sleep(20000);
 			Assert.assertTrue(common.ismostActiveMembersHeadPresent());
 			for(int i=1;i<=4;i++){
 				Assert.assertTrue(common.ismostActiveMembersSectionPresent(i));
@@ -53,10 +54,11 @@ public class GroupTestCases extends BaseSetup {
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				CommonSections common=PageFactory.initElements(BrowserInstance.driver, CommonSections.class);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				homepage.clickOnNavigationSubLink(2,"Community",3,"Groups");//2,3
 				Thread.sleep(30000);
-				homepage.clickOnNavigationSubLink(2, 3);
-				Thread.sleep(30000);
-				//common.clickOnReadSharedDiscussedHead(1);
+				homepage.cancelLoading();
 				Assert.assertTrue(common.isreadSharedDiscussedHeadPresent(1));
 				Assert.assertTrue(common.isreadSharedDiscussedSectionPresent(1));
 			}catch(Exception e){
@@ -76,9 +78,11 @@ public class GroupTestCases extends BaseSetup {
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				CommonSections common=PageFactory.initElements(BrowserInstance.driver, CommonSections.class);
-				Thread.sleep(30000);
-				homepage.clickOnNavigationSubLink(2, 3);
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				homepage.clickOnNavigationSubLink(2,"Community",3,"Groups");//2,3
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				common.clickOnReadSharedDiscussedHead(2);
 				Assert.assertTrue(common.isreadSharedDiscussedHeadPresent(2));
 				Assert.assertTrue(common.isreadSharedDiscussedSectionPresent(2));
@@ -100,9 +104,11 @@ public class GroupTestCases extends BaseSetup {
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				CommonSections common=PageFactory.initElements(BrowserInstance.driver, CommonSections.class);
 				FlyinSideBar flyin=PageFactory.initElements(BrowserInstance.driver, FlyinSideBar.class);
-				Thread.sleep(30000);
-				homepage.clickOnNavigationSubLink(2, 3);
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				homepage.clickOnNavigationSubLink(2,"Community",3,"Groups");//2,3
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				flyin.clickOnCross();
 				common.clickOnReadSharedDiscussedHead(3);
 				Assert.assertTrue(common.isreadSharedDiscussedHeadPresent(3));
@@ -124,14 +130,17 @@ public class GroupTestCases extends BaseSetup {
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				GroupsPage groupPage=PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
-				Thread.sleep(60000);
-				homepage.clickOnNavigationSubLink(2, 3);
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				homepage.clickOnNavigationSubLink(2,"Community",3,"Groups");//2,3
+				Thread.sleep(20000);
 				groupPage.selectSortByViewMode("Popularity");
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt2= groupPage.getTextOfVariousGroupsHead(1);
 				groupPage.selectSortByViewMode("Size");
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt1= groupPage.getTextOfVariousGroupsHead(1);
 				Assert.assertNotEquals(txt1, txt2);
 			}catch(Exception e){
@@ -151,12 +160,15 @@ public class GroupTestCases extends BaseSetup {
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				GroupsPage groupPage=PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
-				Thread.sleep(60000);
-				homepage.clickOnNavigationSubLink(2, 3);
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				homepage.clickOnNavigationSubLink(2,"Community",3,"Groups");//2,3
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt1= groupPage.getTextOfVariousGroupsHead(1);
 				groupPage.selectSortByViewMode("Popularity");
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt2= groupPage.getTextOfVariousGroupsHead(1);
 				Assert.assertNotEquals(txt1, txt2);
 			}catch(Exception e){
@@ -176,12 +188,15 @@ public class GroupTestCases extends BaseSetup {
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				GroupsPage groupPage=PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
-				Thread.sleep(60000);
-				homepage.clickOnNavigationSubLink(2, 3);
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				homepage.clickOnNavigationSubLink(2,"Community",3,"Groups");//2,3
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt1= groupPage.getTextOfVariousGroupsHead(1);
 				groupPage.selectSortByViewMode("Created Date");
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt2= groupPage.getTextOfVariousGroupsHead(1);
 				Assert.assertNotEquals(txt1, txt2);
 			}catch(Exception e){
@@ -201,12 +216,15 @@ public class GroupTestCases extends BaseSetup {
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				GroupsPage groupPage=PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
-				Thread.sleep(60000);
-				homepage.clickOnNavigationSubLink(2, 3);
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				homepage.clickOnNavigationSubLink(2,"Community",3,"Groups");//2,3
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt1= groupPage.getTextOfVariousGroupsHead(1);
 				groupPage.selectSortByViewMode("Updated Date");
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt2= groupPage.getTextOfVariousGroupsHead(1);
 				Assert.assertNotEquals(txt1, txt2);
 			}catch(Exception e){
@@ -227,12 +245,15 @@ public class GroupTestCases extends BaseSetup {
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				GroupsPage groupPage=PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
-				Thread.sleep(60000);
-				homepage.clickOnNavigationSubLink(2, 3);
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				homepage.clickOnNavigationSubLink(2,"Community",3,"Groups");//2,3
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt1= groupPage.getTextOfVariousGroupsHead(1);
 				groupPage.clickOnSortingArrow();
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt2= groupPage.getTextOfVariousGroupsHead(1);
 				Assert.assertNotEquals(txt1, txt2);
 			}catch(Exception e){
@@ -253,18 +274,21 @@ public class GroupTestCases extends BaseSetup {
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				GroupsPage groupPage=PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
-				Thread.sleep(60000);
-				homepage.clickOnNavigationSubLink(2, 3);
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				homepage.clickOnNavigationSubLink(2,"Community",3,"Groups");//2,3
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt1= groupPage.getTextOfVariousGroupsHead(1);
 				groupPage.clickOnFilterBySectors();
+				homepage.cancelLoading();
 				groupPage.selectOptionInFilterBySectors(2,1,"button");
 				Thread.sleep(10000);
 				String txt2=groupPage.getTextOptionInFilterBySectors(2,1,"label");
 				groupPage.clickOnSubmitFilterBySectors();
-				groupPage.isFilterSectorOptionOnPagePresent(txt2);
-				Thread.sleep(40000);
-				Assert.assertEquals(txt2, "Agriculture");
+				Assert.assertTrue(groupPage.isFilterSectorOptionOnPagePresent(txt2));
+				Thread.sleep(20000);
+				//Assert.assertEquals(txt2, "Agriculture");
 				String txt3= groupPage.getTextOfVariousGroupsHead(1);
 				Assert.assertNotEquals(txt1, txt3);
 			}catch(Exception e){
@@ -285,17 +309,19 @@ public class GroupTestCases extends BaseSetup {
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				GroupsPage groupPage=PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
-				Thread.sleep(60000);
-				homepage.clickOnNavigationSubLink(2, 3);
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				homepage.clickOnNavigationSubLink(2,"Community",3,"Groups");//2,3
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt1= groupPage.getTextOfVariousGroupsHead(1);
 				groupPage.clickOnFilterBySectors();
 				groupPage.selectOptionInFilterBySectors(2,2,"button");
 				String txt2=groupPage.getTextOptionInFilterBySectors(2,2,"label");
 				groupPage.clickOnSubmitFilterBySectors();
-				groupPage.isFilterSectorOptionOnPagePresent(txt2);
-				Thread.sleep(30000);
-				Assert.assertEquals(txt2, "Energy");
+				Assert.assertTrue(groupPage.isFilterSectorOptionOnPagePresent(txt2));
+				Thread.sleep(20000);
+				//Assert.assertEquals(txt2, "Energy");
 				String txt3= groupPage.getTextOfVariousGroupsHead(1);
 				Assert.assertNotEquals(txt1, txt3);
 			}catch(Exception e){

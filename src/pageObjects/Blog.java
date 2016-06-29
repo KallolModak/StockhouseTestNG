@@ -88,16 +88,19 @@ public class Blog extends WebdriverUtility{
 //		return isElementPresent(readSharedDiscussSection(), MEDIUMWAIT);
 //	}
 	/*
-	 * Locator for order by combo box.
+	 * Locator for options in order by combo box.
 	 */
-	private By orderByCombo(){
+	private By orderByComboOptions(){
 		return By.xpath("//div[@class='blog-orderby clearfix']/select");
 	}
 	/*
 	 * Function to select an option from order by combo box.
 	 */
-	public void selectViewMode(String modeSelectCombo){
-		selectFromDropDown(modeSelectCombo, BrowserInstance.driver.findElement(orderByCombo()));
+	public void selectOrderByComboOptions(String value){
+		//selectFromDropDown(modeSelectCombo, BrowserInstance.driver.findElement(orderByCombo()));
+		//safeSelectOptionInDropDown(orderByComboOptions(), value, MEDIUMWAIT);
+		//safeClick(orderByComboOptions(value), MEDIUMWAIT);
+		safeSelectOptionInDropDownByValue(orderByComboOptions(), value, MEDIUMWAIT);
 	}
 	
 

@@ -17,8 +17,10 @@ public class FundsPage extends WebdriverUtility{
 	 * Locator for funds performance overview table header.
 	 */
 	private By FundsPerformOver(){
+		
 		driver.switchTo().frame(driver.findElement(By.id("p_lt_zoneContent_SubContent_p_lt_zoneLeft_Stockhouse_MutualFunds_dynamicIFrame")));
 		return By.xpath("//span[contains(text(),'Funds Performance Overview')]");
+		//return By.xpath("//div[@class='column span-6 last']/h1");
 	}
 	/*
 	 * Function to check the presence of funds performance overview table header.

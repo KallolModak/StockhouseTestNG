@@ -4,9 +4,12 @@ This class will initialize webdriver object
 package common;
 
 import java.util.HashMap;
+
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.chrome.*;
 import org.apache.log4j.*;
@@ -41,7 +44,9 @@ public class BrowserInstance {
 			{
 				//To initialize ReadInputData class object to read input data from csv file
 				switch (int_BrowserType) {
-				case 1:  driver = new FirefoxDriver();
+				case 1:  DesiredCapabilities dc = new DesiredCapabilities();
+						 dc.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
+						 driver = new FirefoxDriver(dc);
 						 logger.info("Initiate Firefox driver.");	
 						 break;
 				case 2:  System.setProperty("webdriver.ie.driver", "tools//IEDriverServer.exe");
@@ -56,16 +61,16 @@ public class BrowserInstance {
 						 driver = new ChromeDriver();
 				 		 logger.info("Initiate Chrome driver.");
 						 break;
-				default: driver = new FirefoxDriver();
+				default: DesiredCapabilities dc1 = new DesiredCapabilities();
+				 dc1.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.IGNORE);
+				 driver = new FirefoxDriver(dc1);
 				 		 logger.info("Valid browser type is not found. So initiate Firefox driver.");
 						 break;
 				}//End of switch (int_BrowserType)
 			//It will open intellicus link in browser.
-				System.out.println("abcd");
 			String url=ReadInputData.HM_inputData.get("URL");
 			driver.get(url);
 		}//End of if (driver==null)
-			System.out.println("xyz");
 		}//End of try
 		catch (Exception e)
 		{

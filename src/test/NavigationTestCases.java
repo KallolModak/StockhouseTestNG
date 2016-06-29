@@ -41,7 +41,7 @@ import pageObjects.SymbolLookup;
 import pageObjects.TickerTraxPage;
 import pageObjects.USPressRelease;
 import pageObjects.VideoPage;
-import pageObjects.Portfolio;
+import pageObjects.PortfolioPage;
 import pageObjects.StockScreenerPage;
 import pageObjects.TSXPage;
 import pageObjects.TSXVPage;
@@ -64,12 +64,13 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationLink(8);
+			Thread.sleep(10000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationLink(8,"ETFs");//8
+			Thread.sleep(20000);
 			ETFsPage etfsPage =  PageFactory.initElements(BrowserInstance.driver, ETFsPage.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/etfs");
 			Assert.assertTrue(etfsPage.isMoreETFArticlesPresent());
-			System.out.println("##################################3");
 			Assert.assertTrue(etfsPage.isTopStoryPresent());
 			}catch(Exception e){
 				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
@@ -89,19 +90,18 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 2 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationLink(7);
 			Thread.sleep(10000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationLink(7,"Video");//7
 			VideoPage videoPage =  PageFactory.initElements(BrowserInstance.driver, VideoPage.class);
-			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),"http://www.stockhouse.tv/");
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL"));
 			Assert.assertTrue(videoPage.isVideoCoverPresent());
-			System.out.println("##################################3");
 			Assert.assertEquals(videoPage.numberOfThumbnailPresent(), 6);
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case VideoLink is failed. "+e); 
+				Assert.fail("Test case VideoLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void ETFsLink()
+	}// End public void VideoLink()
 	
 	/*
 	 * Test case to check Portfolio link on navigation bar.
@@ -115,18 +115,20 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 3 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationLink(6);
-			Thread.sleep(10000);
-			Portfolio portfolio =  PageFactory.initElements(BrowserInstance.driver, Portfolio.class);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationLink(6,"Portfolio");//6
+ 			Thread.sleep(20000);
+			homepage.cancelLoading();
+			PortfolioPage portfolio =  PageFactory.initElements(BrowserInstance.driver, PortfolioPage.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio");
-			Assert.assertTrue(portfolio.isPortfolioTxtPresent());
+			//Assert.assertTrue(portfolio.isPortfolioTxtPresent());
 			Assert.assertTrue(portfolio.isPortfolioTrackerTxtPresent());
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case PortfolioLink is failed. "+e); 
+				Assert.fail("Test case PortfolioLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void ETFsLink()
+	}// End public void PortfolioLink()
 	
 	/*
 	 * Test case to check Portfolio > StockStream link on navigation bar.
@@ -140,18 +142,18 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 4 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(50000);
-			homepage.clickOnNavigationSubLink(6,1);
-			Thread.sleep(10000);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(6,"Portfolio",1,"Stockstream");//6,"Portfolio",1,"Stockstream"
+			homepage.cancelLoading();
 			homepage.switchToNewWindow();
 			StockStreamPage stockStream=  PageFactory.initElements(BrowserInstance.driver, StockStreamPage.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio/stockstream-promo");
 			Assert.assertNotNull(stockStream.getTxtOfModuleContent(1));
-			System.out.println("##################################3");
 			Assert.assertNotNull(stockStream.getTxtOfModuleContent(2));
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case PortfolioStockStreamLink is failed. "+e); 
+				Assert.fail("Test case PortfolioStockStreamLink is failed. "+e);
 		}//End catch(Exception e)
 	}// End public void PortfolioStockStreamLink()
 	
@@ -167,16 +169,17 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 5 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(50000);
-			homepage.clickOnNavigationSubLink(6,2);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(6,"Portfolio",2,"Stock Screener");//6,"Portfolio",2,"Stock Screener"
 			Thread.sleep(10000);
 			StockScreener stockScreener=  PageFactory.initElements(BrowserInstance.driver, StockScreener.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio/stock-screener");
 			Assert.assertTrue(stockScreener.isFeaturedCompanyTxtPresent());
 			Assert.assertTrue(stockScreener.isSearchOptionsTxtPresent());
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case PortfolioStockScreenerLink is failed. "+e); 
+				Assert.fail("Test case PortfolioStockScreenerLink is failed. "+e);
 		}//End catch(Exception e)
 	}// End public void PortfolioStockScreenerLink()
 	
@@ -191,15 +194,16 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 6 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(50000);
-			homepage.clickOnNavigationSubLink(6,3);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(6,"Portfolio",3,"Symbol Lookup");//6,3
 			Thread.sleep(10000);
 			SymbolLookup symbolLookup=  PageFactory.initElements(BrowserInstance.driver, SymbolLookup.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio/symbol-lookup");
 			Assert.assertTrue(symbolLookup.isSymbolLookupTxtPresent());
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case PortfolioSymbolLookupLink is failed. "+e); 
+				Assert.fail("Test case PortfolioSymbolLookupLink is failed. "+e);
 		}//End catch(Exception e)
 	}// End public void PortfolioSymbolLookupLink()
 	
@@ -215,17 +219,17 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 7 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(50000);
-			homepage.clickOnNavigationSubLink(6,4);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(6,"Portfolio",4,"Showcase Companies");//6,4
 			Thread.sleep(10000);
 			ShowcaseCompanies showcaseCompanies=  PageFactory.initElements(BrowserInstance.driver, ShowcaseCompanies.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"companies/showcase");
 			Assert.assertTrue(showcaseCompanies.isShowcaseCompaniesTxtPresent());
-			System.out.println("########################3");
 			Assert.assertTrue(showcaseCompanies.isFeaturedCompanyTxtPresent());
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case PortfolioShowcaseCompaniesLink is failed. "+e); 
+				Assert.fail("Test case PortfolioShowcaseCompaniesLink is failed. "+e);
 		}//End catch(Exception e)
 	}// End public void PortfolioShowcaseCompaniesLink()
 	
@@ -241,17 +245,17 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 8 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationLink(5);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationLink(5,"Opinion");//5
 			Thread.sleep(10000);
 			OpenionPage openionPage =  PageFactory.initElements(BrowserInstance.driver, OpenionPage.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion");
 			Assert.assertTrue(openionPage.isStockhouseReportsTxtPresent());
-			System.out.println("##################################3");
 			Assert.assertTrue(openionPage.isIndependentReportsTxtPresent());
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case OpinionLink is failed. "+e); 
+				Assert.fail("Test case OpinionLink is failed. "+e);
 		}//End catch(Exception e)
 	}// End public void OpinionLink()
 	
@@ -267,17 +271,17 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 9 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(5,1);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(5,"Opinion",1,"Private Equity");//5,1
 			Thread.sleep(10000);
 			PrivateEquity privateEquity=  PageFactory.initElements(BrowserInstance.driver, PrivateEquity.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/private-equity");
 			Assert.assertTrue(privateEquity.isArticleTxtPresent());
-			System.out.println("########################3");
 			Assert.assertNotNull(privateEquity.getTextOfArticleList(1));
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case OpinionPrivateEquityLink is failed. "+e); 
+				Assert.fail("Test case OpinionPrivateEquityLink is failed. "+e);
 		}//End catch(Exception e)
 	}// End public void OpinionPrivateEquityLink()
 	
@@ -292,17 +296,17 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 10 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(5,2);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(5,"Opinion",2,"Short Report");//5,2
 			Thread.sleep(10000);
 			ShortReportPage shortReportPage=  PageFactory.initElements(BrowserInstance.driver, ShortReportPage.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/short-report");
 			Assert.assertNotNull(shortReportPage.getTextOfReportList(1));
-			System.out.println("########################3");
 			Assert.assertNotNull(shortReportPage.getTextOfReportList(2));
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case OpinionShortReportLink is failed. "+e); 
+				Assert.fail("Test case OpinionShortReportLink is failed. "+e);
 		}//End catch(Exception e)
 	}// End public void OpinionShortReportLink()
 	
@@ -317,17 +321,17 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 11 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(5,3);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(5,"Opinion",3,"Tickertrax");//5,3
 			Thread.sleep(10000);
 			TickerTraxPage tickerTraxPage=  PageFactory.initElements(BrowserInstance.driver, TickerTraxPage.class);
-			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/ticker-trax");
+			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/tickertrax");
 			Assert.assertNotNull(tickerTraxPage.getTextOfReportList(1));
-			System.out.println("########################3");
 			Assert.assertNotNull(tickerTraxPage.getTextOfReportList(2));
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case OpinionTickerTraxLink is failed. "+e); 
+				Assert.fail("Test case OpinionTickerTraxLink is failed. "+e);
 		}//End catch(Exception e)
 	}// End public void OpinionTickerTraxLink()
 	/*
@@ -341,17 +345,17 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 12 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(5,4);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(5,"Opinion",4,"Interviews");//5,4
 			Thread.sleep(10000);
 			InterviewPage interviewPage=  PageFactory.initElements(BrowserInstance.driver, InterviewPage.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/interviews");
-			Assert.assertNotNull(interviewPage.getTextOfReportList(1));
-			System.out.println("########################3");
-			Assert.assertNotNull(interviewPage.getTextOfReportList(2));
+			Assert.assertNotNull(interviewPage.getTextOfInterviewList(1));
+			Assert.assertNotNull(interviewPage.getTextOfInterviewList(2));
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case OpinionInterviewsLink is failed. "+e); 
+				Assert.fail("Test case OpinionInterviewsLink is failed. "+e);
 		}//End catch(Exception e)
 	}// End public void OpinionInterviewsLink()
 	
@@ -367,19 +371,19 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 13 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(5,5);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(5,"Opinion",5,"Independent Reports");//5,5
 			Thread.sleep(10000);
 			IndependentReports indepedentReports=  PageFactory.initElements(BrowserInstance.driver, IndependentReports.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/independent-reports");
 			Assert.assertTrue(indepedentReports.isIndependentReportsTxtPresent());
 			Assert.assertNotNull(indepedentReports.getTextOfReportList(1));
-			System.out.println("########################3");
 			Assert.assertNotNull(indepedentReports.getTextOfReportList(2));
 			
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case OpinionIndependentReportsLink is failed. "+e); 
+				Assert.fail("Test case OpinionIndependentReportsLink is failed. "+e);
 		}//End catch(Exception e)
 	}// End public void OpinionIndependentReportsLink()
 	
@@ -394,18 +398,18 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 14 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(5,6);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(5,"Opinion",6,"Movers & Shakers");//5,6
 			Thread.sleep(10000);
 			MoversAndShakers moversAndShakers=  PageFactory.initElements(BrowserInstance.driver, MoversAndShakers.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/movers-shakers");
 			Assert.assertNotNull(moversAndShakers.getTextOfReportList(1));
-			System.out.println("########################3");
 			Assert.assertNotNull(moversAndShakers.getTextOfReportList(2));
 			
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case OpinionMoversAndShakersLink is failed. "+e); 
+				Assert.fail("Test case OpinionMoversAndShakersLink is failed. "+e);
 		}//End catch(Exception e)
 	}// End public void OpinionMoversAndShakersLink()
 	
@@ -421,19 +425,19 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 15 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(5,7);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(5,"Opinion",7,"Best of Boards & Blogs");//5,7
 			Thread.sleep(10000);
 			BestOfBoardsAndBlogs bestOfBoardsAndBlogs=  PageFactory.initElements(BrowserInstance.driver, BestOfBoardsAndBlogs.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"opinion/best-of-boards-blogs");
 			Assert.assertTrue(bestOfBoardsAndBlogs.isBestOfBoardsAndBlogTxtPresent());
 			Assert.assertNotNull(bestOfBoardsAndBlogs.getTextOfReportList(1));
-			System.out.println("########################3");
 			Assert.assertNotNull(bestOfBoardsAndBlogs.getTextOfReportList(2));
 			
 			}catch(Exception e){
-				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-				Assert.fail("Test case ETFsLink is failed. "+e);
+				LoggerInstance.logger.info("Test case OpinionBestOfBoardsAndBlogsLink is failed. "+e); 
+				Assert.fail("Test case OpinionBestOfBoardsAndBlogsLink is failed. "+e);
 		}//End catch(Exception e)
 	}// End public void OpinionBestOfBoardsAndBlogsLink()
 	
@@ -449,13 +453,13 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 16 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationLink(4);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationLink(4,"News");//4
 			Thread.sleep(10000);
 			NewsPage newsPage =  PageFactory.initElements(BrowserInstance.driver, NewsPage.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news");
 			Assert.assertTrue(newsPage.isNewsTxtPresent());
-			System.out.println("##################################3");
 			Assert.assertTrue(newsPage.isFeaturedNewsTxtPresent());
 			}catch(Exception e){
 				LoggerInstance.logger.info("Test case NewsLink is failed. "+e); 
@@ -475,13 +479,13 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 17 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(4,1);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(4,"News",1,"Featured News");//4,1
 			Thread.sleep(10000);
 			FeaturedNews featuredNews=  PageFactory.initElements(BrowserInstance.driver, FeaturedNews.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/newswire");
 			Assert.assertTrue(featuredNews.isFeaturedNewsTxtPresent());
-			System.out.println("########################3");
 			Assert.assertNotNull(featuredNews.getTextOfReportList(1));
 			}catch(Exception e){
 				LoggerInstance.logger.info("Test case newsFeaturedNewsLink is failed. "+e); 
@@ -501,8 +505,9 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 18 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(4,2);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(4,"News",2,"Natural Resources");//4,2
 			Thread.sleep(10000);
 			NaturalResources naturalResources=  PageFactory.initElements(BrowserInstance.driver, NaturalResources.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/natural-resources");
@@ -526,8 +531,9 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 19 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(4,3);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(4,"News",3,"Breaking News");//4,3
 			Thread.sleep(10000);
 			BreakingNews breakingNews=  PageFactory.initElements(BrowserInstance.driver, BreakingNews.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/bulletins");
@@ -549,8 +555,9 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 20 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(4,4);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(4,"News",3,"Micro Cap Report");//4,4
 			Thread.sleep(10000);
 			MicroCapReport microCapReport=  PageFactory.initElements(BrowserInstance.driver, MicroCapReport.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/micro-cap-report");
@@ -574,8 +581,9 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 21 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(4,5);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(4,"News",5,"Canadian Press Releases");//4,6
 			Thread.sleep(10000);
 			CanadianPressRelease canadianPressRelease=  PageFactory.initElements(BrowserInstance.driver, CanadianPressRelease.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/canadian-press-releases");
@@ -601,8 +609,9 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 22 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(4,6);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(4,"News",4,"US Press Releases");//4,5
 			Thread.sleep(10000);
 			USPressRelease uSPressRelease=  PageFactory.initElements(BrowserInstance.driver, USPressRelease.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/us-press-releases");
@@ -630,10 +639,12 @@ public class NavigationTestCases extends BaseSetup {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 23 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(50000);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
 			CommunityPage communityPage=PageFactory.initElements(BrowserInstance.driver, CommunityPage.class);
-			homepage.clickOnNavigationLink(2);
-			Thread.sleep(30000);
+			homepage.clickOnNavigationLink(2,"Community");//2
+			Thread.sleep(20000);
+			homepage.cancelLoading();
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"community");
 			Assert.assertTrue(communityPage.isBullBoardHeadPresent());
 			String txtgrp= communityPage.getTextOfGroupHead();
@@ -660,12 +671,13 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Bullboard bullBoard= PageFactory.initElements(BrowserInstance.driver, Bullboard.class);
-			Thread.sleep(80000);
-			homepage.clickOnNavigationSubLink(2,1);
-			Thread.sleep(30000);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(2,"Community",1,"Bullboards");//2,1
+			Thread.sleep(20000);
+			homepage.cancelLoading();
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"community/bullboards");
 			Assert.assertTrue(bullBoard.isOrderByHeadPresent());
-			System.out.println("@!!!!!!!!!!!!!!!Q ");
 			Assert.assertTrue(bullBoard.isdisplayBullBoardsHeadPresent());
 			
 			}catch(Exception e){
@@ -687,9 +699,10 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Blog blog= PageFactory.initElements(BrowserInstance.driver, Blog.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(2,2);
-			Thread.sleep(30000);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(2,"Community",2,"Blogs");//2,2
+			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"blogs");
 			Assert.assertTrue(blog.isOrderByHeadPresent());
 			Assert.assertNotNull(blog.getTextOfBlogSummaryHead(1));
@@ -713,9 +726,10 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			GroupsPage group= PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(2,3);
-			Thread.sleep(30000);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(2,"Community",3,"Groups");//2,3
+			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"groups");
 			Assert.assertTrue(group.isSortByHeadPresent());
 			Assert.assertNotNull(group.getTextOfVariousGroupsHead(1));
@@ -739,9 +753,10 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			MarketPage market= PageFactory.initElements(BrowserInstance.driver, MarketPage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationLink(3);
-			Thread.sleep(30000);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationLink(3,"Markets");//3
+			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets");
 			Assert.assertTrue(market.isMarketUpdateHeadPresent());
 			Assert.assertTrue(market.isMarketNewsTodayHeadPresent());
@@ -764,9 +779,10 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			CommoditiesPage commodities= PageFactory.initElements(BrowserInstance.driver, CommoditiesPage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(3, 2);
-			Thread.sleep(30000);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(3,"Markets", 2,"Commodities");//3,2
+			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/commodities");
 			Assert.assertTrue(commodities.isMetalsHeadPresent());
 			Assert.assertTrue(commodities.isEnergiesHeadPresent());
@@ -789,9 +805,10 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			MarketMoversPage marketMovers= PageFactory.initElements(BrowserInstance.driver, MarketMoversPage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(3, 3);
-			Thread.sleep(30000);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(3,"Markets", 3,"Market Movers");//3,3
+			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/market-movers");
 			Assert.assertTrue(marketMovers.isExchangeHeadPresent());
 			Assert.assertTrue(marketMovers.isMarketMoverHeadPresent());
@@ -813,9 +830,10 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			CurrenciesPage currencies= PageFactory.initElements(BrowserInstance.driver, CurrenciesPage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(3, 4);
-			Thread.sleep(30000);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(3,"Markets",4, "Currencies");//3,4
+			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/currencies");
 			Assert.assertTrue(currencies.isCurrencyTablePresent());
 			
@@ -836,10 +854,11 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			BondsPage bonds= PageFactory.initElements(BrowserInstance.driver, BondsPage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(3,5);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(3,"Markets",5,"Bonds");//3,5
 			
-			Thread.sleep(30000);
+			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/bonds");
 			Assert.assertTrue(bonds.isBondsTablePresent());
 			
@@ -860,10 +879,11 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			TSXPage tsx= PageFactory.initElements(BrowserInstance.driver, TSXPage.class);
-			Thread.sleep(30000);
-			homepage.clickOnStocksSubLink(3,1);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnStocksSubLink(3,"Markets",1,"TSX");//3,1
 			
-			Thread.sleep(30000);
+			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/stocks/tsx");
 			Assert.assertTrue(tsx.isTSXVolActivitiesHeadPresent());
 			}catch(Exception e){
@@ -883,10 +903,11 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			TSXVPage tsxv= PageFactory.initElements(BrowserInstance.driver, TSXVPage.class);
-			Thread.sleep(30000);
-			homepage.clickOnStocksSubLink(3,2);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnStocksSubLink(3,"Markets",2,"TSXV");//3,2
 			
-			Thread.sleep(30000);
+			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/stocks/tsxv");
 			Assert.assertTrue(tsxv.isTSXVentureVolActivitiesHeadPresent());
 			}catch(Exception e){
@@ -906,10 +927,11 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			CSEPage cse= PageFactory.initElements(BrowserInstance.driver, CSEPage.class);
-			Thread.sleep(30000);
-			homepage.clickOnStocksSubLink(3,3);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnStocksSubLink(3,"Markets",3,"CSE-CNSX");//3,3
 			
-			Thread.sleep(30000);
+			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/stocks/cse-cnsx");
 			Assert.assertTrue(cse.isCSEVolActivitiesHeadPresent());
 			}catch(Exception e){
@@ -929,10 +951,11 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			NYSEPage nyse= PageFactory.initElements(BrowserInstance.driver, NYSEPage.class);
-			Thread.sleep(30000);
-			homepage.clickOnStocksSubLink(3,4);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnStocksSubLink(3,"Markets",4,"NYSE");//3,4
 			
-			Thread.sleep(30000);
+			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/stocks/nyse");
 			Assert.assertTrue(nyse.isNYSEVolActivitiesHeadPresent());
 			}catch(Exception e){
@@ -952,10 +975,11 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			NASDAQPage nasdaq= PageFactory.initElements(BrowserInstance.driver, NASDAQPage.class);
-			Thread.sleep(30000);
-			homepage.clickOnStocksSubLink(3,5);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnStocksSubLink(3,"Markets",5,"NASDAQ");//3,5
 			
-			Thread.sleep(30000);
+			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/stocks/nasdaq");
 			Assert.assertTrue(nasdaq.isNASDAQVolActivitiesHeadPresent());
 			}catch(Exception e){
@@ -975,10 +999,11 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			AMEXPage amex= PageFactory.initElements(BrowserInstance.driver, AMEXPage.class);
-			Thread.sleep(30000);
-			homepage.clickOnStocksSubLink(3,6);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnStocksSubLink(3,"Markets",6,"AMEX");//3,6
 			
-			Thread.sleep(30000);
+			Thread.sleep(25000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/stocks/amex");
 			Assert.assertTrue(amex.isAMEXVolActivitiesHeadPresent());
 			}catch(Exception e){
@@ -998,10 +1023,11 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			DJIAPage djia= PageFactory.initElements(BrowserInstance.driver, DJIAPage.class);
-			Thread.sleep(30000);
-			homepage.clickOnStocksSubLink(3,7);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnStocksSubLink(3,"Markets",7,"DJIA");//3,7
 			
-			Thread.sleep(30000);
+			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/stocks/djia");
 			Assert.assertTrue(djia.isDJIAVolActivitiesHeadPresent());
 			}catch(Exception e){
@@ -1022,10 +1048,11 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			ETFsPage etf= PageFactory.initElements(BrowserInstance.driver, ETFsPage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(3,6);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(3,"Markets",6,"ETFs");//3,6
 			
-			Thread.sleep(30000);
+			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/etfs");
 			Assert.assertTrue(etf.isMoreETFArticlesPresent());
 			Assert.assertTrue(etf.isTopStoryPresent());
@@ -1047,13 +1074,15 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			FundsPage funds= PageFactory.initElements(BrowserInstance.driver, FundsPage.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(3,7);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(3,"Markets",6,"Funds");//3,7
 			
-			Thread.sleep(30000);
+			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/funds");
-			Assert.assertTrue(funds.isFundsPerformOverHeadPresent());
 			Assert.assertTrue(funds.isFundsHeadPresent());
+			Assert.assertTrue(funds.isFundsPerformOverHeadPresent());
+			
 			}catch(Exception e){
 				LoggerInstance.logger.info("Test case FundsLink is failed. "+e); 
 				Assert.fail("Test case FundsLink is failed. "+e);
@@ -1073,10 +1102,11 @@ public class NavigationTestCases extends BaseSetup {
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			StockScreenerPage stockScreen= PageFactory.initElements(BrowserInstance.driver, StockScreenerPage.class);
-			Thread.sleep(40000);
-			homepage.clickOnNavigationSubLink(3,8);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(3,"Markets",8,"Stock Screener");//3,8
 			
-			Thread.sleep(30000);
+			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio/stock-screener");
 			Assert.assertTrue(stockScreen.isFeaturedCompanyHeadPresent());
 			Assert.assertTrue(stockScreen.isSearchOptionHeadPresent());

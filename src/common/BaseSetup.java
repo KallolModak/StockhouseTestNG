@@ -15,11 +15,13 @@ import org.testng.annotations.BeforeSuite;
 
 public class BaseSetup {
 	BrowserInstance browserInstance;
-	Properties Sys_property = System.getProperties();
-	String outputDir = Sys_property.getProperty("OutputFolder");
-	File directory = new File ("");
-	String absolutepath	=	directory.getAbsolutePath();
-	String failureScreenshotPath =absolutepath+File.separator+"Output"+File.separator+outputDir+File.separator+"FailureScreenshots";
+	public static Properties Sys_property = System.getProperties();
+	public static String outputDir = Sys_property.getProperty("OutputFolder");
+	
+	public static File directory = new File ("");
+	public static String absolutepath	=	directory.getAbsolutePath();
+	public static String failureScreenshotPath =absolutepath+File.separator+outputDir+File.separator+"FailureScreenshots";
+
 	
 	 @BeforeSuite(alwaysRun = true)
 	 /*
@@ -33,7 +35,7 @@ public class BaseSetup {
 			browserInstance=new BrowserInstance();
 			LoggerInstance.logger.info("Suite initialized successfully.");
 			BrowserInstance.driver.manage().window().maximize();
-			BrowserInstance.driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+			//BrowserInstance.driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 		 }//End of try block
 		 catch (Exception e)
 		 {
@@ -78,7 +80,7 @@ public class BaseSetup {
 		//	driver.get(url);
 			//BrowserInstance.driver.get(url);
 			BrowserInstance.driver.manage().window().maximize();
-			BrowserInstance.driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+			//BrowserInstance.driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
 			}
 			//This will initiate browser instance and driver object.
 			String url=ReadInputData.HM_inputData.get("URL");

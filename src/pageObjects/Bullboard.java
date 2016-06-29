@@ -38,21 +38,31 @@ public class Bullboard extends WebdriverUtility {
 		selectFromDropDown(ratingSelectCombo, BrowserInstance.driver.findElement(ratingSelectCombo()));
 	}
 	
-	private By starImage(String rowNumber){
+	private By starImage(int rowNumber){
 		return By.xpath("//div[@class='post-list']/div["+rowNumber+"]/div[@class='post-header']//img");
 	}
 	
-	public String getNumberOfStarts(String rowNumber){
+	public String getNumberOfStarts(int rowNumber){
 		return safeGetAttribute(starImage(rowNumber), "alt", MEDIUMWAIT);	
 	}
-	
+	public boolean isStarImagePresent(int rowNumber){
+		return isElementPresent(starImage(rowNumber), MEDIUMWAIT);
+	}
 	
 	private By modeSelectCombo(){
 		return By.xpath("//div[@class='bullboard-threads-filter row']/div[@class='col-md-9']/select");
+		//return By.xpath("//div[@class='bullboard-threads-filter row']/div[@class='col-md-9']/select/option["+opt+"]");
 	}
+//	/*
+//	 * Function to click on combo selector.
+//	 */
+//	public void clickOnComboBox(int opt){
+//		safeClick(modeSelectCombo(opt), MEDIUMWAIT);
+//	}
 
 	public void selectViewMode(String modeSelectCombo){
 		selectFromDropDown(modeSelectCombo, BrowserInstance.driver.findElement(modeSelectCombo()));
+		//safeClick(modeSelectCombo(opt), MEDIUMWAIT);
 	}
 	
 	private By txtOfPostDate(String rowNumber){
@@ -63,21 +73,34 @@ public class Bullboard extends WebdriverUtility {
 		return safeGetText(txtOfPostDate(rowNumber), MEDIUMWAIT);
 		
 	}
+//	/*
+//	 * Locator for messages already posted.
+//	 */
+//	private By postedMessage(){
+//		return By.xpath("//div[@class='post-list']/div");
+//	}
+//	/*
+//	 * Function to get size of messages already posted.
+//	 */
+//	public int getSizeOfPostedMessage(){
+//		return driver.findElements(postedMessage()).size();
+//	}
 	/*
 	 * Locator for messages already posted.
 	 */
-	private By postedMessage(){
-		return By.xpath("//div[@class='post-list']/div");
+	private By postedMessageHead(int num){
+		return By.xpath("//div[@class='post-list']/div["+num+"]/div[@class='post-header']/h3/a");
 	}
 	/*
-	 * Function to get size of messages already posted.
+	 * Function to get text of head of messages posted.
 	 */
-	public int getSizeOfPostedMessage(){
-		return driver.findElements(postedMessage()).size();
+	public String getTextOfPostedMessageHead(int num){
+		return safeGetText(postedMessageHead(num), MEDIUMWAIT);
 	}
 	
 	private By newPostButton(){
-		return By.id("p_lt_zoneContent_SubContent_p_lt_zoneLeft_Stockhouse_CompanyBullboard_viewerForum_threadsElem_lnkNew");
+		return By.xpath("//a[contains(text(),'New Post')]");
+		//return By.id("p_lt_zoneContent_SubContent_p_lt_zoneLeft_Stockhouse_CompanyBullboard_viewerForum_threadsElem_lnkNew");
 	}
 	public void clickOnNewPostButton(){
 		safeClick(newPostButton(), VERYLONGWAIT);
@@ -178,11 +201,23 @@ public class Bullboard extends WebdriverUtility {
 	 /*
 	  * Locator for heading of posts.(under option threaded)
 	  */
-	 private By postsHead(int num){
+	 private By postsHeadThreaded(int num){
 		 return By.xpath("//div[@class='bullboard-content']/div[@class='post-list']/div[@class='post-header']["+num+"]/h3/a");
 	 }
 	 /*
 	  * Function to get text of heading of posts.(under option threaded).
+	  */
+	 public String getTextOfPostsHeadThreaded(int num){
+		 return safeGetText(postsHeadThreaded(num), MEDIUMWAIT);
+	 }
+	 /*
+	  * Locator for heading of posts.(other than option threaded)
+	  */
+	 private By postsHead(int num){
+		 return By.xpath("//div[@class='bullboard-content']/div[@class='post-list']/div["+num+"]//h3/a");
+	 }
+	 /*
+	  * Function to get text of heading of posts.(other than option threaded).
 	  */
 	 public String getTextOfPostsHead(int num){
 		 return safeGetText(postsHead(num), MEDIUMWAIT);
@@ -208,19 +243,39 @@ public class Bullboard extends WebdriverUtility {
 	 /*
 	  * Locator for bull board page navigation links.
 	  */
-	 private By BBNavLink(int num){
-		 return By.xpath("//div[@class='comp-nav-container']/a["+num+"]");
+	 private By BBNavLink(String text){
+		 //return By.xpath("//div[@class='comp-nav-container']/a["+num+"]");
+		 return By.xpath("//div[@class='comp-nav-container']/a[text()='"+text+"']");
 	 }
 	 /*
 	  * Function to click on bull board page navigation links.
 	  */
-	 public void clickOnBBNavLink(int num){
-		 safeClick(BBNavLink(num), MEDIUMWAIT);
+	 public void clickOnBBNavLink(String text){
+		 mouseHover(BBNavLink(text), MEDIUMWAIT);
+		 safeClick(BBNavLink(text), MEDIUMWAIT);
 	 }
 	 /*
 	  * Function to get text of bull board page navigation links.
 	  */
-	 public String getTextOfBBNavLink(int num){
-		 return safeGetText(BBNavLink(num), MEDIUMWAIT);
+	 public String getTextOfBBNavLink(String text){
+		 return safeGetText(BBNavLink(text), MEDIUMWAIT);
+	 }
+	 /*
+	  * Locator for news focus posted news box (posted from CMS Desk page).
+	  */
+	 private By newsFocusBox(){
+		 return By.xpath("//div[@class='post-content news-focus']");
+	 }
+	 /*
+	  * Function to check the presence of news focus posted news box(posted from CMS Desk page).
+	  */
+	 public boolean isNewsFocusBoxPresent(){
+		 return isElementPresent(newsFocusBox(), MEDIUMWAIT);
+	 }
+	 /*
+	  * Function to get the border color of news focus posted news box (posted from CMS Desk page).
+	  */
+	 public String getColorOfNewsFocusBox(){
+		 return BrowserInstance.driver.findElement(newsFocusBox()).getCssValue("border-top-color");
 	 }
 }

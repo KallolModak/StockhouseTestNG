@@ -1,6 +1,8 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 
 import common.WebdriverUtility;
 
@@ -17,12 +19,14 @@ public class ResetPasswordPage extends WebdriverUtility{
 	 * Locator for new password.
 	 */
 	private By newPassword(){
-		return By.xpath("//div[@id='p_lt_zoneContent_SubContent_p_lt_zoneLeft_Stockhouse_ResetPassword_resetPassitem_pnlReset']/table/tbody/tr[1]/td[2]/input");
+	return By.xpath("//div[@class='column span-4']/div[@id='p_lt_zoneContent_SubContent_p_lt_zoneLeft_Stockhouse_ResetPassword_resetPassitem_pnlReset']/table/tbody/tr[1]/td[2]/input");
+	//return By.xpath("//div[@id='p_lt_zoneContent_SubContent_p_lt_zoneLeft_SignIn_Login1_pnlLogin']/div[@class='form-section'][1]/input");
 	}
 	/*
 	 * Function to put text in new password text box.
 	 */
 	public void putTextInNewPasswordBox(String text){
+		//safeClick(newPassword(), MEDIUMWAIT);
 		safeType(newPassword(), text, MEDIUMWAIT);
 	}
 	/*
@@ -35,6 +39,7 @@ public class ResetPasswordPage extends WebdriverUtility{
 	 * Function to put text in confirm new password text box.
 	 */
 	public void putTextInConfirmNewPasswordBox(String text){
+		//safeClick(confirmNewPassword(), MEDIUMWAIT);
 		safeType(confirmNewPassword(), text, MEDIUMWAIT);
 	}//p_lt_zoneContent_SubContent_p_lt_zoneLeft_Stockhouse_ResetPassword_resetPassitem_btnReset
 	/*
@@ -61,5 +66,4 @@ public class ResetPasswordPage extends WebdriverUtility{
 	public void clickOnThisPageLink(){
 		safeClick(thisPageLink(), MEDIUMWAIT);
 	}
-
 }

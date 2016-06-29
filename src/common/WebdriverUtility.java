@@ -2432,4 +2432,8 @@ public class WebdriverUtility extends Sync{
 		catch(Exception e)
 		{}
 	}
+	
+	public void cancelLoading(){
+		BrowserInstance.driver.findElement(By.tagName("body")).sendKeys("Keys.ESCAPE");
+	}
 }// END class WebdriverUtility

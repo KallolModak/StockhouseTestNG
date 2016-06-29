@@ -91,7 +91,7 @@ public class HomePage extends WebdriverUtility{
 	 * Function to click on 'commodity' or 'currency' tab.
 	 */
 	public void clickCommoditiesCurrencyTab(String name1){
-		safeClick(commoditiesCurrencyTab(name1), MEDIUMWAIT);
+		safeJavaScriptClick(commoditiesCurrencyTab(name1), MEDIUMWAIT);
 		//LoggerInstance.logger.info("Click on Commodities link ");  
 	}
    /*
@@ -99,6 +99,7 @@ public class HomePage extends WebdriverUtility{
     */
 	private By commodityCurrencyOption(String name2){
 		if(name2.equalsIgnoreCase("commodity"))
+			
 			return By.xpath("//div[@class='column span-2 last']/div[@class='custom-markets'][1]/div[@class='tab-content']/div[contains(@id,'panelTab1')]/table/tbody/*[1]/*[1]/a");
 		else //currency
 			return By.xpath("//div[@class='column span-2 last']/div[@class='custom-markets'][1]/div[@class='tab-content']/div[contains(@id,'panelTab2')]/table/tbody/*[1]/*[1]/a");
@@ -164,19 +165,39 @@ public class HomePage extends WebdriverUtility{
 /*
  * Locator for Commodities Section's table items.
  */
-	private By commoditiesItems(int rownum,int colnum)
+//	private By commoditiesItems(int rownum,int colnum)
+//	{
+//		driver.switchTo().frame(driver.findElement(By.xpath("//div[@class='frame-container']/iframe")));
+//		driver.switchTo().frame(driver.findElement(By.xpath("//div[@id='iframe-container-widget']/iframe")));
+//		return By.xpath("//div[@class='rtq-grid-scroll']/div[@class='rtq-grid-bd']/div[@class='rtq-grid-row'][1]");
+//		//return By.xpath("//div[@class='column span-2 last']/div[@class='custom-markets'][1]/div[@class='tab-content']/div[contains(@id,'panelTab1')]/table/tbody/tr["+rownum+"]/td["+colnum+"]");
+//	}
+	private By commoditiesItems(int num)
 	{
-		return By.xpath("//div[@class='column span-2 last']/div[@class='custom-markets'][1]/div[@class='tab-content']/div[contains(@id,'panelTab1')]/table/tbody/tr["+rownum+"]/td["+colnum+"]");
-		
+		driver.switchTo().frame(driver.findElement(By.xpath("//div[@class='custom-markets'][1]/div[@class='tab-content'][1]//div[@class='frame-container']/iframe")));
+		//driver.switchTo().frame(driver.findElement(By.xpath("//div[@class='frame-container']/iframe")));
+		driver.switchTo().frame(driver.findElement(By.xpath("//div[@id='iframe-container-widget']/iframe")));
+		return By.xpath("//div[@class='rtq-grid-scroll']/div[@class='rtq-grid-bd']/div[@class='rtq-grid-row']["+num+"]");
+		//return By.xpath("//div[@class='column span-2 last']/div[@class='custom-markets'][1]/div[@class='tab-content']/div[contains(@id,'panelTab1')]/table/tbody/tr["+rownum+"]/td["+colnum+"]");
 	}
+//	/*
+//	 * Function to check the null value of Commodities Section's table items.
+//	 */
+//	public String getTextOfCommoditiesItems(int rownum,int colnum)
+//	{
+//		LoggerInstance.logger.info("Click on Quick Link > "+rownum);
+//		String s = driver.findElement(commoditiesItems(rownum,colnum)).getText();
+//		return s;
+//	}	
 	/*
 	 * Function to check the null value of Commodities Section's table items.
 	 */
-	public String getTextOfCommoditiesItems(int rownum,int colnum)
+	public String getTextOfCommoditiesItems(int num)
 	{
-		LoggerInstance.logger.info("Click on Quick Link > "+rownum);
-		String s = driver.findElement(commoditiesItems(rownum,colnum)).getText();
+		LoggerInstance.logger.info("Click on Quick Link > ");
+		String s=driver.findElement(commoditiesItems(num)).getText();
 		return s;
+		
 	}	
 	/*
 	 * Locator for Currencies Section's table items.
@@ -281,18 +302,22 @@ public class HomePage extends WebdriverUtility{
 	/*  
 	 * Locator for Market section's table items.
 	 */
-	private By marketItems(int rownum,int colnum)
+	private By marketItems(int num)
 	{
-		return By.xpath("//div[@class='column span-2 last']/div[@class='custom-markets'][2]/div[@class='tab-content']/div[contains(@id,'panelTab1')]/table/tbody/tr["+rownum+"]/td["+colnum+"]");
+		driver.switchTo().frame(driver.findElement(By.xpath("//div[@class='custom-markets'][2]/div[@class='tab-content'][1]//div[@class='frame-container']/iframe")));
+		driver.switchTo().frame(driver.findElement(By.xpath("//div[@id='iframe-container-widget']/iframe")));
+		return By.xpath("//div[@class='rtq-grid-scroll']/div[@class='rtq-grid-bd']/div[@class='rtq-grid-row']["+num+"]");
+		//return By.xpath("//div[@class='custom-markets'][2]/div[@class='tab-content'][1]//div[@class='frame-container']/iframe");
+		//return By.xpath("//div[@class='column span-2 last']/div[@class='custom-markets'][2]/div[@class='tab-content']/div[contains(@id,'panelTab1')]/table/tbody/tr["+rownum+"]/td["+colnum+"]");
 	}
 	/*
 	 * Function to check Market sectio's values are null.
 	 */
-	public String getTextOfMarketsItems(int rownum,int colnum)
+	public String getTextOfMarketsItems(int num)
 	{
 		
-		LoggerInstance.logger.info("Click on Quick Link > "+rownum);
-		String s = driver.findElement(marketItems(rownum,colnum)).getText();
+		LoggerInstance.logger.info("Click on Quick Link > ");
+		String s = driver.findElement(marketItems(num)).getText();
 		return s;
 	}	
 	/*  
@@ -377,7 +402,8 @@ public void clickOnColumnistsLink(int num){
  * Locator for Breaking News Block.
  */
 private By breakingNewsBlock(){
-	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[2]/div[@class='box-hr-thick'][2]");
+//	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[2]/div[@class='box-hr-thick'][3]");
+	return By.xpath("//h4[text()='Breaking News']/..");
 }
 /*
  * Function to find number of links in breaking news block.
@@ -389,7 +415,8 @@ public int getSizeOfBreakingNewsBlock(){
  * Locator for links in Breaking news block.
  */
 private By breakingNewsLinks(int num){
-	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[2]/div[@class='box-hr-thick'][2]/div["+num+"]/h3/a");
+//	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[2]/div[@class='box-hr-thick'][3]/div["+num+"]/h3/a");
+	return By.xpath("//h4[text()='Breaking News']/../div["+num+"]/h3/a");
 }
 /*
  * Function to get attribute of links in breaking news block.
@@ -401,13 +428,15 @@ public String getHrefOfBreakingNewsLinks(int num){
  * Function to click on links in breaking news block.
  */
 public void clickOnBreakingNewsLinks(int num){
+	scrollIntoElementView(breakingNewsLinks(num));
 	safeClick(breakingNewsLinks(num), MEDIUMWAIT);
 }
 /*
  * Locator for Interviews block.
  */
 private By interviewsBlock(){
-	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[2]/div[@class='box-hr-thick'][1]");
+	//return By.xpath("//div[@class='column span-6 last']/following-sibling::*[2]/div[@class='box-hr-thick'][2]");
+	return By.xpath("//h4[text()='Interviews']/..");
 }
 /*
  * Function to find number of links in interview block.
@@ -419,7 +448,8 @@ public int getSizeOfInterviewsBlock(){
  * Locator for Links in interview block.
  */
 private By interviewLinks(){
-	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[2]/div[@class='box-hr-thick'][1]/div/h3/a");
+	//return By.xpath("//div[@class='column span-6 last']/following-sibling::*[2]/div[@class='box-hr-thick'][2]/div/h3/a");
+	return By.xpath("//h4[text()='Interviews']/../div/h3/a");
 }
 /*
  * Function to get attribute of links in interview block.
@@ -433,36 +463,46 @@ public String getHrefOfInterviewLinks(){
 public void clickOnInterviewLinks(){
 	safeClick(interviewLinks(),MEDIUMWAIT);
 }
-///*
-// * Locator for Featured News block.
-// */
-//private By featuredNews(){
-//	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][1]");
-//}
-///*
-// * Function to find size of Featured News block.
-// */
-//public int getSizeOfFeaturedNews(){
-//	return driver.findElement(featuredNews()).findElements(By.tagName("a")).size();
-//}
-///*
-// * Locator for links in Featured News block.
-// */
-//private By featuredNewsLinks(int num){
-//	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][1]/a["+num+"]");
-//}
-///*
-// * Function to click on links in Featured News block.
-// */
-//public void clickOnFeaturedNewsLinks(int num){
-//	safeClick(featuredNewsLinks(num), MEDIUMWAIT);
-//}
+/*
+ * Locator for Featured News block.
+ */
+private By featuredNews(){
+	//return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][1]");
+	return By.xpath("//h4[text()='Featured News']/..");
+}
+/*
+ * Function to find size of Featured News block.
+ */
+public int getSizeOfFeaturedNews(){
+	return driver.findElement(featuredNews()).findElements(By.tagName("a")).size();
+}
+/*
+ * Locator for links in Featured News block.
+ */
+private By featuredNewsLinks(int num){
+	//return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][1]/a["+num+"]");
+	//return By.xpath("//h4[text()='Featured News']/../ul/a["+num+"]");
+	return By.xpath("//h4[text()='Featured News']/following-sibling::*[1]/div/h3/a");
+}
+/*
+ * Function to click on links in Featured News block. 
+ */
+public void clickOnFeaturedNewsLinks(int num){
+	safeClick(featuredNewsLinks(num), MEDIUMWAIT);
+}
+/*
+ * Function to get href of links in Featured News block.
+ */
+public String getHrefOfFeaturedNewsLinks(int num){
+	return BrowserInstance.driver.findElement(featuredNewsLinks(num)).getAttribute("href");
+}
 
 /*
  * Locator for Opinion And Analysis block.
  */
 private By opinionAndAnalysisBlock(){
-	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][1]");
+	//return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][2]");
+	return By.xpath("//h4[text()='Opinion and Analysis']/..");
 }
 /*
  * Function to find size of Opinion And Analysis block.
@@ -474,7 +514,8 @@ public int getSizeOfOpinionAndAnalysis(){
  * Locator for links in Opinion And Analysis block.
  */
 private By opinionAndAnalysisLinks(int num){
-	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][1]/div["+num+"]/h3/a");
+	//return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][2]/div["+num+"]/h3/a");
+	return By.xpath("//h4[text()='Opinion and Analysis']/../div["+num+"]/h3/a");
 }
 /*
  * Function to get attribute of links in Opinion And Analysis block.
@@ -492,7 +533,8 @@ public void clickOnOpinionAndAnalysisLinks(int num){
  * Locator for Canadian Press Releases block.
  */
 private By canadianPR(){
-	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][2]");
+	//return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][3]");
+	return By.xpath("//h4[text()='Canadian Press Releases']/..");
 }
 /*
  * Function to find size of Canadian Press Releases block.
@@ -504,7 +546,8 @@ public int getSizeOfCanadianPR(){
  * Locator for links in Canadian Press Releases block.
  */
 private By canadianPRLinks(int num){
-	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][2]/div["+num+"]/h3/a");
+	//return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][3]/div["+num+"]/h3/a");
+	return By.xpath("//h4[text()='Canadian Press Releases']/../div["+num+"]/h3/a");
 }
 /*
  * Function to get attribute of links in Canadian Press Releases block.
@@ -522,7 +565,8 @@ public void clickOnCanadianPRLinksLinks(int num){
  * Locator for US Press Releases block.
  */
 private By USPressRelease(){
-	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][3]");
+	//return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][3]");
+	return By.xpath("//h4[text()='US Press Releases']/..");
 }
 /*
  * Function to scroll the US press release block into view.
@@ -540,7 +584,9 @@ public int getSizeOfUSPressRelease(){
  * Locator for links in US Press Releases block.
  */
 private By USPressReleaseLinks(int num){
-	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][3]/div["+num+"]/h3/a");
+	//return By.xpath("//div[@class='column span-6 last']/following-sibling::*[1]/div[@class='box-hr-thick'][3]/div["+num+"]/h3/a");
+	return By.xpath("//h4[text()='US Press Releases']/../div["+num+"]/h3/a");
+
 }
 /*
  * Function to get attribute of links in US Press Releases block.
@@ -558,7 +604,8 @@ public void clickOnUSPressReleaseLinks(int num){
  * Locator for Showcase News Releases block.
  */
 private By showcaseNR(){
-	return By.xpath("//div[@class='column span-2 last']/div[@class='box-plain']/div");
+	//return By.xpath("//div[@class='column span-2 last']/div[@class='box-plain']/div");
+	return By.xpath("//h4[text()='Showcase News Releases']/../div");
 }
 /*
  * Function to find size of Showcase News Releases block.
@@ -570,7 +617,8 @@ public int getSizeOfShowcaseNR(){
  * Locator for links in Showcase News Releases block.
  */
 private By showcaseNRLinks(){
-	return By.xpath("//div[@class='column span-2 last']/div[@class='box-plain']/div/a");
+	//return By.xpath("//div[@class='column span-2 last']/div[@class='box-plain']/div/a");
+	return By.xpath("//h4[text()='Showcase News Releases']/../div/a");
 }
 /*
  * Function to get attribute of links in Showcase News Releases block.
@@ -588,7 +636,8 @@ public void clickOnShowcaseNRLinks(){
  * Locator for Featured Company block.
  */
 private By featuredCompany(){
-	return By.xpath("//div[@class='column span-2 last']/div[@class='box-hr-thick']");
+	//return By.xpath("//div[@class='column span-2 last']/div[@class='box-hr-thick']");
+	return By.xpath("//h4[text()='Featured Company']/..");
 }
 /*
  * Function to find size of Featured Company block.
@@ -599,26 +648,28 @@ public int getSizeOfFeaturedCompany(){
 /*
  * Locator for links in Featured Company block.
  */
-private By featuredCompanyLinks(){
-	return By.xpath("//div[@class='column span-2 last']/div[@class='box-hr-thick']/figure//h3/a");
+private By featuredCompanyLinks(int figNum){
+	//return By.xpath("//div[@class='column span-2 last']/div[@class='box-hr-thick']/figure//h3/a");
+	return By.xpath("//h4[text()='Featured Company']/../figure["+figNum+"]/div/a");
 }
 /*
  * Function to get attribute of links in Featured Company block.
  */
-public String getHrefOfFeaturedCompanyLinks(){
-	return driver.findElement(featuredCompanyLinks()).getAttribute("href");
+public String getHrefOfFeaturedCompanyLinks(int figNum){
+	return driver.findElement(featuredCompanyLinks(figNum)).getAttribute("href");
 }
 /*
  * Function to click on links in SFeatured Company block.
  */
-public void clickOnFeaturedCompanyLinks(){
-	safeClick(featuredCompanyLinks(), MEDIUMWAIT);
+public void clickOnFeaturedCompanyLinks(int figNum){
+	safeClick(featuredCompanyLinks(figNum), MEDIUMWAIT);
 }
 /*
  * Locator for Video Showcase block.
  */
 private By videoShowcase(){
-	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[2]/div[contains(@class,'webpart-container')][3]/ul");
+	//return By.xpath("//div[@class='column span-6 last']/following-sibling::*[2]/div[contains(@class,'webpart-container')][3]/ul");
+	return By.xpath("//h4[text()='Video Showcase']/../ul");
 }
 /*
  * Function to find size of Video Showcase block.
@@ -630,22 +681,24 @@ public int getSizeOfVideoShowcase(){
  * Locator for video in Video Showcase block.
  */
 private By videoInVideoShowcase(int num){
-	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[2]/div[contains(@class,'webpart-container')][3]/ul/li["+num+"]");
+	return By.xpath("//div[@id='player']//button[@class='play rounded-box state-paused']");
 }
 /*
  * Function to click on any video in Video Showcase block.
  */
 public void clickOnVideoInVideoShowcase(int num){
+	driver.switchTo().frame(driver.findElement(videoPlayInVideoShowcase(num)));
 	safeClick(videoInVideoShowcase(num), MEDIUMWAIT);
 }
 /*
  * Locator for playing video in Video Showcase block..
  */
 private By videoPlayInVideoShowcase(int num){
-	return By.xpath("//div[@class='column span-6 last']/following-sibling::*[2]/div[contains(@class,'webpart-container')][3]/ul/li["+num+"]/iframe");
+	//return By.xpath("//div[@class='column span-6 last']/following-sibling::*[2]/div[contains(@class,'webpart-container')][3]/ul/li["+num+"]/iframe");
+	return By.xpath("//h4[text()='Video Showcase']/../ul/li["+num+"]/iframe");
 }
 /*
- * Locator for playing video in Video Showcase block. //change
+ * Locator for playing video in Video Showcase block.
  */
 private By videoPlaying(){
 	return By.xpath("//div[@class='controls-wrapper']//button[contains(@class,'play rounded-box state-playing')]");
@@ -654,29 +707,29 @@ private By videoPlaying(){
  * Function to check the presence of playing video in Video Showcase block..
  */
 public boolean isVideoPlayingPresentInVideoShowcase(int num){
-	driver.switchTo().frame(driver.findElement(videoPlayInVideoShowcase(num)));
+	//driver.switchTo().frame(driver.findElement(videoPlayInVideoShowcase(num)));
 	return isElementPresent(videoPlaying(), MEDIUMWAIT);
 }
 /*
  * Locator for Private Equity block.
  */
 private By privateEquity(){
-	return By.xpath("//div[@class='column span-2']/ul[@class='blog-activity-list']");
-		//	/div[contains(@class,'webpart-container')][3]/div/div["+num+"]");
+//	return By.xpath("//div[@class='column span-2'][1]/div[@class='clearfix blog-activity-listitem']");
+	return By.xpath("//h2[contains(text(),'Private Equity')]/../following-sibling::div[@class='clearfix blog-activity-listitem']");
 }
 /*
  * Function to find size of Private Equity block.
  */
 public int getSizeOfPrivateEquity(){
 	//scrollIntoElementView(privateEquity(num));
-	return driver.findElement(privateEquity()).findElements(By.tagName("li")).size();
+	return driver.findElements(privateEquity()).size();
 }
 /*
  * Locator for video in Private Equity block.
  */
 private By linkInPrivateEquity(int num){
-	return By.xpath("//div[@class='column span-2']/ul[@class='blog-activity-list']/li["+num+"]/h3/a");
-			///div[contains(@class,'webpart-container')][3]/div/div["+num+"]/a["+num+"]");
+//	return By.xpath("//div[@class='column span-2'][1]/div[@class='clearfix blog-activity-listitem']["+num+"]/strong//a");
+	return By.xpath("//h2[contains(text(),'Private Equity')]/../following-sibling::div[@class='clearfix blog-activity-listitem']["+num+"]/strong//a");
 }
 /*
  * Function to click on any video in Private Equity block.
@@ -694,7 +747,7 @@ public String getTextOfLinkInPrivateEquity(int num){
  * Locator to get header text after click on private equity link click.//new
  */
 private By headerOfPrivateEquityLinkNextPage(){
-	return By.xpath("//article[@class='column span-4']/header/h1");
+	return By.xpath("//div[@class='column span-6 last']/h1");
 }
 /*
  * Function to get text of header after click on private equity link click.//new
@@ -837,7 +890,7 @@ public void clickOnLoggedinUser(int num){
 	safeClick(LoggedinUser(num), MEDIUMWAIT);
 }
 /*
- * Function to get text of logged in user on the top of the page.
+ * Function to click on logged in user on the top of the page.
  */
 public void clickOnLogo(){
 	 safeClick(txtOfLoggedinUser(), MEDIUMWAIT);
@@ -885,49 +938,49 @@ public void clickOnSignInBtnOnSigninPopup(){
 /*
  * Locator for the Navigation Link.
  */
-private By NavigationLink(int num){
- return By.xpath("//ul[@id='menuElem']/li["+num+"]/a");
+private By NavigationLink(int num,String linktext){
+ return By.xpath("//ul[@id='menuElem']/li["+num+"]/a[text()='"+linktext+"']");
 }
 /*
  * Function to make click on the navigation links.
  */
-public void clickOnNavigationLink(int num){
- safeClick(NavigationLink(num), MEDIUMWAIT);
+public void clickOnNavigationLink(int num,String linktext){
+ safeClick(NavigationLink(num,linktext), MEDIUMWAIT);
   //return(PageFactory.initElements(driver, CommunityPage.class));
 }
 
 /*
  * Locator for the Navigation Link.
  */
-private By NavigationSubLink(int num,int sub){
- return By.xpath("//ul[@id='menuElem']/li["+num+"]/ul/li["+sub+"]/a");
+private By NavigationSubLink(int num,int sub,String sublinktext){
+ return By.xpath("//ul[@id='menuElem']/li["+num+"]/ul/li["+sub+"]/a[text()='"+sublinktext+"']");
 }
 
 
 /*
  * Function to make click on the navigation links.
  */
-public void clickOnNavigationSubLink(int num,int sub){
-	mouseHover(NavigationLink(num), MEDIUMWAIT);
+public void clickOnNavigationSubLink(int num,String linktext,int sub,String sublinktext){
+	mouseHover(NavigationLink(num,linktext), MEDIUMWAIT);
 	try{
-		Thread.sleep(1000);
+		Thread.sleep(10000);
 	}catch(Exception e){}
-	safeClick(NavigationSubLink(num,sub), MEDIUMWAIT);
+	safeJavaScriptClick(NavigationSubLink(num,sub,sublinktext), MEDIUMWAIT);
 }
 
 	/*
 	 * Locator for sub links of market under 'stocks' header.
 	 */
-	private By StocksSubLink(int num, int sub){
-		return By.xpath("//ul[@id='menuElem']/li["+num+"]/ul/li[1]/ul/li["+sub+"]/a");
+	private By StocksSubLink(int num, int sub,String sublinktext){
+		return By.xpath("//ul[@id='menuElem']/li["+num+"]/ul/li[1]/ul/li["+sub+"]/a[text()='"+sublinktext+"']");
 		 
 	}
-	public void clickOnStocksSubLink(int num, int sub){
-		mouseHover(NavigationLink(num), MEDIUMWAIT);
+	public void clickOnStocksSubLink(int num,String linktext,int sub,String sublinktext){
+		mouseHover(NavigationLink(num,linktext), MEDIUMWAIT);
 		 try{
-		  Thread.sleep(1000);
+		  Thread.sleep(4000);
 		 }catch(Exception e){}
-		 safeClick(StocksSubLink(num,sub), MEDIUMWAIT); 
+		 safeClick(StocksSubLink(num,sub,sublinktext), MEDIUMWAIT); 
 	}
 	/*
 	 * Locator for logout.
@@ -1002,6 +1055,30 @@ public void clickOnNavigationSubLink(int num,int sub){
 	 */
 	public void clickOnResetPasswordClose(){
 		safeClick(ResetPasswordClose(), MEDIUMWAIT);
+	}
+	/*
+	 * Locator for options at top menu.
+	 */
+	private By topMenuOptions(int num){
+		return By.xpath("//div[@class='membership clearfix']/ul[@class='right']/li["+num+"]/a");
+	}
+	/*
+	 * Function to click on options at top menu.
+	 */
+	public void clickOnTopMenuOptions(int num){
+		safeClick(topMenuOptions(num), MEDIUMWAIT);
+	}
+	/*
+	 * Locator for news focus bar under navigation link.
+	 */
+	private By newsFocusBar(){
+		return By.xpath("//div[@class='column span-6 last']//div[@id='ticker-items']/div[@class='owl-wrapper-outer']/div/div[1]");
+	}
+	/*
+	 * Function to get text of titles in news focus bar under navigation link.
+	 */
+	public String getTextOfTitlesInNewsFocusBar(){
+		return safeGetText(newsFocusBar(), MEDIUMWAIT);
 	}
 	
 }

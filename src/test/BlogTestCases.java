@@ -27,9 +27,11 @@ public class BlogTestCases extends BaseSetup {
 			
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			CommonSections common=PageFactory.initElements(BrowserInstance.driver, CommonSections.class);
-			Thread.sleep(30000);
-			homepage.clickOnNavigationSubLink(2, 2);
-			Thread.sleep(30000);
+			Thread.sleep(20000);
+			homepage.cancelLoading();
+			homepage.clickOnNavigationSubLink(2,"Community",2,"Blogs");
+			Thread.sleep(20000);
+			homepage.cancelLoading();
 			Assert.assertTrue(common.ismostActiveMembersHeadPresent());
 			for(int i=1;i<=4;i++){
 				Assert.assertTrue(common.ismostActiveMembersSectionPresent(i));
@@ -52,9 +54,11 @@ public class BlogTestCases extends BaseSetup {
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				CommonSections common=PageFactory.initElements(BrowserInstance.driver, CommonSections.class);
-				Thread.sleep(30000);
-				homepage.clickOnNavigationSubLink(2, 2);
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				homepage.clickOnNavigationSubLink(2,"Community",2,"Blogs");//2,2
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				//common.clickOnReadSharedDiscussedHead(1);
 				Assert.assertTrue(common.isreadSharedDiscussedHeadPresent(1));
 				Assert.assertTrue(common.isreadSharedDiscussedSectionPresent(1));
@@ -66,7 +70,7 @@ public class BlogTestCases extends BaseSetup {
 	/*
 	 * Test case for Shared Block.
 	 * Go to Blog page from navigation link community.
-	 * Check For the presence of Read Block.
+	 * Check For the presence of Share Block.
 	 */
 	@Test(priority=3)
 	public void ShareBlock()
@@ -75,9 +79,11 @@ public class BlogTestCases extends BaseSetup {
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				CommonSections common=PageFactory.initElements(BrowserInstance.driver, CommonSections.class);
-				Thread.sleep(30000);
-				homepage.clickOnNavigationSubLink(2, 2);
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				homepage.clickOnNavigationSubLink(2,"Community",2,"Blogs");//2,2
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				common.clickOnReadSharedDiscussedHead(2);
 				Assert.assertTrue(common.isreadSharedDiscussedHeadPresent(2));
 				Assert.assertTrue(common.isreadSharedDiscussedSectionPresent(2));
@@ -89,7 +95,7 @@ public class BlogTestCases extends BaseSetup {
 	/*
 	 * Test case for Discuss Block.
 	 * Go to Blog page from navigation link community.
-	 * Check For the presence of Read Block.
+	 * Check For the presence of Discuss Block.
 	 */
 	@Test(priority=4)
 	public void DiscussBlock()
@@ -99,9 +105,12 @@ public class BlogTestCases extends BaseSetup {
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				CommonSections common=PageFactory.initElements(BrowserInstance.driver, CommonSections.class);
 				FlyinSideBar flyin=PageFactory.initElements(BrowserInstance.driver, FlyinSideBar.class);
-				Thread.sleep(30000);
-				homepage.clickOnNavigationSubLink(2, 3);
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				Thread.sleep(5000);
+				homepage.clickOnNavigationSubLink(2,"Community",3,"Groups");//2,3
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				flyin.clickOnCross();
 				common.clickOnReadSharedDiscussedHead(3);
 				Assert.assertTrue(common.isreadSharedDiscussedHeadPresent(3));
@@ -123,15 +132,19 @@ public class BlogTestCases extends BaseSetup {
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				Blog blog= PageFactory.initElements(BrowserInstance.driver, Blog.class);
-				Thread.sleep(60000);
-				homepage.clickOnNavigationSubLink(2, 2);
-				Thread.sleep(30000);
-				blog.selectViewMode("Blog name");
-				Thread.sleep(30000);
-				String txt2= blog.getTextOfBlogSummaryHead(1);
-				blog.selectViewMode("Date created");
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				homepage.clickOnNavigationSubLink(2,"Community",2,"Blogs"); //2,2
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				//blog.clickOnOrderByCombo();
+				blog.selectOrderByComboOptions("Blog name");
+				Thread.sleep(50000);
 				String txt1= blog.getTextOfBlogSummaryHead(1);
+				//blog.clickOnOrderByCombo();
+				blog.selectOrderByComboOptions("Date created");
+				Thread.sleep(50000);
+				String txt2= blog.getTextOfBlogSummaryHead(1);
 				Assert.assertNotEquals(txt1, txt2);
 			}catch(Exception e){
 				LoggerInstance.logger.info("BlogTestCase OrderByDateCreated is failed. "+e);
@@ -150,14 +163,16 @@ public class BlogTestCases extends BaseSetup {
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				Blog blog= PageFactory.initElements(BrowserInstance.driver, Blog.class);
-				Thread.sleep(60000);
-				homepage.clickOnNavigationSubLink(2, 2);
-				Thread.sleep(30000);
-	//			blog.selectViewMode("Date created");
-	//			Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				homepage.clickOnNavigationSubLink(2,"Community",2,"Blogs");
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt1= blog.getTextOfBlogSummaryHead(1);
-				blog.selectViewMode("Blog name");
-				Thread.sleep(30000);
+				//blog.clickOnOrderByCombo();
+				blog.selectOrderByComboOptions("Blog name");
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt2= blog.getTextOfBlogSummaryHead(1);
 				Assert.assertNotEquals(txt1, txt2);
 			}catch(Exception e){
@@ -177,12 +192,16 @@ public class BlogTestCases extends BaseSetup {
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				Blog blog= PageFactory.initElements(BrowserInstance.driver, Blog.class);
-				Thread.sleep(60000);
-				homepage.clickOnNavigationSubLink(2, 2);
-				Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				homepage.clickOnNavigationSubLink(2,"Community",2,"Blogs");
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt1= blog.getTextOfBlogSummaryHead(1);
-				blog.selectViewMode("Trending");
-				Thread.sleep(30000);
+				//blog.clickOnOrderByCombo();
+				blog.selectOrderByComboOptions("Trending");
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt2= blog.getTextOfBlogSummaryHead(1);
 				Assert.assertNotEquals(txt1, txt2);
 			}catch(Exception e){
@@ -202,14 +221,16 @@ public class BlogTestCases extends BaseSetup {
 		try{
 				HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 				Blog blog= PageFactory.initElements(BrowserInstance.driver, Blog.class);
-				Thread.sleep(60000);
-				homepage.clickOnNavigationSubLink(2, 2);
-				Thread.sleep(30000);
-	//			blog.selectViewMode("Date created");
-	//			Thread.sleep(30000);
+				Thread.sleep(20000);
+				homepage.cancelLoading();
+				homepage.clickOnNavigationSubLink(2,"Community",2,"Blogs");
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt1= blog.getTextOfBlogSummaryHead(1);
-				blog.selectViewMode("Author name");
-				Thread.sleep(30000);
+				//blog.clickOnOrderByCombo();
+				blog.selectOrderByComboOptions("Author name");
+				Thread.sleep(20000);
+				homepage.cancelLoading();
 				String txt2= blog.getTextOfBlogSummaryHead(1);
 				Assert.assertNotEquals(txt1, txt2);
 			}catch(Exception e){

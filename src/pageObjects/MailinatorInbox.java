@@ -38,7 +38,7 @@ public class MailinatorInbox extends WebdriverUtility{
 	 * Function to click on the link for registration present in the mail.
 	 */
 	public RegistrationPage clickOnLinkForRegistration(){
-			driver.switchTo().frame("rendermail");
+		  driver.switchTo().frame("publicshowmaildivcontent");
 		  safeClick(linkForRegistration(), MEDIUMWAIT);
 		  switchToDefaultFrame();
 		  try{
@@ -70,7 +70,7 @@ public class MailinatorInbox extends WebdriverUtility{
 	 * Function to click on the link for generating new password.
 	 */
 	public ResetPasswordPage clickOnLinkForGenerateNewPassword(){
-			driver.switchTo().frame("rendermail");
+			driver.switchTo().frame("publicshowmaildivcontent");
 		  safeClick(linkForGenerateNewPassword(), MEDIUMWAIT);
 		 
 		  switchToDefaultFrame();

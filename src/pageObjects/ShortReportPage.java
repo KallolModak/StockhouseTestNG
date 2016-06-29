@@ -16,13 +16,13 @@ public class ShortReportPage extends WebdriverUtility{
 	
 	
 	/*
-	 * Locator for the portfolio text.
+	 * Locator for the short report text.
 	 */
 	public By reportListTxt(int i){
 		 return By.xpath("//div[@class='column span-3']/div[@class='hub-article-container']["+i+"]//a");
 	}
 	/*
-	 * Function to check presence of the portfolio tracker text.
+	 * Function to get text of short report text.
 	 */
 	public String getTextOfReportList(int i){
 		 return safeGetText(reportListTxt(i), MEDIUMWAIT);
