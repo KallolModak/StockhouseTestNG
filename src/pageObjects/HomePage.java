@@ -236,7 +236,8 @@ public class HomePage extends WebdriverUtility{
 	 */
 	private By marketInitialMarketOption(String name){
 		if(name.equalsIgnoreCase("market"))
-			return By.xpath("//div[@class='column span-2 last']/div[@class='custom-markets'][2]//div[contains(@id,'panelTab1')]/table/tbody/*[1]/*[1]/a");
+			return By.xpath("//div[@class='rtq-scrollpanel']/div[@class='rtq-grid-scroll']/div[@class='rtq-grid-bd']/div[@class='rtq-grid-row']//div[@class='rtq-grid-cell-ctn qs-common-ellipsis'][1]");
+			//return By.xpath("//div[@class='column span-2 last']/div[@class='custom-markets'][2]//div[contains(@id,'panelTab1')]/table/tbody/*[1]/*[1]/a");
 		else //initial market
 			return By.xpath("//div[@class='column span-2 last']/div[@class='custom-markets'][2]//div[contains(@id,'panelTab2')]/table/tbody/*[1]/*[1]/a");
 	}
@@ -244,7 +245,10 @@ public class HomePage extends WebdriverUtility{
 	 * Function to click on market or inital market option.
 	 */
 	public void clickOnMarketInitialMarketOption(String name){
-		safeClick(marketInitialMarketOption(name),MEDIUMWAIT);
+		//m//ouseHover(marketInitialMarketOption(name), SHORTWAIT);
+		BrowserInstance.driver.findElement(marketInitialMarketOption(name)).click();
+//	    BrowserInstance.driver.findElement(marketInitialMarketOption(name)).click();
+		//safeDblClick(marketInitialMarketOption(name),MEDIUMWAIT);
 	}
 	/*
 	 * Function to get attribute of option under initial market.
@@ -262,7 +266,7 @@ public class HomePage extends WebdriverUtility{
 	 * Locator for header after click on option under market.
 	 */
 	private By headerAfterMarketOptClick(){
-		return By.xpath("//div[@class='column span-6 last']/h1");
+		return By.xpath("//div[@class='company-header container-fluid']/h1");
 	}
 	/*
 	 * Function to get text of header after click on option under market.
@@ -965,7 +969,7 @@ public void clickOnNavigationSubLink(int num,String linktext,int sub,String subl
 	try{
 		Thread.sleep(10000);
 	}catch(Exception e){}
-	safeJavaScriptClick(NavigationSubLink(num,sub,sublinktext), MEDIUMWAIT);
+	safeClick(NavigationSubLink(num,sub,sublinktext), MEDIUMWAIT);
 }
 
 	/*
@@ -1080,5 +1084,8 @@ public void clickOnNavigationSubLink(int num,String linktext,int sub,String subl
 	public String getTextOfTitlesInNewsFocusBar(){
 		return safeGetText(newsFocusBar(), MEDIUMWAIT);
 	}
-	
+	public void marketframe(){
+		BrowserInstance.driver.switchTo().frame(driver.findElement(By.xpath("//div[@class='column span-2 last']/div[@class='custom-markets'][2]/div[@class='tab-content']//div[@class='frame-container']/iframe")));
+		BrowserInstance.driver.switchTo().frame(driver.findElement(By.xpath("//div[@id='iframe-container-widget']/iframe")));
+	}
 }
