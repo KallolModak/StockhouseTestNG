@@ -114,8 +114,10 @@ public class BaseSetup {
 		    		BrowserInstance.driver.quit();
 		    		}
 	    	BrowserInstance.driver=null;
+	    //	BrowserInstance.driver.close();
 	    	}catch(Exception e){
 	    		BrowserInstance.driver=null;
+	    		//BrowserInstance.driver.close();
 	    	}
 	    }
 

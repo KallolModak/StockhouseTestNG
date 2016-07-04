@@ -57,7 +57,7 @@ public class RegistryAndLogin extends BaseSetup {
 				Assert.assertEquals(homepage.getTxtOfLoggedinUser(), "Unverified");
 				//BrowserInstance.driver.get("https://www.mailinator.com/inbox2.jsp?public_to=testForForgotPassword#/#public_maildirdiv");
 				//BrowserInstance.driver.get("https://mailinator.com/inbox.jsp?public_to=mtest#/#public_maildirdiv"+num);
-				BrowserInstance.driver.get("https://www.mailinator.com/inbox2.jsp?public_to=mtest"+num+"#/#public_maildirdiv"+num);
+				BrowserInstance.driver.get("https://www.mailinator.com/inbox2.jsp?public_to=mtest"+num+"#/#public_maildirdiv");
 				Thread.sleep(20000);
 				MailinatorInbox mailinatorInbox = PageFactory.initElements(BrowserInstance.driver, MailinatorInbox.class);
 				mailinatorInbox.clickOnRegistractionRequest();
@@ -197,7 +197,7 @@ public class RegistryAndLogin extends BaseSetup {
 			Assert.assertEquals(homepage.getMailIdInWelcomeStockhousePopup(), mailId);
 			Assert.assertTrue(homepage.isResendConfirmationEmailOnWelcomeToStockhousePresent());
 			Assert.assertEquals(homepage.getTxtOfLoggedinUser(), "Unverified");
-			BrowserInstance.driver.get("https://www.mailinator.com/inbox2.jsp?public_to=mtest"+num+"#/#public_maildirdiv"+num);
+			BrowserInstance.driver.get("https://www.mailinator.com/inbox2.jsp?public_to=mtest"+num+"#/#public_maildirdiv");
 			//BrowserInstance.driver.get("https://mailinator.com/inbox2.jsp#/public_to=mtest"+num);
 			                          //  https://mailinator.com/inbox2.jsp#/#public_maildirdiv
 			//BrowserInstance.driver.get("https://mailinator.com/inbox.jsp?to=mtest"+num);

@@ -143,7 +143,7 @@ public class HomePageTC  extends BaseSetup {
 			 HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			 Thread.sleep(20000);
 			 homepage.cancelLoading();
-			// homepage.clickCommoditiesCurrencyTab("commodity");
+			 homepage.clickCommoditiesCurrencyTab("commodity");
 			 String href= homepage.getHrefOfCommodityCurrencyOption("commodity");
 			 homepage.clickOnCommodityCurrencyOption("commodity");
 			 Thread.sleep(20000);
@@ -204,14 +204,21 @@ public class HomePageTC  extends BaseSetup {
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(20000);
 			  homepage.cancelLoading();
+			  
 			  homepage.clickMarketsIntialMarketTab("market");
 			  homepage.cancelLoading();
+			  homepage.marketframe();
 			  String txt1=homepage.getTextOfMarketOption("market");
 			  homepage.clickOnMarketInitialMarketOption("market");
+			  homepage.switchToDefaultFrame();
 			  Thread.sleep(20000);
 			  homepage.cancelLoading();
+			  homepage.switchToNewWindow();
 			  String txt2=homepage.getTextOfHeaderAfterMarketOptClick();
+			  System.out.println("txt2==="+txt2);
+			  System.out.println("txt1==="+txt1);
 			  Assert.assertEquals(txt2, txt1);
+			  
 			  //table rows check
 			  for(int i=1;i<=3;i++){
 
@@ -303,31 +310,31 @@ public class HomePageTC  extends BaseSetup {
 			Assert.fail("Test case Columnists is failed. "+e);
 		}
 	}// End of Columnists()
-	/*
-	 * Test case for breaking news block.
-	 */
-	@Test(priority=11)
-	public void BreakingNews()
-	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 11 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		try{
-			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			  Thread.sleep(20000);
-			  homepage.cancelLoading();
-			  	int num=homepage.getSizeOfBreakingNewsBlock();
-			  	Assert.assertNotEquals(num, 0);
-			  	homepage.clickOnBreakingNewsLinks(1);
-			  	Thread.sleep(20000);
-			  	homepage.cancelLoading();
-			 if(BrowserInstance.driver.getCurrentUrl().contains("news"))
-			 	Assert.assertEquals(1, 1);
-			 else
-				 Assert.assertEquals(1, 0);
-		}catch(Exception e){
-			LoggerInstance.logger.info("Test case BreakingNews is failed. "+e); 
-			Assert.fail("Test case BreakingNews is failed. "+e);
-		}
-	}// End of BreakingNews()
+//	/*
+//	 * Test case for breaking news block.
+//	 */
+//	@Test(priority=11)
+//	public void BreakingNews()
+//	{
+//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 11 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//		try{
+//			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
+//			  Thread.sleep(20000);
+//			  homepage.cancelLoading();
+//			  	int num=homepage.getSizeOfBreakingNewsBlock();
+//			  	Assert.assertNotEquals(num, 0);
+//			  	homepage.clickOnBreakingNewsLinks(1);
+//			  	Thread.sleep(20000);
+//			  	homepage.cancelLoading();
+//			 if(BrowserInstance.driver.getCurrentUrl().contains("news"))
+//			 	Assert.assertEquals(1, 1);
+//			 else
+//				 Assert.assertEquals(1, 0);
+//		}catch(Exception e){
+//			LoggerInstance.logger.info("Test case BreakingNews is failed. "+e); 
+//			Assert.fail("Test case BreakingNews is failed. "+e);
+//		}
+//	}// End of BreakingNews()
 	/*
 	 * Test case for Interviews block.
 	 */
@@ -363,7 +370,7 @@ public class HomePageTC  extends BaseSetup {
 			 int num=homepage.getSizeOfFeaturedNews();
 			 Assert.assertNotEquals(num, 0);
 			 String href=homepage.getHrefOfFeaturedNewsLinks(1);
-			 System.out.println("href===="+href);
+			// System.out.println("href===="+href);
 			 homepage.clickOnFeaturedNewsLinks(1);
 			 try{
 				 Thread.sleep(5000);

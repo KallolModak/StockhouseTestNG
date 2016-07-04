@@ -258,14 +258,9 @@ public class TopMenuTestcases extends BaseSetup {
 				Assert.assertEquals(1,0);
 			PortfolioPage portfolio = PageFactory.initElements(BrowserInstance.driver, PortfolioPage.class);
 			Thread.sleep(20000);
-			System.out.println("portfolio.isPortfolioTxtPresent()==="+portfolio.isPortfolioTxtPresent());
-			//Assert.assertTrue(portfolio.isPortfolioTxtPresent());
-//			System.out.println("portfolio.isPortfolioTxtPresent()==="+portfolio.isPortfolioTxtPresent());
-			if(portfolio.isPortfolioTxtPresent()){
-				Assert.assertEquals(1, 1);
-			}else{
-				Assert.assertEquals(1,0);
-			}
+			boolean start=portfolio.isPortfolioTxtPresent();
+			//System.out.println("portfolio.isPortfolioTxtPresent()==="+start);
+			Assert.assertTrue(start);
 			
 		
 		}catch(Exception e){

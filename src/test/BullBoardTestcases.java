@@ -385,58 +385,58 @@ String first=bullboardPage.getTextOfPostsHead(1);
 		   		Assert.fail("Bull board list by OpinionLink failed. "+e);
 	   }//End catch(Exception e)
 	}// End public void OpinionLink()
-	 /*
-	  * Check the bull board page navigation links Level II.
-	  */
-	 @Test(priority=12)
-	 public void LevelLink()
-	 {
-		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 12 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		 try{
-			 Bullboard bullboardPage = baseState();
-			// Thread.sleep(80000);
-			  bullboardPage.cancelLoading();
-			 String[] txt=bullboardPage.getTextOfBBNavLink("Level II").split(" ");
-			 bullboardPage.clickOnBBNavLink("Level II");
-			 Thread.sleep(30000);
-			  bullboardPage.cancelLoading();
-			 String url=BrowserInstance.driver.getCurrentUrl();
-			
-			 if(url.contains(txt[0].toLowerCase()+"2/t.bb/blackberry"))
-				 Assert.assertEquals(1, 1);
-			 else
-				 Assert.assertEquals(1, 0);
-		  }catch(Exception e){
-		   		LoggerInstance.logger.info("Bull board list by LevelLink failed. "+e);
-		   		Assert.fail("Bull board list by LevelLink failed. "+e);
-	   }//End catch(Exception e)
-	}// End public void LevelLink()
-	 /*
-	  * Check the bull board page navigation links ChartsLink.
-	  */
-	 @Test(priority=13)
-	 public void ChartsLink()
-	 {
-		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 13 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		 try{
-			 Bullboard bullboardPage = baseState();
-			// Thread.sleep(80000);
-			  bullboardPage.cancelLoading();
-			 String txt=bullboardPage.getTextOfBBNavLink("Charts");
-			 bullboardPage.clickOnBBNavLink("Charts");
-			 Thread.sleep(30000);
-			  bullboardPage.cancelLoading();
-			 String url=BrowserInstance.driver.getCurrentUrl();
-			
-			 if(url.contains(txt.toLowerCase()+"/t.bb/blackberry"))
-				 Assert.assertEquals(1, 1);
-			 else
-				 Assert.assertEquals(1, 0);
-		  }catch(Exception e){
-		   		LoggerInstance.logger.info("Bull board list by ChartsLink failed. "+e);
-		   		Assert.fail("Bull board list by ChartsLink failed. "+e);
-	   }//End catch(Exception e)
-	}// End public void ChartsLink()
+//	 /*
+//	  * Check the bull board page navigation links Level II.
+//	  */
+//	 @Test(priority=12)
+//	 public void LevelLink()
+//	 {
+//		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 12 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//		 try{
+//			 Bullboard bullboardPage = baseState();
+//			// Thread.sleep(80000);
+//			  bullboardPage.cancelLoading();
+//			 String[] txt=bullboardPage.getTextOfBBNavLink("Level II").split(" ");
+//			 bullboardPage.clickOnBBNavLink("Level II");
+//			 Thread.sleep(30000);
+//			  bullboardPage.cancelLoading();
+//			 String url=BrowserInstance.driver.getCurrentUrl();
+//			
+//			 if(url.contains(txt[0].toLowerCase()+"2/t.bb/blackberry"))
+//				 Assert.assertEquals(1, 1);
+//			 else
+//				 Assert.assertEquals(1, 0);
+//		  }catch(Exception e){
+//		   		LoggerInstance.logger.info("Bull board list by LevelLink failed. "+e);
+//		   		Assert.fail("Bull board list by LevelLink failed. "+e);
+//	   }//End catch(Exception e)
+//	}// End public void LevelLink()
+//	 /*
+//	  * Check the bull board page navigation links ChartsLink.
+//	  */
+//	 @Test(priority=13)
+//	 public void ChartsLink()
+//	 {
+//		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 13 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//		 try{
+//			 Bullboard bullboardPage = baseState();
+//			// Thread.sleep(80000);
+//			  bullboardPage.cancelLoading();
+//			 String txt=bullboardPage.getTextOfBBNavLink("Charts");
+//			 bullboardPage.clickOnBBNavLink("Charts");
+//			 Thread.sleep(30000);
+//			  bullboardPage.cancelLoading();
+//			 String url=BrowserInstance.driver.getCurrentUrl();
+//			
+//			 if(url.contains(txt.toLowerCase()+"/t.bb/blackberry"))
+//				 Assert.assertEquals(1, 1);
+//			 else
+//				 Assert.assertEquals(1, 0);
+//		  }catch(Exception e){
+//		   		LoggerInstance.logger.info("Bull board list by ChartsLink failed. "+e);
+//		   		Assert.fail("Bull board list by ChartsLink failed. "+e);
+//	   }//End catch(Exception e)
+//	}// End public void ChartsLink()
 	 /*
 	  * Check the bull board page navigation links ProfileLink.
 	  */
@@ -542,57 +542,57 @@ String first=bullboardPage.getTextOfPostsHead(1);
 		   		Assert.fail("Bull board list by PriceHistoryLink failed. "+e);
 	   }//End catch(Exception e)
 	}// End public void PriceHistoryLink()
-	 /*
-	  * Check the bull board page navigation links AnalystsLink.
-	  */
-	 @Test(priority=18)
-	 public void AnalystsLink()
-	 {
-		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 18 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		 try{
-			 Bullboard bullboardPage = baseState();
-			// Thread.sleep(80000);
-			  bullboardPage.cancelLoading();
-			 String txt=bullboardPage.getTextOfBBNavLink("Analysts");
-			 bullboardPage.clickOnBBNavLink("Analysts");
-			 Thread.sleep(30000);
-			 bullboardPage.cancelLoading();
-			 String url=BrowserInstance.driver.getCurrentUrl();
-			
-			 if(url.contains(txt.toLowerCase()+"/t.bb/blackberry"))
-				 Assert.assertEquals(1, 1);
-			 else
-				 Assert.assertEquals(1, 0);
-		  }catch(Exception e){
-		   		LoggerInstance.logger.info("Bull board list by AnalystsLink failed. "+e);
-		   		Assert.fail("Bull board list by AnalystsLink failed. "+e);
-	   }//End catch(Exception e)
-	}// End public void AnalystsLink()
-	 /*
-	  * Check the bull board page navigation links EarningsLink.
-	  */
-	 @Test(priority=19)
-	 public void EarningsLink()
-	 {
-		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 19 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		 try{
-			 Bullboard bullboardPage = baseState();
-			// Thread.sleep(80000);
-			  bullboardPage.cancelLoading();
-			 String txt=bullboardPage.getTextOfBBNavLink("Earnings");
-			 bullboardPage.clickOnBBNavLink("Earnings");
-			 Thread.sleep(30000);
-			  bullboardPage.cancelLoading();
-			 String url=BrowserInstance.driver.getCurrentUrl();
-			 if(url.contains(txt.toLowerCase()+"/t.bb/blackberry"))
-				 Assert.assertEquals(1, 1);
-			 else
-				 Assert.assertEquals(1, 0);
-		  }catch(Exception e){
-		   		LoggerInstance.logger.info("Bull board list by EarningsLink failed. "+e);
-		   		Assert.fail("Bull board list by EarningsLink failed. "+e);
-	   }//End catch(Exception e)
-	}// End public void EarningsLink()
+//	 /*
+//	  * Check the bull board page navigation links AnalystsLink.
+//	  */
+//	 @Test(priority=18)
+//	 public void AnalystsLink()
+//	 {
+//		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 18 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//		 try{
+//			 Bullboard bullboardPage = baseState();
+//			// Thread.sleep(80000);
+//			  bullboardPage.cancelLoading();
+//			 String txt=bullboardPage.getTextOfBBNavLink("Analysts");
+//			 bullboardPage.clickOnBBNavLink("Analysts");
+//			 Thread.sleep(30000);
+//			 bullboardPage.cancelLoading();
+//			 String url=BrowserInstance.driver.getCurrentUrl();
+//			
+//			 if(url.contains(txt.toLowerCase()+"/t.bb/blackberry"))
+//				 Assert.assertEquals(1, 1);
+//			 else
+//				 Assert.assertEquals(1, 0);
+//		  }catch(Exception e){
+//		   		LoggerInstance.logger.info("Bull board list by AnalystsLink failed. "+e);
+//		   		Assert.fail("Bull board list by AnalystsLink failed. "+e);
+//	   }//End catch(Exception e)
+//	}// End public void AnalystsLink()
+//	 /*
+//	  * Check the bull board page navigation links EarningsLink.
+//	  */
+//	 @Test(priority=19)
+//	 public void EarningsLink()
+//	 {
+//		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 19 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//		 try{
+//			 Bullboard bullboardPage = baseState();
+//			// Thread.sleep(80000);
+//			  bullboardPage.cancelLoading();
+//			 String txt=bullboardPage.getTextOfBBNavLink("Earnings");
+//			 bullboardPage.clickOnBBNavLink("Earnings");
+//			 Thread.sleep(30000);
+//			  bullboardPage.cancelLoading();
+//			 String url=BrowserInstance.driver.getCurrentUrl();
+//			 if(url.contains(txt.toLowerCase()+"/t.bb/blackberry"))
+//				 Assert.assertEquals(1, 1);
+//			 else
+//				 Assert.assertEquals(1, 0);
+//		  }catch(Exception e){
+//		   		LoggerInstance.logger.info("Bull board list by EarningsLink failed. "+e);
+//		   		Assert.fail("Bull board list by EarningsLink failed. "+e);
+//	   }//End catch(Exception e)
+//	}// End public void EarningsLink()
 	 /*
 	  * Check the bull board page navigation links InsidersLink.
 	  */

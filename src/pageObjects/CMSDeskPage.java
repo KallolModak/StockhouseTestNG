@@ -212,7 +212,7 @@ public class CMSDeskPage extends WebdriverUtility{
 	 * Function to click on add symbol button.
 	 */
 	public void clickOnAddSymbol(String option, int num){
-		safeClick(symbolTextAndButton(option, num), MEDIUMWAIT);
+		safeJavaScriptClick(symbolTextAndButton(option, num), MEDIUMWAIT);
 	}
 	/*
 	 * Locator for tags text-box and button.
@@ -249,7 +249,7 @@ public class CMSDeskPage extends WebdriverUtility{
 	 * Function to click on tags selecting button.
 	 */
 	public void clickOnTagsSelect(String option, int num){
-		safeClick(tagsTextAndButton(option, num), MEDIUMWAIT);
+		safeJavaScriptClick(tagsTextAndButton(option, num), MEDIUMWAIT);
 	}
 	
 	/*
@@ -310,7 +310,10 @@ public class CMSDeskPage extends WebdriverUtility{
 	 * Function to click on save button.
 	 */
 	public void clickOnSaveButton(){
-		safeClick(saveButton(), MEDIUMWAIT);
+//		switchToDefaultFrame();
+//		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class='ui-layout-pane ui-layout-pane-center']")));
+		//BrowserInstance.driver.switchTo().frame( BrowserInstance.driver.findElement(By.id("m_c_contentview")));
+		safeJavaScriptClick(saveButton(), MEDIUMWAIT);
 	}
 	/*
 	 * Locator for tools in menu bar.
