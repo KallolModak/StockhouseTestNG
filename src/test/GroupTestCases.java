@@ -106,6 +106,7 @@ public class GroupTestCases extends BaseSetup {
 				FlyinSideBar flyin=PageFactory.initElements(BrowserInstance.driver, FlyinSideBar.class);
 				Thread.sleep(20000);
 				homepage.cancelLoading();
+				Thread.sleep(10000);
 				homepage.clickOnNavigationSubLink(2,"Community",3,"Groups");//2,3
 				Thread.sleep(20000);
 				homepage.cancelLoading();

@@ -2,6 +2,7 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 
+import common.BrowserInstance;
 import common.WebdriverUtility;
 
 public class BondsPage extends WebdriverUtility{
@@ -17,7 +18,7 @@ public class BondsPage extends WebdriverUtility{
 	 *Locator for Bonds table.
 	 */
 	private By bondsTable(){
-		return By.xpath("//div[@class='custom-watch']/table");
+		return By.xpath("//div[@id='bmcontainer']");
 	}
 	/*
 	 * Function to check the presence of Bonds table.
@@ -25,5 +26,10 @@ public class BondsPage extends WebdriverUtility{
 	public boolean isBondsTablePresent(){
 		return isElementPresent(bondsTable(),MEDIUMWAIT);
 	}
-
+	/*
+	 * Locator for iframe for full page.
+	 */
+	public void switchToFrameInBond(){
+		BrowserInstance.driver.switchTo().frame(BrowserInstance.driver.findElement(By.xpath("//iframe[contains(@id,'QSAPI_IFRAME')]")));
+	}
 }

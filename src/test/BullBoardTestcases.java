@@ -323,8 +323,8 @@ String first=bullboardPage.getTextOfPostsHead(1);
 			 Thread.sleep(30000);
 			  bullboardPage.cancelLoading();
 			 String url=BrowserInstance.driver.getCurrentUrl();
-			
-			 if(url.contains(txt.toLowerCase()+"/t.bb/blackberry"))
+			 if(url.contains("symbol=t.bb"))//symbol=t.bb
+			// if(url.contains(txt.toLowerCase()+"/t.bb/blackberry"))//symbol=t.bb
 				 Assert.assertEquals(1, 1);
 			 else
 				 Assert.assertEquals(1, 0);
@@ -735,7 +735,6 @@ String first=bullboardPage.getTextOfPostsHead(1);
 	public Bullboard baseState(){
 		BrowserInstance.driver.get(ReadInputData.HM_inputData.get("URL")+"companies/bullboard/t.bb/blackberry");
 		 try{Thread.sleep(20000);}catch(Exception e){}
-
 		//WebdriverUtility.waitForPageLoaded();
 		Bullboard bullboardPage = PageFactory.initElements(BrowserInstance.driver, Bullboard.class);
 		return bullboardPage;

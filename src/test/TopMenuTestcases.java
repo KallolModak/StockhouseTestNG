@@ -250,7 +250,7 @@ public class TopMenuTestcases extends BaseSetup {
 
 			Assert.assertEquals(homepage.getTxtOfLoggedinUser(), "testForLogin1");//"arsalan7u");
 			homepage.clickOnTopMenuOptions(3); //My portfolio icon
-			Thread.sleep(20000);
+			Thread.sleep(30000);
 			String url=BrowserInstance.driver.getCurrentUrl();
 			if(url.contains("portfolio"))
 				Assert.assertEquals(1,1);

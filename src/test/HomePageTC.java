@@ -214,22 +214,26 @@ public class HomePageTC  extends BaseSetup {
 			  Thread.sleep(20000);
 			  homepage.cancelLoading();
 			  homepage.switchToNewWindow();
-			  String txt2=homepage.getTextOfHeaderAfterMarketOptClick();
-			  System.out.println("txt2==="+txt2);
+			  String txt2[]=homepage.getTextOfHeaderAfterMarketOptClick().split("^");
+			  System.out.println("txt2==="+txt2[0]);
 			  System.out.println("txt1==="+txt1);
-			  Assert.assertEquals(txt2, txt1);
+			  if(txt2[0].contains(txt1)){
+			  Assert.assertEquals(1, 1);}
+			  else{
+				  Assert.assertEquals(1, 0);	  
+			  }
 			  
 			  //table rows check
-			  for(int i=1;i<=3;i++){
-
-				  Assert.assertNotNull(homepage.getTextOfTableAfterMarketOptClick(i, 1));
-				  Assert.assertNotNull(homepage.getTextOfTableAfterMarketOptClick(i, 2));
-				  Assert.assertNotNull(homepage.getTextOfTableAfterMarketOptClick(i, 3));
-				  Assert.assertNotNull(homepage.getTextOfTableAfterMarketOptClick(i, 5));
-				  Assert.assertNotNull(homepage.getTextOfTableAfterMarketOptClick(i, 6));
-				  Assert.assertNotNull(homepage.getTextOfTableAfterMarketOptClick(i, 7));
-				  Assert.assertNotNull(homepage.getTextOfTableAfterMarketOptClick(i, 8));
-			  }
+//			  for(int i=1;i<=3;i++){
+//
+//				  Assert.assertNotNull(homepage.getTextOfTableAfterMarketOptClick(i, 1));
+//				  Assert.assertNotNull(homepage.getTextOfTableAfterMarketOptClick(i, 2));
+//				  Assert.assertNotNull(homepage.getTextOfTableAfterMarketOptClick(i, 3));
+//				  Assert.assertNotNull(homepage.getTextOfTableAfterMarketOptClick(i, 5));
+//				  Assert.assertNotNull(homepage.getTextOfTableAfterMarketOptClick(i, 6));
+//				  Assert.assertNotNull(homepage.getTextOfTableAfterMarketOptClick(i, 7));
+//				  Assert.assertNotNull(homepage.getTextOfTableAfterMarketOptClick(i, 8));
+//			  }
 		}catch(Exception e){
 			LoggerInstance.logger.info("Test case Market is failed. "+e); 
 			Assert.fail("Test case Market is failed. "+e);
@@ -398,7 +402,7 @@ public class HomePageTC  extends BaseSetup {
 			  Thread.sleep(20000);
 			  homepage.cancelLoading();
 			 int num=homepage.getSizeOfOpinionAndAnalysis();
-			 System.out.println("num==="+num);
+			 //System.out.println("num==="+num);
 			 Assert.assertNotEquals(num, 0);
 			 homepage.clickOnOpinionAndAnalysisLinks(1);
 			 Thread.sleep(20000);

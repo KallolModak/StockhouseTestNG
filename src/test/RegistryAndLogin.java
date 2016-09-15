@@ -131,7 +131,8 @@ public class RegistryAndLogin extends BaseSetup {
 			Thread.sleep(20000);
 			registerPage.cancelLoading();
 			Assert.assertEquals("Your current email address has not been verified yet. Your access to this feature has been restricted.", bullboard.getTxtForUnverifiedUser());
-			BrowserInstance.driver.get("https://mailinator.com/inbox.jsp?to=mtest"+num);
+			BrowserInstance.driver.get("https://www.mailinator.com/inbox2.jsp?public_to=mtest"+num+"#/#public_maildirdiv");
+			//BrowserInstance.driver.get("https://mailinator.com/inbox.jsp?to=mtest"+num);
 			Thread.sleep(30000);
 			MailinatorInbox mailinatorInbox = PageFactory.initElements(BrowserInstance.driver, MailinatorInbox.class);
 			mailinatorInbox.clickOnRegistractionRequest();
@@ -282,7 +283,6 @@ public class RegistryAndLogin extends BaseSetup {
 //		try{
 //			BrowserInstance.driver.get(ReadInputData.HM_inputData.get("URL")+"login");
 //			Thread.sleep(20000);
-//			
 //			LoginPage loginPage = PageFactory.initElements(BrowserInstance.driver, LoginPage.class);
 //			String username=ReadInputData.HM_inputData.get("UserIdForHomePage");
 //			String password=ReadInputData.HM_inputData.get("Password");
@@ -718,6 +718,7 @@ public class RegistryAndLogin extends BaseSetup {
 				String password=ReadInputData.HM_inputData.get("Password");
 				Thread.sleep(30000);
 				mailinator.switchToNewWindow();
+				System.out.println("password==="+password);
 				resetPassword.putTextInNewPasswordBox(password);
 				resetPassword.putTextInConfirmNewPasswordBox(password);
 				resetPassword.clickOnResetButton();
@@ -763,6 +764,7 @@ public class RegistryAndLogin extends BaseSetup {
 			Thread.sleep(30000);
 			loginPage.EnterUserName("testForForgotPassword@mailinator.com");
 			loginPage.clickOnForgotPassword();
+
 			Thread.sleep(10000);
 			loginPage.putResetPwdUserName("testForForgotPassword@mailinator.com");
 			loginPage.clickOnSendPassword();

@@ -245,8 +245,12 @@ public class HomePage extends WebdriverUtility{
 	 * Function to click on market or inital market option.
 	 */
 	public void clickOnMarketInitialMarketOption(String name){
+		try{
 		//m//ouseHover(marketInitialMarketOption(name), SHORTWAIT);
+		//BrowserInstance.driver.findElement(marketInitialMarketOption(name)).click();
+		safeJavaScriptClick(marketInitialMarketOption(name),SHORTWAIT);
 		BrowserInstance.driver.findElement(marketInitialMarketOption(name)).click();
+		}catch(Exception e){}
 //	    BrowserInstance.driver.findElement(marketInitialMarketOption(name)).click();
 		//safeDblClick(marketInitialMarketOption(name),MEDIUMWAIT);
 	}
@@ -965,11 +969,13 @@ private By NavigationSubLink(int num,int sub,String sublinktext){
  * Function to make click on the navigation links.
  */
 public void clickOnNavigationSubLink(int num,String linktext,int sub,String sublinktext){
-	mouseHover(NavigationLink(num,linktext), MEDIUMWAIT);
 	try{
-		Thread.sleep(10000);
+	mouseHover(NavigationLink(num,linktext), MEDIUMWAIT);
+	
+		Thread.sleep(9000);
+		safeJavaScriptClick(NavigationSubLink(num,sub,sublinktext), MEDIUMWAIT);
+	//safeJavaScriptClick(NavigationSubLink(num,sub,sublinktext), MEDIUMWAIT);
 	}catch(Exception e){}
-	safeClick(NavigationSubLink(num,sub,sublinktext), MEDIUMWAIT);
 }
 
 	/*

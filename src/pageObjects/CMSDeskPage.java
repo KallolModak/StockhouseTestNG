@@ -92,7 +92,10 @@ public class CMSDeskPage extends WebdriverUtility{
 	 * Function to click on "!Content Item" appearing after new button click.
 	 */
 	public void clickOnContentItem(){
-		BrowserInstance.driver.findElement(contentItem()).click();
+		try{
+        safeJavaScriptClick(contentItem(), MEDIUMWAIT);
+		//BrowserInstance.driver.findElement(contentItem()).click();
+		}catch(Exception e){}
 	}
 	/*
 	 * Locator for 

@@ -147,6 +147,7 @@ public class NavigationTestCases extends BaseSetup {
 			homepage.cancelLoading();
 			homepage.clickOnNavigationSubLink(6,"Portfolio",1,"Stockstream");//6,"Portfolio",1,"Stockstream"
 			homepage.cancelLoading();
+			Thread.sleep(20000);
 			homepage.switchToNewWindow();
 			StockStreamPage stockStream=  PageFactory.initElements(BrowserInstance.driver, StockStreamPage.class);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio/stockstream-promo");
@@ -857,10 +858,12 @@ public class NavigationTestCases extends BaseSetup {
 			BondsPage bonds= PageFactory.initElements(BrowserInstance.driver, BondsPage.class);
 			Thread.sleep(20000);
 			homepage.cancelLoading();
+			Thread.sleep(10000);
 			homepage.clickOnNavigationSubLink(3,"Markets",5,"Bonds");//3,5
 			
 			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/bonds");
+		    bonds.switchToFrameInBond();
 			Assert.assertTrue(bonds.isBondsTablePresent());
 			
 			}catch(Exception e){
@@ -1006,7 +1009,8 @@ public class NavigationTestCases extends BaseSetup {
 			
 			Thread.sleep(25000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/stocks/amex");
-			Assert.assertTrue(amex.isAMEXVolActivitiesHeadPresent());
+			boolean text=amex.isAMEXVolActivitiesHeadPresent();
+			Assert.assertTrue(text);
 			}catch(Exception e){
 				LoggerInstance.logger.info("Test case AMEXLink is failed. "+e); 
 				Assert.fail("Test case AMEXLink is failed. "+e);
