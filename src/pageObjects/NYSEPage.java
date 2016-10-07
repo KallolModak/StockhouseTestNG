@@ -17,7 +17,7 @@ public class NYSEPage extends WebdriverUtility{
 	 * Locator for NYSE volume activities table header.
 	 */
 	private By NYSEVolActivities(){
-		return By.xpath("//td[text()='NYSE Volume Actives']");
+		return By.xpath("//h1[contains(text(),'NYSE')]");
 	}
 	/*
 	 * Function to check the presence of NYSE volume activities table header.

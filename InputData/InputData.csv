@@ -1,2 +1,8 @@
 URL,http://test.stockhouse.com/
-BrowserName,FIREFOX
+BrowserName,CHROME
+UserId,kallol1
+Password,M()dak12
+UserIdForQA,usrQA1
+UserIdForArsalan,arsalan7u@mailinator.com
+PasswordForArsalan,arfosh123
+UserIdForHomePage,testForLogin@mailinator.com

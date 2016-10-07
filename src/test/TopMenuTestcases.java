@@ -259,7 +259,6 @@ public class TopMenuTestcases extends BaseSetup {
 			PortfolioPage portfolio = PageFactory.initElements(BrowserInstance.driver, PortfolioPage.class);
 			Thread.sleep(20000);
 			boolean start=portfolio.isPortfolioTxtPresent();
-			//System.out.println("portfolio.isPortfolioTxtPresent()==="+start);
 			Assert.assertTrue(start);
 			
 		
@@ -279,8 +278,6 @@ public class TopMenuTestcases extends BaseSetup {
 			homepage.typePasswordOnSignInPopup(password);
 			homepage.clickOnSignInBtnOnSigninPopup();
 			Thread.sleep(20000);
-			//Assert.assertEquals(homepage.getTxtOfLoggedinUser(), "kallol1");
-		
 		}catch(Exception e){}
 	}
 }

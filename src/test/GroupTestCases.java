@@ -322,7 +322,6 @@ public class GroupTestCases extends BaseSetup {
 				groupPage.clickOnSubmitFilterBySectors();
 				Assert.assertTrue(groupPage.isFilterSectorOptionOnPagePresent(txt2));
 				Thread.sleep(20000);
-				//Assert.assertEquals(txt2, "Energy");
 				String txt3= groupPage.getTextOfVariousGroupsHead(1);
 				Assert.assertNotEquals(txt1, txt3);
 			}catch(Exception e){

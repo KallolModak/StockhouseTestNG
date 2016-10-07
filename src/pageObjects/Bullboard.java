@@ -53,12 +53,6 @@ public class Bullboard extends WebdriverUtility {
 		return By.xpath("//div[@class='bullboard-threads-filter row']/div[@class='col-md-9']/select");
 		//return By.xpath("//div[@class='bullboard-threads-filter row']/div[@class='col-md-9']/select/option["+opt+"]");
 	}
-//	/*
-//	 * Function to click on combo selector.
-//	 */
-//	public void clickOnComboBox(int opt){
-//		safeClick(modeSelectCombo(opt), MEDIUMWAIT);
-//	}
 
 	public void selectViewMode(String modeSelectCombo){
 		selectFromDropDown(modeSelectCombo, BrowserInstance.driver.findElement(modeSelectCombo()));
@@ -73,18 +67,6 @@ public class Bullboard extends WebdriverUtility {
 		return safeGetText(txtOfPostDate(rowNumber), MEDIUMWAIT);
 		
 	}
-//	/*
-//	 * Locator for messages already posted.
-//	 */
-//	private By postedMessage(){
-//		return By.xpath("//div[@class='post-list']/div");
-//	}
-//	/*
-//	 * Function to get size of messages already posted.
-//	 */
-//	public int getSizeOfPostedMessage(){
-//		return driver.findElements(postedMessage()).size();
-//	}
 	/*
 	 * Locator for messages already posted.
 	 */

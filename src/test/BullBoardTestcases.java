@@ -39,17 +39,11 @@ public class BullBoardTestcases extends BaseSetup {
 			Thread.sleep(20000);
 			bullboardPage.cancelLoading();
 			BrowserInstance.driver.get(ReadInputData.HM_inputData.get("URL")+"/companies/bullboard/t.bb/blackberry?rt=5");
-			//WebdriverUtility.waitForPageLoaded();
 			Thread.sleep(20000);
 			bullboardPage.cancelLoading();
 			for(int i=1;i<=10;i++){
-				//LoggerInstance.logger.info(i+" rating is: "+bullboardPage.getNumberOfStarts(i+""));
 				if(bullboardPage.isStarImagePresent(i)){
-					//String stars=bullboardPage.getNumberOfStarts(i);
-					//if(stars.equalsIgnoreCase("5 stars")){
 						Assert.assertEquals("5 stars",bullboardPage.getNumberOfStarts(i));
-						//Assert.assertEquals(1,1);
-					//}
 				}
 			}
 			}catch(Exception e){
@@ -68,7 +62,6 @@ public class BullBoardTestcases extends BaseSetup {
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
 			homepage.cancelLoading();
-			//WebdriverUtility.waitForPageLoaded();
 			homepage.clickOnSignIn();
 			Thread.sleep(10000);
 			homepage.cancelLoading();
@@ -79,12 +72,10 @@ public class BullBoardTestcases extends BaseSetup {
 			homepage.clickOnSignInBtnOnSigninPopup();
 			Thread.sleep(20000);
 			homepage.cancelLoading();
-			//WebdriverUtility.waitForPageLoaded();
 			BrowserInstance.driver.get(ReadInputData.HM_inputData.get("URL")+"/companies/bullboard/testj/test-co");
 			Thread.sleep(20000);
 			homepage.cancelLoading();
 			Bullboard bullboardPage = PageFactory.initElements(BrowserInstance.driver, Bullboard.class);
-			//int msg1=bullboardPage.getSizeOfPostedMessage();
 			int randomNum=JavaUtility.randInt(1, 100);
 			bullboardPage.clickOnNewPostButton();// NEW THREAD
 			Thread.sleep(20000);
@@ -94,8 +85,6 @@ public class BullBoardTestcases extends BaseSetup {
 			Thread.sleep(20000);
 			bullboardPage.clickOnPost(4);
 			Thread.sleep(20000);
-			//bullboardPage.cancelLoading();
-			//int msg2=bullboardPage.getSizeOfPostedMessage();
 			String head=bullboardPage.getTextOfPostedMessageHead(1);
 			Assert.assertEquals("Test"+randomNum, head);
 		
@@ -124,9 +113,7 @@ public class BullBoardTestcases extends BaseSetup {
 			homepage.clickOnSignInBtnOnSigninPopup();
 			Thread.sleep(20000);
 			homepage.cancelLoading();
-			//WebdriverUtility.waitForPageLoaded();
 			BrowserInstance.driver.get(ReadInputData.HM_inputData.get("URL")+"companies/bullboard/testj/test-co");
-			//WebdriverUtility.waitForPageLoaded();
 			Bullboard bullboardPage = PageFactory.initElements(BrowserInstance.driver, Bullboard.class);
 			Thread.sleep(20000);
 			bullboardPage.cancelLoading();
@@ -140,9 +127,6 @@ public class BullBoardTestcases extends BaseSetup {
 					bullboardPage.cancelLoading();
 				}
 			}
-			//Thread.sleep(20000);
-			/* **** Commented as this message is not appearing now.******* */
-			//Assert.assertEquals("Bullboard has been added to your favorites", bullboardPage.getMessageAfterFavouriteOperations());
 			Assert.assertEquals("Remove From Favorites",bullboardPage.getMessageOfFavouriteButton());
 			for(int i=1;i<=10;i++){
 				if (bullboardPage.getMessageOfFavouriteButton().equals("Add To Favorites")){
@@ -154,8 +138,6 @@ public class BullBoardTestcases extends BaseSetup {
 					bullboardPage.cancelLoading();
 				}
 			}
-			/* ****** Commented as this message is not appearing now.******* */
-			//Assert.assertEquals("Bullboard has been removed to your favorites", bullboardPage.getMessageAfterFavouriteOperations());
 			Assert.assertEquals("Add To Favorites", bullboardPage.getMessageOfFavouriteButton());
 			
 			}catch(Exception e){
@@ -172,15 +154,12 @@ public class BullBoardTestcases extends BaseSetup {
 		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 4 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 	  try{
 		  Bullboard bullboardPage = baseState();
-		  //Thread.sleep(20000);
 		  bullboardPage.cancelLoading();
-		  //bullboardPage.selectViewMode("Flat - newest to oldest",2);
 		  bullboardPage.selectViewMode("Flat - newest to oldest");
 		  Thread.sleep(30000);
 		  bullboardPage.cancelLoading();
 		  String first=bullboardPage.getTextOfPostsHead(1);
 			 bullboardPage.selectViewMode("Flat - oldest to newest");
-			 //bullboardPage.selectViewMode("Flat - oldest to newest",3);
 			 Thread.sleep(30000);
 			  bullboardPage.cancelLoading();
 
@@ -202,16 +181,12 @@ public class BullBoardTestcases extends BaseSetup {
 		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 5 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		 try{
 			 Bullboard bullboardPage = baseState();
-			// Thread.sleep(20000);
 			  bullboardPage.cancelLoading();
 
-			// bullboardPage.selectViewMode("Flat - oldest to newest",3);
 			 bullboardPage.selectViewMode("Flat - oldest to newest");
 			 Thread.sleep(30000);
 			  bullboardPage.cancelLoading();
-String first=bullboardPage.getTextOfPostsHead(1);
-			 //Thread.sleep(30000);
-			// bullboardPage.selectViewMode("Flat - newest to oldest",2);
+            String first=bullboardPage.getTextOfPostsHead(1);
 			 bullboardPage.selectViewMode("Flat - newest to oldest");
 			 Thread.sleep(30000);
 			  bullboardPage.cancelLoading();
@@ -235,8 +210,6 @@ String first=bullboardPage.getTextOfPostsHead(1);
 			 Bullboard bullboardPage = baseState();
 			  bullboardPage.cancelLoading();
 
-			// Thread.sleep(80000);
-			// bullboardPage.selectViewMode("Threaded",1);
 			 bullboardPage.selectViewMode("Threaded");
 			 Thread.sleep(30000);
 			  bullboardPage.cancelLoading();
@@ -317,14 +290,12 @@ String first=bullboardPage.getTextOfPostsHead(1);
 		 try{
 			 Bullboard bullboardPage = baseState();
 			  bullboardPage.cancelLoading();
-			// Thread.sleep(80000);
 			 String txt=bullboardPage.getTextOfBBNavLink("Bullboard");
 			 bullboardPage.clickOnBBNavLink("Bullboard");
 			 Thread.sleep(30000);
 			  bullboardPage.cancelLoading();
 			 String url=BrowserInstance.driver.getCurrentUrl();
 			 if(url.contains("symbol=t.bb"))//symbol=t.bb
-			// if(url.contains(txt.toLowerCase()+"/t.bb/blackberry"))//symbol=t.bb
 				 Assert.assertEquals(1, 1);
 			 else
 				 Assert.assertEquals(1, 0);
@@ -385,65 +356,13 @@ String first=bullboardPage.getTextOfPostsHead(1);
 		   		Assert.fail("Bull board list by OpinionLink failed. "+e);
 	   }//End catch(Exception e)
 	}// End public void OpinionLink()
-//	 /*
-//	  * Check the bull board page navigation links Level II.
-//	  */
-//	 @Test(priority=12)
-//	 public void LevelLink()
-//	 {
-//		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 12 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//		 try{
-//			 Bullboard bullboardPage = baseState();
-//			// Thread.sleep(80000);
-//			  bullboardPage.cancelLoading();
-//			 String[] txt=bullboardPage.getTextOfBBNavLink("Level II").split(" ");
-//			 bullboardPage.clickOnBBNavLink("Level II");
-//			 Thread.sleep(30000);
-//			  bullboardPage.cancelLoading();
-//			 String url=BrowserInstance.driver.getCurrentUrl();
-//			
-//			 if(url.contains(txt[0].toLowerCase()+"2/t.bb/blackberry"))
-//				 Assert.assertEquals(1, 1);
-//			 else
-//				 Assert.assertEquals(1, 0);
-//		  }catch(Exception e){
-//		   		LoggerInstance.logger.info("Bull board list by LevelLink failed. "+e);
-//		   		Assert.fail("Bull board list by LevelLink failed. "+e);
-//	   }//End catch(Exception e)
-//	}// End public void LevelLink()
-//	 /*
-//	  * Check the bull board page navigation links ChartsLink.
-//	  */
-//	 @Test(priority=13)
-//	 public void ChartsLink()
-//	 {
-//		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 13 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//		 try{
-//			 Bullboard bullboardPage = baseState();
-//			// Thread.sleep(80000);
-//			  bullboardPage.cancelLoading();
-//			 String txt=bullboardPage.getTextOfBBNavLink("Charts");
-//			 bullboardPage.clickOnBBNavLink("Charts");
-//			 Thread.sleep(30000);
-//			  bullboardPage.cancelLoading();
-//			 String url=BrowserInstance.driver.getCurrentUrl();
-//			
-//			 if(url.contains(txt.toLowerCase()+"/t.bb/blackberry"))
-//				 Assert.assertEquals(1, 1);
-//			 else
-//				 Assert.assertEquals(1, 0);
-//		  }catch(Exception e){
-//		   		LoggerInstance.logger.info("Bull board list by ChartsLink failed. "+e);
-//		   		Assert.fail("Bull board list by ChartsLink failed. "+e);
-//	   }//End catch(Exception e)
-//	}// End public void ChartsLink()
 	 /*
 	  * Check the bull board page navigation links ProfileLink.
 	  */
-	 @Test(priority=14)
+	 @Test(priority=12)
 	 public void ProfileLink()
 	 {
-		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 14 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 12 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		 try{
 			 Bullboard bullboardPage = baseState();
 			/// Thread.sleep(80000);
@@ -467,10 +386,10 @@ String first=bullboardPage.getTextOfPostsHead(1);
 	 /*
 	  * Check the bull board page navigation links FinancialLink.
 	  */
-	 @Test(priority=15)
+	 @Test(priority=13)
 	 public void FinancialLink()
 	 {
-		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 15 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 13 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		 try{
 			 Bullboard bullboardPage = baseState();
 			// Thread.sleep(80000);
@@ -493,10 +412,10 @@ String first=bullboardPage.getTextOfPostsHead(1);
 	 /*
 	  * Check the bull board page navigation links OptionsLink.
 	  */
-	 @Test(priority=16)
+	 @Test(priority=14)
 	 public void OptionsLink()
 	 {
-		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 16 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 14 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		 try{
 			 Bullboard bullboardPage = baseState();
 			// Thread.sleep(80000);
@@ -519,10 +438,10 @@ String first=bullboardPage.getTextOfPostsHead(1);
 	 /*
 	  * Check the bull board page navigation links PriceHistoryLink.
 	  */
-	 @Test(priority=17)
+	 @Test(priority=15)
 	 public void PriceHistoryLink()
 	 {
-		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 17 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 15 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		 try{
 			 Bullboard bullboardPage = baseState();
 			// Thread.sleep(80000);
@@ -542,64 +461,13 @@ String first=bullboardPage.getTextOfPostsHead(1);
 		   		Assert.fail("Bull board list by PriceHistoryLink failed. "+e);
 	   }//End catch(Exception e)
 	}// End public void PriceHistoryLink()
-//	 /*
-//	  * Check the bull board page navigation links AnalystsLink.
-//	  */
-//	 @Test(priority=18)
-//	 public void AnalystsLink()
-//	 {
-//		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 18 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//		 try{
-//			 Bullboard bullboardPage = baseState();
-//			// Thread.sleep(80000);
-//			  bullboardPage.cancelLoading();
-//			 String txt=bullboardPage.getTextOfBBNavLink("Analysts");
-//			 bullboardPage.clickOnBBNavLink("Analysts");
-//			 Thread.sleep(30000);
-//			 bullboardPage.cancelLoading();
-//			 String url=BrowserInstance.driver.getCurrentUrl();
-//			
-//			 if(url.contains(txt.toLowerCase()+"/t.bb/blackberry"))
-//				 Assert.assertEquals(1, 1);
-//			 else
-//				 Assert.assertEquals(1, 0);
-//		  }catch(Exception e){
-//		   		LoggerInstance.logger.info("Bull board list by AnalystsLink failed. "+e);
-//		   		Assert.fail("Bull board list by AnalystsLink failed. "+e);
-//	   }//End catch(Exception e)
-//	}// End public void AnalystsLink()
-//	 /*
-//	  * Check the bull board page navigation links EarningsLink.
-//	  */
-//	 @Test(priority=19)
-//	 public void EarningsLink()
-//	 {
-//		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 19 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//		 try{
-//			 Bullboard bullboardPage = baseState();
-//			// Thread.sleep(80000);
-//			  bullboardPage.cancelLoading();
-//			 String txt=bullboardPage.getTextOfBBNavLink("Earnings");
-//			 bullboardPage.clickOnBBNavLink("Earnings");
-//			 Thread.sleep(30000);
-//			  bullboardPage.cancelLoading();
-//			 String url=BrowserInstance.driver.getCurrentUrl();
-//			 if(url.contains(txt.toLowerCase()+"/t.bb/blackberry"))
-//				 Assert.assertEquals(1, 1);
-//			 else
-//				 Assert.assertEquals(1, 0);
-//		  }catch(Exception e){
-//		   		LoggerInstance.logger.info("Bull board list by EarningsLink failed. "+e);
-//		   		Assert.fail("Bull board list by EarningsLink failed. "+e);
-//	   }//End catch(Exception e)
-//	}// End public void EarningsLink()
 	 /*
 	  * Check the bull board page navigation links InsidersLink.
 	  */
-	 @Test(priority=20)
+	 @Test(priority=16)
 	 public void InsidersLink()
 	 {
-		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 20 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 16 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		 try{
 			 Bullboard bullboardPage = baseState();
 			 Thread.sleep(20000);
@@ -622,10 +490,10 @@ String first=bullboardPage.getTextOfPostsHead(1);
 	 /*
 	  * Check the bull board page navigation links Filings Link.
 	  */
-	 @Test(priority=21)
+	 @Test(priority=17)
 	 public void FilingsLink()
 	 {
-		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 21 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 17 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		 try{
 			 Bullboard bullboardPage = baseState();
 			 Thread.sleep(20000);
@@ -649,10 +517,10 @@ String first=bullboardPage.getTextOfPostsHead(1);
 	 /*
 	  * Check the bull board page navigation links Peers Link.
 	  */
-	 @Test(priority=22)
+	 @Test(priority=18)
 	 public void PeersLink()
 	 {
-		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 22 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 18 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		 try{
 			 Bullboard bullboardPage = baseState();
 			 Thread.sleep(20000);
@@ -675,10 +543,10 @@ String first=bullboardPage.getTextOfPostsHead(1);
 	 /*
 	  * Check the bull board page navigation links Ratios Link.
 	  */
-	 @Test(priority=23)
+	 @Test(priority=19)
 	 public void RatiosLink()
 	 {
-		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 23 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 19 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		 try{
 			 Bullboard bullboardPage = baseState();
 			 Thread.sleep(20000);
@@ -688,9 +556,7 @@ String first=bullboardPage.getTextOfPostsHead(1);
 			 Thread.sleep(30000);
 			  bullboardPage.cancelLoading();
 			 String url=BrowserInstance.driver.getCurrentUrl();
-			// System.out.println("url==="+url);
 			 if(url.contains("/ratios?symbol=t.bb"))
-		//	 if(url.contains(txt.toLowerCase()+"/t.bb/blackberry"))
 				 Assert.assertEquals(1, 1);
 			 else
 				 Assert.assertEquals(1, 0);
@@ -703,10 +569,10 @@ String first=bullboardPage.getTextOfPostsHead(1);
 	 /*
 	  * Check the bull board page navigation links Valuation Link.
 	  */
-	 @Test(priority=24)
+	 @Test(priority=20)
 	 public void ValuationLink()
 	 {
-		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 24 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		 System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 20 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		 try{
 			 Bullboard bullboardPage = baseState();
 			 Thread.sleep(20000);
@@ -716,8 +582,6 @@ String first=bullboardPage.getTextOfPostsHead(1);
 			 Thread.sleep(30000);
 			  bullboardPage.cancelLoading();
 			 String url=BrowserInstance.driver.getCurrentUrl();
-			// System.out.println("url=="+url);
-		//	 if(url.contains(txt.toLowerCase()+"/t.bb/blackberry"))
 			 if(url.contains("/valuation?symbol=t.bb"))
 				 Assert.assertEquals(1, 1);
 			 else
@@ -735,7 +599,6 @@ String first=bullboardPage.getTextOfPostsHead(1);
 	public Bullboard baseState(){
 		BrowserInstance.driver.get(ReadInputData.HM_inputData.get("URL")+"companies/bullboard/t.bb/blackberry");
 		 try{Thread.sleep(20000);}catch(Exception e){}
-		//WebdriverUtility.waitForPageLoaded();
 		Bullboard bullboardPage = PageFactory.initElements(BrowserInstance.driver, Bullboard.class);
 		return bullboardPage;
 	}

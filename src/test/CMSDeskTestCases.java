@@ -73,16 +73,6 @@ public class CMSDeskTestCases extends BaseSetup {
 			  cmsDeskPage.switchToDefaultFrame();
 			  cmsDeskPage.switchToFrame1();
 			  cmsDeskPage.switchToFrame2();
-			  
-//			  cmsDeskPage.setTagsText("tagText", "gold", 13);
-//			  Thread.sleep(2000);
-//			  cmsDeskPage.clickOnTagsSelect("tagButton", 13);
-//			  cmsDeskPage.clickOnTagsPopupOption(4);
-//			  cmsDeskPage.clickOnTagsPopupOk();
-//			  Thread.sleep(10000);
-//			  cmsDeskPage.switchToDefaultFrame();
-//			  cmsDeskPage.switchToFrame1();
-//			  cmsDeskPage.switchToFrame2();
 			  cmsDeskPage.clickOnSaveButton();
 			  cmsDeskPage.switchToDefaultFrame();
 			  Thread.sleep(50000);
@@ -145,13 +135,6 @@ public class CMSDeskTestCases extends BaseSetup {
 			  cmsDeskPage.switchToDefaultFrame();
 			  cmsDeskPage.switchToFrame1();
 			  cmsDeskPage.switchToFrame2();
-//			  cmsDeskPage.setTagsText("tagText", "gold", 13);
-//			  cmsDeskPage.clickOnTagsSelect("tagButton", 13);
-//			  cmsDeskPage.clickOnTagsPopupOption(4);
-//			  cmsDeskPage.clickOnTagsPopupOk();
-//			  cmsDeskPage.switchToDefaultFrame();
-//			  cmsDeskPage.switchToFrame1();
-//			  cmsDeskPage.switchToFrame2();
 			  cmsDeskPage.clickOnSaveButton();
 			  cmsDeskPage.switchToDefaultFrame();
 			  Thread.sleep(50000);
@@ -169,83 +152,14 @@ public class CMSDeskTestCases extends BaseSetup {
 		}
 	}// End of FeaturedNewsPosting()
 	
-//	/*
-//	 * TestCase for news posting for Breaking News.
-//	 */
-//	@Test(priority=3)
-//	public void BreakingNewsPosting()
-//	{
-//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 3 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//		try{
-//			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			  Thread.sleep(20000);
-//			  homepage.cancelLoading();
-//			  homepage.clickOnSignIn();
-//			  String username=ReadInputData.HM_inputData.get("UserIdForQA");
-//			  String password=ReadInputData.HM_inputData.get("Password");
-//			  homepage.typeUserIdOnSignInPopup(username);
-//			  homepage.typePasswordOnSignInPopup(password);
-//			  homepage.clickOnSignInBtnOnSigninPopup();
-//			  Thread.sleep(30000);
-//			  homepage.cancelLoading();
-//			  String url=ReadInputData.HM_inputData.get("URL");
-//			  BrowserInstance.driver.get(url+"cmsdesk/");
-//			  Thread.sleep(10000);
-//			  CMSDeskPage cmsDeskPage= PageFactory.initElements(BrowserInstance.driver, CMSDeskPage.class);
-//			  cmsDeskPage.switchToFrame1();
-//			  cmsDeskPage.expandOptionInLeftTree("News");
-//			  cmsDeskPage.clickOnSubOptionOfLeftTree("Breaking News");
-//			  cmsDeskPage.clickOnNewButton();
-//			  Thread.sleep(10000);
-//			  cmsDeskPage.switchToFrame2();
-//			  cmsDeskPage.clickOnContentItem();
-//			  Thread.sleep(15000);
-//			  String titlePassed="Test QA Breaking News"+JavaUtility.randInt(100, 9999);
-//			  cmsDeskPage.setFormTableTitle(1,"title", titlePassed);
-//			  cmsDeskPage.setFormTableDeck(3,"deck", "Test Deck content");
-//			  cmsDeskPage.selectAuthor(2, "author", "Peter Kennedy");
-//			  cmsDeskPage.setSymbolText("symbolText", "T.G", 6);
-//			  cmsDeskPage.clickOnAddSymbol("symbolButton", 6);
-//			  cmsDeskPage.selectFeedPublished(8, "feedPublished");
-//			  Thread.sleep(20000);
-//			 // cmsDeskPage.setTagsText("tagText", "gold", 12);
-//			  cmsDeskPage.clickOnPublishDateNow("publishDateNow", 14);
-//			  cmsDeskPage.setFormTableContent(4,"content", "Test content's content");
-//			  cmsDeskPage.switchToDefaultFrame();
-//			  cmsDeskPage.switchToFrame1();
-//			  cmsDeskPage.switchToFrame2();
-//			  //cmsDeskPage.setTagsText("tagText", "gold", 12);
-//			  //cmsDeskPage.clickOnTagsSelect("tagButton", 12);
-////			  cmsDeskPage.clickOnTagsPopupOption(4);
-////			  cmsDeskPage.clickOnTagsPopupOk();
-////			  cmsDeskPage.switchToDefaultFrame();
-////			  cmsDeskPage.switchToFrame1();
-////			  cmsDeskPage.switchToFrame2();
-//			  cmsDeskPage.clickOnSaveButton();
-//			  cmsDeskPage.switchToDefaultFrame();
-//			  Thread.sleep(50000);
-//			  System.out.println("********ON URL STOCKHOUSE*********** ");
-//			  BrowserInstance.driver.get(url);
-//				Thread.sleep(20000);
-//				homepage.cancelLoading();
-//				homepage.clickOnNavigationSubLink(4,"News",3,"Breaking News");//4,3
-//				Thread.sleep(10000);
-//				BreakingNews breakingNews=  PageFactory.initElements(BrowserInstance.driver, BreakingNews.class);
-//				String text = breakingNews.getTextOfItem(1);
-//				Assert.assertEquals(titlePassed,text);
-//		}catch(Exception e){
-//			LoggerInstance.logger.info("Test case Breaking News is failed. "+e); 
-//			Assert.fail("Test case Breaking News is failed. "+e);
-//		}
-//	}// End of BreakingNewsPosting()
 	
 	/*
 	 * TestCase for news posting for Micro Cap Report.
 	 */
-	@Test(priority=4)
+	@Test(priority=3)
 	public void MicroCapNewsPosting()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 4 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 3 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(20000);
@@ -282,26 +196,17 @@ public class CMSDeskTestCases extends BaseSetup {
 			  cmsDeskPage.clickOnAddSymbol("symbolButton", 5);
 			  
 		  cmsDeskPage.setSymbolText("symbolText", "T.G", 6);//T.G //t.c
-//			  Thread.sleep(6000);
 			  cmsDeskPage.clickOnAddSymbol("symbolButton", 6);
 			  Thread.sleep(20000);
-			//  cmsDeskPage.setTagsText("tagText", "gold", 10);
 			  cmsDeskPage.clickOnPublishDateNow("publishDateNow", 11);
 			  cmsDeskPage.setFormTableContent(3,"content", "Test content's content");
 			  
 			  cmsDeskPage.switchToDefaultFrame();
 			  cmsDeskPage.switchToFrame1();
 			  cmsDeskPage.switchToFrame2();
-			  //cmsDeskPage.setTagsText("tagText", "gold", 10);
-			  //cmsDeskPage.clickOnTagsSelect("tagButton", 10);
-//			  cmsDeskPage.clickOnTagsPopupOption(4);
-//			  cmsDeskPage.clickOnTagsPopupOk();
-//			  cmsDeskPage.switchToDefaultFrame();
-//			  cmsDeskPage.switchToFrame1();
-//			  cmsDeskPage.switchToFrame2();
 			  cmsDeskPage.clickOnSaveButton();
 			  cmsDeskPage.switchToDefaultFrame();
-			  Thread.sleep(50000);
+			  Thread.sleep(20000);//50000
 			  System.out.println("********ON URL STOCKHOUSE*********** ");
 			  BrowserInstance.driver.get(url);
 				Thread.sleep(20000);
@@ -317,83 +222,13 @@ public class CMSDeskTestCases extends BaseSetup {
 		}
 	}// End of MicroCapNewsPosting()
 	
-//	/*
-//	 * TestCase for posting of News Focus on home page.
-//	 */
-//	@Test(priority=5)
-//	public void NewsFocus()
-//	{
-//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 5 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//		try{
-//			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			  Thread.sleep(20000);
-//			  homepage.cancelLoading();
-//			  homepage.clickOnSignIn();
-//			  String username=ReadInputData.HM_inputData.get("UserIdForQA");
-//			  String password=ReadInputData.HM_inputData.get("Password");
-//			  homepage.typeUserIdOnSignInPopup(username);//"usrQA1"
-//			  homepage.typePasswordOnSignInPopup(password);
-//			  homepage.clickOnSignInBtnOnSigninPopup();
-//			  Thread.sleep(30000);
-//			  homepage.cancelLoading();
-//			  String url=ReadInputData.HM_inputData.get("URL");
-//			  BrowserInstance.driver.get(url+"cmsdesk/");
-//			  Thread.sleep(10000);
-//			  CMSDeskPage cmsDeskPage= PageFactory.initElements(BrowserInstance.driver, CMSDeskPage.class);
-//			  Thread.sleep(20000);
-//			  cmsDeskPage.cancelLoading();
-//			  cmsToolsPage=cmsDeskPage.clickOnToolsMenu();
-//			  cmsDeskPage.switchToFrame1();//frame1
-//			  cmsToolsPage.toolsMenuFrame();//frame2
-//			  cmsToolsPage.clickOnCustomTableOption(7);
-//			  cmsToolsPage.clickOnNewsFocus(11);
-//			  cmsToolsPage.clickOnNewItemButton();
-//			  String companySymbol="V.KTN";
-////			  cmsToolsPage.setCompanySymbol("CompanySymbol", 3, companySymbol);
-////			  cmsToolsPage.clickOnAddCompanyButton("AddCompanyButton", 3);
-//			  String titlePassed="This is Test-QA Title"+JavaUtility.randInt(1, 100);
-//			  //cmsToolsPage.setNewsTitle("newsTitle", 4, titlePassed);
-//			  cmsToolsPage.setPreviewText("previewText", 5, "This is Focus News Preview Text");
-//			  cmsToolsPage.setDestinationLink("destinationURL", 6, "www.cnn.com");
-//			  cmsToolsPage.clickOnTargetDateNow("targetDate", 8);
-//			  cmsToolsPage.selectBBNewsSpotlight("BBNewsSpotlight",9);
-//			  cmsToolsPage.selectNewsFocusBar("NewsFocusBar", 10);
-//			  cmsToolsPage.clickOnSaveButton();
-//			  Thread.sleep(10000);
-//			  cmsDeskPage.switchToDefaultFrame();
-//			  BrowserInstance.driver.get(url);
-//				Thread.sleep(20000);
-//				homepage.cancelLoading();
-//				
-//				String newsFocustext=homepage.getTextOfTitlesInNewsFocusBar();
-//				if(newsFocustext.contains(titlePassed)){
-//					Assert.assertEquals(1, 1);
-//					Thread.sleep(4000);
-//					
-//				}
-//				else{
-//					BrowserInstance.driver.get(url);
-//					Thread.sleep(20000);
-//					homepage.cancelLoading();
-//				}
-//				BrowserInstance.driver.get("http://test.stockhouse.com/companies/bullboard/"+companySymbol+"/blackberry");
-//				Bullboard bullboard=  PageFactory.initElements(BrowserInstance.driver, Bullboard.class);
-//				Assert.assertTrue(bullboard.isNewsFocusBoxPresent());
-//				String borderColor=bullboard.getColorOfNewsFocusBox();
-//				Assert.assertNotEquals("rgb(170, 170, 170)", borderColor);
-//			  
-//		}catch(Exception e){
-//			LoggerInstance.logger.info("Test case Breaking News is failed. "+e); 
-//			Assert.fail("Test case Breaking News is failed. "+e);
-//		}
-//	}// End of NewsFocus()
 	/*
 	 * TestCase for posting of private equity in opinion category.
 	 */
-	@Test(priority=6)
+	@Test(priority=4)
 	public void OpinionPrivateEquity()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 6 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 4 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(20000);
@@ -440,13 +275,6 @@ public class CMSDeskTestCases extends BaseSetup {
 			  cmsDeskPage.switchToDefaultFrame();
 			  cmsDeskPage.switchToFrame1();
 			  cmsDeskPage.switchToFrame2();
-			  //cmsDeskPage.setTagsText("tagText", "gold", 16);
-			  //cmsDeskPage.clickOnTagsSelect("tagButton", 16);
-//			  cmsDeskPage.clickOnTagsPopupOption(4);
-//			  cmsDeskPage.clickOnTagsPopupOk();
-//			  cmsDeskPage.switchToDefaultFrame();
-//			  cmsDeskPage.switchToFrame1();
-//			  cmsDeskPage.switchToFrame2();
 			  cmsDeskPage.clickOnSaveButton();
 			  cmsDeskPage.switchToDefaultFrame();
 			  Thread.sleep(50000);
@@ -467,10 +295,10 @@ public class CMSDeskTestCases extends BaseSetup {
 	/*
 	 * TestCase for posting of private equity in opinion category.
 	 */
-	@Test(priority=7)
+	@Test(priority=5)
 	public void OpinionShortReport()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 7 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 5 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(20000);
@@ -509,13 +337,6 @@ public class CMSDeskTestCases extends BaseSetup {
 			  cmsDeskPage.switchToDefaultFrame();
 			  cmsDeskPage.switchToFrame1();
 			  cmsDeskPage.switchToFrame2();
-			  //cmsDeskPage.setTagsText("tagText", "gold", 13);
-			  //cmsDeskPage.clickOnTagsSelect("tagButton", 13);
-//			  cmsDeskPage.clickOnTagsPopupOption(4);
-//			  cmsDeskPage.clickOnTagsPopupOk();
-//			  cmsDeskPage.switchToDefaultFrame();
-//			  cmsDeskPage.switchToFrame1();
-//			  cmsDeskPage.switchToFrame2();
 			  cmsDeskPage.clickOnSaveButton();
 			  cmsDeskPage.switchToDefaultFrame();
 			  Thread.sleep(50000);
@@ -536,10 +357,10 @@ public class CMSDeskTestCases extends BaseSetup {
 	/*
 	 * TestCase for posting of Interviews in opinion category.
 	 */
-	@Test(priority=8)
+	@Test(priority=6)
 	public void OpinionInterviews()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 8 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 6 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(20000);
@@ -586,13 +407,6 @@ public class CMSDeskTestCases extends BaseSetup {
 			  cmsDeskPage.switchToDefaultFrame();
 			  cmsDeskPage.switchToFrame1();
 			  cmsDeskPage.switchToFrame2();
-			  //cmsDeskPage.setTagsText("tagText", "gold", 15);
-			  //cmsDeskPage.clickOnTagsSelect("tagButton", 15);
-//			  cmsDeskPage.clickOnTagsPopupOption(4);
-//			  cmsDeskPage.clickOnTagsPopupOk();
-//			  cmsDeskPage.switchToDefaultFrame();
-//			  cmsDeskPage.switchToFrame1();
-//			  cmsDeskPage.switchToFrame2();
 			  cmsDeskPage.clickOnSaveButton();
 			  cmsDeskPage.switchToDefaultFrame();
 			  Thread.sleep(50000);
@@ -613,10 +427,10 @@ public class CMSDeskTestCases extends BaseSetup {
 	/*
 	 * TestCase for posting of Independent Reports in opinion category.
 	 */
-	@Test(priority=9)
+	@Test(priority=7)
 	public void OpinionIndependentReports()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 9 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 7 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			  HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			  Thread.sleep(20000);
@@ -655,13 +469,6 @@ public class CMSDeskTestCases extends BaseSetup {
 			  cmsDeskPage.switchToDefaultFrame();
 			  cmsDeskPage.switchToFrame1();
 			  cmsDeskPage.switchToFrame2();
-			  //cmsDeskPage.setTagsText("tagText", "gold", 12);
-			  //cmsDeskPage.clickOnTagsSelect("tagButton", 12);
-//			  cmsDeskPage.clickOnTagsPopupOption(4);
-//			  cmsDeskPage.clickOnTagsPopupOk();
-//			  cmsDeskPage.switchToDefaultFrame();
-//			  cmsDeskPage.switchToFrame1();
-//			  cmsDeskPage.switchToFrame2();
 			  cmsDeskPage.clickOnSaveButton();
 			  cmsDeskPage.switchToDefaultFrame();
 			  Thread.sleep(50000);

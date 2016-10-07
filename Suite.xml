@@ -1,31 +1,68 @@
 <!-- This xml file define classes and testcases to be executed. -->
 <suite name="StockHouse"   verbose="9">
+<listeners>
+        <listener class-name="common.RetryListener"/>
+  </listeners>
 <test name="HomePage Testcases" >
-  		<!-- Included classes here will be executed.-->
-		<classes>
-			<class  name="test.HomePageTC" ></class>
-		</classes>
-	</test>
-	<test name="Navigation Testcases" >
-  		<!-- Included classes here will be executed.-->
-		<classes>
-			<class  name="test.NavigationTestCases" ></class>
-		</classes>
-	</test>
-	
-	<test name="Registry and Login Testcases" >
-  		<!-- Included classes here will be executed.-->
-		<classes>
-			<class  name="test.RegistryAndLogin" ></class>
-		</classes>
-	</test>
-	<test name="BullBoard Testcases" >
-  		<!-- Included classes here will be executed.-->
-		<classes>
-			<class  name="test.BullBoardTestcases" ></class>
-		</classes>
-	</test>
+    <!-- Included classes here will be executed.-->
+  <classes>
+   <class  name="test.HomePageTC" ></class>
+  </classes>
+ </test>
+ 
+ <test name="Navigation Testcases" >
+    <!-- Included classes here will be executed.-->
+  <classes>
+   <class  name="test.NavigationTestCases" ></class>
+  </classes>
+ </test>
+ 
+ <test name="Registry and Login Testcases" >
+    <!-- Included classes here will be executed.-->
+  <classes>
+   <class  name="test.RegistryAndLogin" ></class>
+  </classes>
+ </test>
+ 
+ <test name="BullBoard Testcases" >
+    <!-- Included classes here will be executed.-->
+  <classes>
+   <class  name="test.BullBoardTestcases" ></class>
+  </classes>
+ </test>
+ 
+  <test name="Blog Testcases" >
+    <!-- Included classes here will be executed.-->
+  <classes>
+   <class  name="test.BlogTestCases" ></class>
+  </classes>
+ </test>
+ 
+ <test name="Group Testcases" >
+    <!-- Included classes here will be executed.-->
+  <classes>
+   <class  name="test.GroupTestCases" ></class>
+  </classes>
+ </test>
+ 
+ <test name="TopMenu Testcases" >
+    <!-- Included classes here will be executed.-->
+  <classes>
+   <class  name="test.TopMenuTestcases" ></class>
+  </classes>
+ </test>
+ 
+ <test name="CMS Desk Testcases" >
+    <!-- Included classes here will be executed.-->
+  <classes>
+   <class  name="test.CMSDeskTestCases" ></class>
+  </classes>
+ </test>
+ 
+ <test name="Miscellaneous Testcases" >
+    <!-- Included classes here will be executed.-->
+  <classes>
+   <class  name="test.MiscellaneousTestCases" ></class>
+  </classes>
+ </test>
 </suite>
-
-
-

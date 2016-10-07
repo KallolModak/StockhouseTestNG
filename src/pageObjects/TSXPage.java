@@ -17,7 +17,7 @@ public class TSXPage extends WebdriverUtility{
 	 * Locator for TSX volume activities table header.
 	 */
 	private By TSXVolActivities(){
-		return By.xpath("//td[text()='TSX Volume Actives']");
+		return By.xpath("//h1[contains(text(),'	TSX')]");
 	}
 	/*
 	 * Function to check the presence of TSX volume activities table header.

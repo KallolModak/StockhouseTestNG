@@ -23,7 +23,6 @@ public class MiscellaneousTestCases extends BaseSetup {
 	public MiscellaneousPage baseState(){
 		BrowserInstance.driver.get(ReadInputData.HM_inputData.get("URL")+"companies/quote?symbol=bbry");
 		 try{Thread.sleep(20000);}catch(Exception e){}
-		//WebdriverUtility.waitForPageLoaded();
 		 MiscellaneousPage miscellaneousPage = PageFactory.initElements(BrowserInstance.driver, MiscellaneousPage.class);
 		return miscellaneousPage;
 	}
@@ -46,7 +45,6 @@ public class MiscellaneousTestCases extends BaseSetup {
 			Thread.sleep(20000);
 			String text="canonical";//"<link rel="canonical" href="/companies/quote/bbry/blackberry-limited"";
 			String text1="href=\"/companies/quote/bbry/blackberry-limited\"";
-			//String text="<link rel=\"canonical\" href=\"/companies/quote/bbry/blackberry-limited\">";
 			if(source.contains(text)&& (source.contains(text1))){
 			Assert.assertEquals(1, 1);
 			}else{

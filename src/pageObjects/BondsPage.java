@@ -30,6 +30,7 @@ public class BondsPage extends WebdriverUtility{
 	 * Locator for iframe for full page.
 	 */
 	public void switchToFrameInBond(){
+		BrowserInstance.driver.switchTo().frame(BrowserInstance.driver.findElement(By.xpath("//div[@class='frame-container']/iframe")));
 		BrowserInstance.driver.switchTo().frame(BrowserInstance.driver.findElement(By.xpath("//iframe[contains(@id,'QSAPI_IFRAME')]")));
 	}
 }

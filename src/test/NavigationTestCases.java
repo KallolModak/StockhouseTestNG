@@ -52,31 +52,6 @@ import common.ReadInputData;
 
 public class NavigationTestCases extends BaseSetup {
 
-//	/*
-//	 * Test case to check ETFs link on navigation bar.
-//	 * Check URL after clicking the EFTs.
-//	 * Check presence of "More ETF Articles" text on the page.
-//	 * Check presence of "ETF Performance Overview" on the page.
-//	 */
-//	@Test( priority =1)
-//	public void ETFsLink()
-//	{
-//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(10000);
-//			homepage.cancelLoading();
-//			homepage.clickOnNavigationLink(8,"ETFs");//8
-//			Thread.sleep(20000);
-//			ETFsPage etfsPage =  PageFactory.initElements(BrowserInstance.driver, ETFsPage.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/etfs");
-//			Assert.assertTrue(etfsPage.isMoreETFArticlesPresent());
-//			Assert.assertTrue(etfsPage.isTopStoryPresent());
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFsLink is failed. "+e); 
-//				Assert.fail("Test case ETFsLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void ETFsLink()
 
 	/*
 	 * Test case to check video link on navigation bar.
@@ -84,18 +59,19 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check presence of "Video cover" section.
 	 * Check presence of thumbnails.
 	 */
-	@Test( priority =2)
+	@Test( priority =1)
 	public void VideoLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 2 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(10000);
 			homepage.cancelLoading();
+			String href=homepage.getHrefOfVideoOption(7, "Video");
 			homepage.clickOnNavigationLink(7,"Video");//7
 			VideoPage videoPage =  PageFactory.initElements(BrowserInstance.driver, VideoPage.class);
 			Thread.sleep(10000);
-			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL"));
+		    Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),href);
 			Assert.assertTrue(videoPage.isVideoCoverPresent());
 			Assert.assertEquals(videoPage.numberOfThumbnailPresent(), 6);
 			}catch(Exception e){
@@ -110,10 +86,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check presence of "Portfolio" text.
 	 * Check presence of "Portfolio Tracker" text.
 	 */
-	@Test( priority =3)
+	@Test( priority =2)
 	public void PortfolioLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 3 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 2 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
@@ -137,15 +113,15 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check presence of "Portfolio" text.
 	 * Check presence of "Portfolio Tracker" text.
 	 */
-	@Test( priority =4)
+	@Test( priority =3)
 	public void PortfolioStockStreamLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 4 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 3 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
 			homepage.cancelLoading();
-			homepage.clickOnNavigationSubLink(6,"Portfolio",1,"Stockstream");//6,"Portfolio",1,"Stockstream"
+			homepage.clickOnNavigationSubLink(6,"Portfolio",3,"Stockstream");//6,"Portfolio",1,"Stockstream"
 			homepage.cancelLoading();
 			Thread.sleep(20000);
 			homepage.switchToNewWindow();
@@ -160,65 +136,15 @@ public class NavigationTestCases extends BaseSetup {
 	}// End public void PortfolioStockStreamLink()
 	
 	/*
-	 * Test case to check Portfolio > StockScreener link on navigation bar.
-	 * Check URL after clicking the Portfolio.
-	 * Check presence of "Featured Company" text.
-	 * Check presence of "Search Options" text.
-	 */
-	@Test( priority =5)
-	public void PortfolioStockScreenerLink()
-	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 5 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		try{
-			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(20000);
-			homepage.cancelLoading();
-			homepage.clickOnNavigationSubLink(6,"Portfolio",2,"Stock Screener");//6,"Portfolio",2,"Stock Screener"
-			Thread.sleep(10000);
-			StockScreener stockScreener=  PageFactory.initElements(BrowserInstance.driver, StockScreener.class);
-			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio/stock-screener");
-			Assert.assertTrue(stockScreener.isFeaturedCompanyTxtPresent());
-			Assert.assertTrue(stockScreener.isSearchOptionsTxtPresent());
-			}catch(Exception e){
-				LoggerInstance.logger.info("Test case PortfolioStockScreenerLink is failed. "+e); 
-				Assert.fail("Test case PortfolioStockScreenerLink is failed. "+e);
-		}//End catch(Exception e)
-	}// End public void PortfolioStockScreenerLink()
-	
-	/*
-	 * Test case to check Portfolio > SymbolLookup link on navigation bar.
-	 * Check URL after clicking the SymbolLookup.
-	 * Check presence of "Symbol Lookup" text.
-	 */
-	@Test( priority =6)
-	public void PortfolioSymbolLookupLink()
-	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 6 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		try{
-			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(20000);
-			homepage.cancelLoading();
-			homepage.clickOnNavigationSubLink(6,"Portfolio",3,"Symbol Lookup");//6,3
-			Thread.sleep(10000);
-			SymbolLookup symbolLookup=  PageFactory.initElements(BrowserInstance.driver, SymbolLookup.class);
-			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio/symbol-lookup");
-			Assert.assertTrue(symbolLookup.isSymbolLookupTxtPresent());
-			}catch(Exception e){
-				LoggerInstance.logger.info("Test case PortfolioSymbolLookupLink is failed. "+e); 
-				Assert.fail("Test case PortfolioSymbolLookupLink is failed. "+e);
-		}//End catch(Exception e)
-	}// End public void PortfolioSymbolLookupLink()
-	
-	/*
 	 * Test case to check Portfolio > ShowcaseCompanies companies link on navigation bar.
 	 * Check URL after clicking the ShowcaseCompanies.
 	 * Check presence of "ShowcaseCompanies" text.
 	 * Check presence of "FeaturedCompany" text.
 	 */
-	@Test( priority =7)
+	@Test( priority =4)
 	public void PortfolioShowcaseCompaniesLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 7 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 4 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
@@ -241,10 +167,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check presence of "Stockhouse Reports" text.
 	 * Check presence of "Independent Reports" text.
 	 */
-	@Test( priority =8)
+	@Test( priority =5)
 	public void OpinionLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 8 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 5 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
@@ -267,10 +193,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check presence of "Articles" text.
 	 * Check links are not blank.
 	 */
-	@Test( priority =9)
+	@Test( priority =6)
 	public void OpinionPrivateEquityLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 9 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 6 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
@@ -292,10 +218,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check URL after clicking the Short Report.
 	 * Check links are not blank.
 	 */
-	@Test( priority =10)
+	@Test( priority =7)
 	public void OpinionShortReportLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 10 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 7 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
@@ -317,10 +243,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check URL after clicking the TickerTrax.
 	 * Check links are not blank.
 	 */
-	@Test( priority =11)
+	@Test( priority =8)
 	public void OpinionTickerTraxLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 11 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 8 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
@@ -341,10 +267,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check URL after clicking the Interviews.
 	 * Check links are not blank.
 	 */
-	@Test( priority =12)
+	@Test( priority =9)
 	public void OpinionInterviewsLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 12 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 9 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
@@ -367,10 +293,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check Independent Reports Text present.
 	 * Check links are not blank.
 	 */
-	@Test( priority =13)
+	@Test( priority =10)
 	public void OpinionIndependentReportsLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 13 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 10 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
@@ -394,10 +320,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check URL after clicking the MoversAndShakers.
 	 * Check links are not blank.
 	 */
-	@Test( priority =14)
+	@Test( priority =11)
 	public void OpinionMoversAndShakersLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 14 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 11 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
@@ -421,10 +347,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check presence of text BestOfBoardsAndBlogs.
 	 * Check links are not blank.
 	 */
-	@Test( priority =15)
+	@Test( priority =12)
 	public void OpinionBestOfBoardsAndBlogsLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 15 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 12 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
@@ -449,10 +375,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check presence of "News" text.
 	 * Check presence of "Featured News" text.
 	 */
-	@Test( priority =16)
+	@Test( priority =13)
 	public void NewsLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 16 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 13 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
@@ -475,10 +401,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check presence of "Featured News" text.
 	 * Check links are not blank.
 	 */
-	@Test( priority =17)
-	public void newsFeaturedNewsLink()
+	@Test( priority =14)
+	public void NewsFeaturedNewsLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 17 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 14 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
@@ -493,7 +419,7 @@ public class NavigationTestCases extends BaseSetup {
 				LoggerInstance.logger.info("Test case newsFeaturedNewsLink is failed. "+e); 
 				Assert.fail("Test case newsFeaturedNewsLink is failed. "+e);
 		}//End catch(Exception e)
-	}// End public void newsFeaturedNewsLink()
+	}// End public void NewsFeaturedNewsLink()
 	
 	/*
 	 * Test case to check News > NaturalResources link on navigation bar.
@@ -501,10 +427,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check NaturalResources text presence.
 	 * Check RefineYourSearch text presence.
 	 */
-	@Test( priority =18)
+	@Test( priority =15)
 	public void NewsNaturalResourcesLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 18 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 15 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
@@ -521,40 +447,15 @@ public class NavigationTestCases extends BaseSetup {
 		}//End catch(Exception e)
 	}// End public void NewsNaturalResourcesLink()
 	
-//	/*
-//	 * Test case to check News > BreakingNews companies link on navigation bar.
-//	 * Check URL after clicking the BreakingNews.
-//	 * Check links are not blank.
-//	 * Check presence of Breaking news text.
-//	 */
-//	@Test( priority =19)
-//	public void NewsBreakingNews()
-//	{
-//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 19 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			Thread.sleep(20000);
-//			homepage.cancelLoading();
-//			homepage.clickOnNavigationSubLink(4,"News",3,"Breaking News");//4,3
-//			Thread.sleep(10000);
-//			BreakingNews breakingNews=  PageFactory.initElements(BrowserInstance.driver, BreakingNews.class);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/bulletins");
-//			Assert.assertTrue(breakingNews.isBreakingNewsTxtPresent());
-//			Assert.assertNotNull(breakingNews.getTextOfReportList(1));
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case NewsBreakingNews is failed. "+e); 
-//				Assert.fail("Test case NewsBreakingNews is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void NewsBreakingNews()
 	/*
 	 * Test case to check News > Micro Cap Report link on navigation bar.
 	 * Check URL after clicking the Micro Cap Report.
 	 * Check links are not blank.
 	 */
-	@Test( priority =20)
+	@Test( priority =16)
 	public void NewsMicroCapReport()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 20 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 16 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
@@ -571,61 +472,6 @@ public class NavigationTestCases extends BaseSetup {
 		}//End catch(Exception e)
 	}// End public void NewsMicroCapReport()
 	
-	/*
-	 * Test case to check News > Canadian Press Releases link on navigation bar.
-	 * Check URL after clicking the Independent Reports.
-	 * Check Canadian Press Release Text present.
-	 * Check links are not blank.
-	 */
-	@Test( priority =21)
-	public void NewsCanadianPressReleaseLink()
-	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 21 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		try{
-			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(20000);
-			homepage.cancelLoading();
-			homepage.clickOnNavigationSubLink(4,"News",5,"Canadian Press Releases");//4,6
-			Thread.sleep(10000);
-			CanadianPressRelease canadianPressRelease=  PageFactory.initElements(BrowserInstance.driver, CanadianPressRelease.class);
-			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/canadian-press-releases");
-			Assert.assertTrue(canadianPressRelease.isCanadianPressReleasesTxtPresent());
-			Assert.assertNotNull(canadianPressRelease.getTextOfReportList(1));
-			Assert.assertNotNull(canadianPressRelease.getTextOfReportList(2));
-			
-			}catch(Exception e){
-				LoggerInstance.logger.info("Test case NewsCanadianPressReleaseLink is failed. "+e); 
-				Assert.fail("Test case NewsCanadianPressReleaseLink is failed. "+e);
-		}//End catch(Exception e)
-	}// End public void NewsCanadianPressReleaseLink()
-	
-	/*
-	 * Test case to check News > US Press Releases link on navigation bar.
-	 * Check URL after clicking the US Press Releases.
-	 * Check presence of US Press Releases text.
-	 * Check links are not blank.
-	 */
-	@Test( priority =22)
-	public void NewsUSPressReleaseLink()
-	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 22 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		try{
-			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			Thread.sleep(20000);
-			homepage.cancelLoading();
-			homepage.clickOnNavigationSubLink(4,"News",4,"US Press Releases");//4,5
-			Thread.sleep(10000);
-			USPressRelease uSPressRelease=  PageFactory.initElements(BrowserInstance.driver, USPressRelease.class);
-			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"news/us-press-releases");
-			Assert.assertTrue(uSPressRelease.isUSPressReleasesTxtPresent());
-			Assert.assertNotNull(uSPressRelease.getTextOfReportList(1));
-			Assert.assertNotNull(uSPressRelease.getTextOfReportList(2));
-			
-			}catch(Exception e){
-				LoggerInstance.logger.info("Test case NewsUSPressReleaseLink is failed. "+e); 
-				Assert.fail("Test case NewsUSPressReleaseLink is failed. "+e);
-		}//End catch(Exception e)
-	}// End public void NewsUSPressReleaseLink()
 	
 	
 	/*
@@ -635,10 +481,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check presence of "Groups" text on the page.
 	 * Check presence of "Blog" text on hte page.
 	 */
-	@Test( priority =23)
+	@Test( priority =17)
 	public void CommunityLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 23 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 17 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Thread.sleep(20000);
@@ -666,10 +512,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check presence of "order by" text on the page.
 	 * Check presence of "Displaying all bullboards" text on the page.
 	 */
-	@Test( priority =24)
+	@Test( priority =18)
 	public void BullBoardLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 24 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 18 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Bullboard bullBoard= PageFactory.initElements(BrowserInstance.driver, Bullboard.class);
@@ -694,10 +540,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check presence of "order by" text on the page.
 	 * Check presence of blog summary header text on the page.
 	 */
-	@Test( priority =25)
+	@Test( priority =19)
 	public void BlogLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 25 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 19 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Blog blog= PageFactory.initElements(BrowserInstance.driver, Blog.class);
@@ -721,10 +567,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check presence of "sort by" text on the page.
 	 * Check presence of groups header text on the page.
 	 */
-	@Test( priority =26)
+	@Test( priority =20)
 	public void GroupLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 26 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 20 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			GroupsPage group= PageFactory.initElements(BrowserInstance.driver, GroupsPage.class);
@@ -748,10 +594,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check presence of "Market update" text on the page.
 	 * Check presence of "Market news today" text on the page.
 	 */
-	@Test( priority =27)
+	@Test( priority =21)
 	public void MarketsLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 27 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 21 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			MarketPage market= PageFactory.initElements(BrowserInstance.driver, MarketPage.class);
@@ -761,6 +607,7 @@ public class NavigationTestCases extends BaseSetup {
 			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets");
 			Assert.assertTrue(market.isMarketUpdateHeadPresent());
+			market.switchToFrameInMarket();
 			Assert.assertTrue(market.isMarketNewsTodayHeadPresent());
 			
 			}catch(Exception e){
@@ -774,10 +621,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check presence of "metals" text on the page.
 	 * Check presence of "energies" text on the page.
 	 */
-	@Test( priority =28)
+	@Test( priority =22)
 	public void CommoditiesLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 28 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 22 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			CommoditiesPage commodities= PageFactory.initElements(BrowserInstance.driver, CommoditiesPage.class);
@@ -800,10 +647,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check presence of "Exchange" text on the page.
 	 * Check presence of "TSX Volume Activities" text on the page.
 	 */
-	@Test( priority =29)
+	@Test( priority =23)
 	public void MarketMoversLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 29 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 23 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			MarketMoversPage marketMovers= PageFactory.initElements(BrowserInstance.driver, MarketMoversPage.class);
@@ -825,10 +672,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check url after clicking on 'Currencies' link.
 	 * Check presence of currency table on the page.
 	 */
-	@Test( priority =30)
+	@Test( priority =24)
 	public void CurrenciesLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 30 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 24 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			CurrenciesPage currencies= PageFactory.initElements(BrowserInstance.driver, CurrenciesPage.class);
@@ -837,6 +684,7 @@ public class NavigationTestCases extends BaseSetup {
 			homepage.clickOnNavigationSubLink(3,"Markets",4, "Currencies");//3,4
 			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/currencies");
+		    currencies.switchToFrameInCurrency();
 			Assert.assertTrue(currencies.isCurrencyTablePresent());
 			
 			}catch(Exception e){
@@ -849,10 +697,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check url after clicking on 'Bonds' link.
 	 * Check presence of bonds table on the page.
 	 */
-	@Test( priority =31)
+	@Test( priority =25)
 	public void BondsLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 31 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 25 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			BondsPage bonds= PageFactory.initElements(BrowserInstance.driver, BondsPage.class);
@@ -876,10 +724,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check url after clicking on 'TSX' link.
 	 * Check presence of "TSX Volume Activities" on the page.
 	 */
-	@Test( priority =32)
+	@Test( priority =26)
 	public void TSXLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 32 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 26 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			TSXPage tsx= PageFactory.initElements(BrowserInstance.driver, TSXPage.class);
@@ -900,10 +748,10 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check url after clicking on 'TSXV' link.
 	 * Check presence of "TSX Volume Activities" on the page.
 	 */
-	@Test( priority =33)
+	@Test( priority =27)
 	public void TSXVLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 33 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 27 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			TSXVPage tsxv= PageFactory.initElements(BrowserInstance.driver, TSXVPage.class);
@@ -924,20 +772,22 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check url after clicking on 'CSE' link.
 	 * Check presence of "CSE Volume Activities" on the page.
 	 */
-	@Test( priority =34)
+	@Test( priority =28)
 	public void CSELink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 34 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 28 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			CSEPage cse= PageFactory.initElements(BrowserInstance.driver, CSEPage.class);
 			Thread.sleep(20000);
 			homepage.cancelLoading();
-			homepage.clickOnStocksSubLink(3,"Markets",3,"CSE-CNSX");//3,3
+			homepage.clickOnStocksSubLink(3,"Markets",3,"CSE");//3,3
 			
 			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/stocks/cse-cnsx");
-			Assert.assertTrue(cse.isCSEVolActivitiesHeadPresent());
+			//cse.switchToFrameInCSE();
+			boolean  text=cse.isCSEVolActivitiesHeadPresent();
+			Assert.assertTrue(text);
 			}catch(Exception e){
 				LoggerInstance.logger.info("Test case CSELink is failed. "+e); 
 				Assert.fail("Test case CSELink is failed. "+e);
@@ -948,20 +798,20 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check url after clicking on 'NYSE' link.
 	 * Check presence of "NYSE Volume Activities" on the page.
 	 */
-	@Test( priority =35)
+	@Test( priority =29)
 	public void NYSELink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 35 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 29 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			NYSEPage nyse= PageFactory.initElements(BrowserInstance.driver, NYSEPage.class);
 			Thread.sleep(20000);
 			homepage.cancelLoading();
-			homepage.clickOnStocksSubLink(3,"Markets",4,"NYSE");//3,4
-			
+			homepage.clickOnStocksSubLink(3,"Markets",5,"NYSE");//3,4
 			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/stocks/nyse");
-			Assert.assertTrue(nyse.isNYSEVolActivitiesHeadPresent());
+			boolean text=nyse.isNYSEVolActivitiesHeadPresent();
+			Assert.assertTrue(text);
 			}catch(Exception e){
 				LoggerInstance.logger.info("Test case NYSELink is failed. "+e); 
 				Assert.fail("Test case NYSELink is failed. "+e);
@@ -972,154 +822,27 @@ public class NavigationTestCases extends BaseSetup {
 	 * Check url after clicking on 'NASDAQ' link.
 	 * Check presence of "NASDAQ Volume Activities" on the page.
 	 */
-	@Test( priority =36)
+	@Test( priority =30)
 	public void NASDAQLink()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 36 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 30 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			NASDAQPage nasdaq= PageFactory.initElements(BrowserInstance.driver, NASDAQPage.class);
 			Thread.sleep(20000);
 			homepage.cancelLoading();
-			homepage.clickOnStocksSubLink(3,"Markets",5,"NASDAQ");//3,5
+			homepage.clickOnStocksSubLink(3,"Markets",4,"NASDAQ");//3,5
 			
 			Thread.sleep(20000);
 			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/stocks/nasdaq");
+			MarketPage market= PageFactory.initElements(BrowserInstance.driver, MarketPage.class);
 			Assert.assertTrue(nasdaq.isNASDAQVolActivitiesHeadPresent());
+			market.switchToFrameInMarket();
+			nasdaq.isNASDAQTableHeadPresent();
 			}catch(Exception e){
 				LoggerInstance.logger.info("Test case NASDAQLink is failed. "+e); 
 				Assert.fail("Test case NASDAQLink is failed. "+e);
 		}//End catch(Exception e)
 	}// End public void NASDAQLink()
-	/*
-	 * Test case to check Markets Sub link on navigation bar.
-	 * Check url after clicking on 'AMEX' link.
-	 * Check presence of "AMEX Volume Activities" on the page.
-	 */
-	@Test( priority =37)
-	public void AMEXLink()
-	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 37 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		try{
-			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			AMEXPage amex= PageFactory.initElements(BrowserInstance.driver, AMEXPage.class);
-			Thread.sleep(20000);
-			homepage.cancelLoading();
-			homepage.clickOnStocksSubLink(3,"Markets",6,"AMEX");//3,6
-			
-			Thread.sleep(25000);
-			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/stocks/amex");
-			boolean text=amex.isAMEXVolActivitiesHeadPresent();
-			Assert.assertTrue(text);
-			}catch(Exception e){
-				LoggerInstance.logger.info("Test case AMEXLink is failed. "+e); 
-				Assert.fail("Test case AMEXLink is failed. "+e);
-		}//End catch(Exception e)
-	}// End public void AMEXLink()
-	/*
-	 * Test case to check Markets Sub link on navigation bar.
-	 * Check url after clicking on 'DJIA' link.
-	 * Check presence of "DJIA Volume Activities" on the page.
-	 */
-	@Test( priority =38)
-	public void DJIALink()
-	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 38 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		try{
-			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			DJIAPage djia= PageFactory.initElements(BrowserInstance.driver, DJIAPage.class);
-			Thread.sleep(20000);
-			homepage.cancelLoading();
-			homepage.clickOnStocksSubLink(3,"Markets",7,"DJIA");//3,7
-			
-			Thread.sleep(20000);
-			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/stocks/djia");
-			Assert.assertTrue(djia.isDJIAVolActivitiesHeadPresent());
-			}catch(Exception e){
-				LoggerInstance.logger.info("Test case DJIALink is failed. "+e); 
-				Assert.fail("Test case DJIALink is failed. "+e);
-		}//End catch(Exception e)
-	}// End public void DJIALink()
-//	/*
-//	 * Test case to check Markets Sub link on navigation bar.
-//	 * Check URL after clicking the ETFs.
-//	 * Check presence of "More ETF Articles" text on the page.
-//	 * Check presence of "ETF Performance Overview" on the page.
-//	 */
-//	@Test( priority =39)
-//	public void ETFSubLink()
-//	{
-//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 39 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//		try{
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			ETFsPage etf= PageFactory.initElements(BrowserInstance.driver, ETFsPage.class);
-//			Thread.sleep(20000);
-//			homepage.cancelLoading();
-//			homepage.clickOnNavigationSubLink(3,"Markets",6,"ETFs");//3,6
-//			
-//			Thread.sleep(20000);
-//			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/etfs");
-//			Assert.assertTrue(etf.isMoreETFArticlesPresent());
-//			Assert.assertTrue(etf.isTopStoryPresent());
-//			
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case ETFSubLink is failed. "+e); 
-//				Assert.fail("Test case ETFSubLink is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void ETFSubLink()
-	/*AMEXLink
-	 * Test case to check Markets Sub link on navigation bar.
-	 * Check url after clicking on 'Funds' link.
-	 * Check presence of "Funds performance overview" header and table on the page.
-	 */
-	@Test( priority =40)
-	public void FundsLink()
-	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 40 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		try{
-			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			FundsPage funds= PageFactory.initElements(BrowserInstance.driver, FundsPage.class);
-			Thread.sleep(20000);
-			homepage.cancelLoading();
-			homepage.clickOnNavigationSubLink(3,"Markets",6,"Funds");//3,7
-			
-			Thread.sleep(20000);
-			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"markets/funds");
-			Assert.assertTrue(funds.isFundsHeadPresent());
-			Assert.assertTrue(funds.isFundsPerformOverHeadPresent());
-			
-			}catch(Exception e){
-				LoggerInstance.logger.info("Test case FundsLink is failed. "+e); 
-				Assert.fail("Test case FundsLink is failed. "+e);
-		}//End catch(Exception e)
-
-    }// End public void FundsLink()
-	/*
-	 * Test case to check Markets Sub link on navigation bar.
-	 * Check url after clicking on 'Stock-Screener' link.
-	 * Check presence of "Featured Company" header on the page.
-	 * Check presence of "Search Options" header on the page.
-	 */
-	@Test( priority =41)
-	public void StockScreenerLink()
-	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 41 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		try{
-			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-			StockScreenerPage stockScreen= PageFactory.initElements(BrowserInstance.driver, StockScreenerPage.class);
-			Thread.sleep(20000);
-			homepage.cancelLoading();
-			homepage.clickOnNavigationSubLink(3,"Markets",7,"Stock Screener");//3,8
-			
-			Thread.sleep(20000);
-			Assert.assertEquals(BrowserInstance.driver.getCurrentUrl(),ReadInputData.HM_inputData.get("URL")+"portfolio/stock-screener");
-			Assert.assertTrue(stockScreen.isFeaturedCompanyHeadPresent());
-			Assert.assertTrue(stockScreen.isSearchOptionHeadPresent());
-			}catch(Exception e){
-				LoggerInstance.logger.info("Test case StockScreenerLink is failed. "+e); 
-				Assert.fail("Test case StockScreenerLink is failed. "+e);
-		}//End catch(Exception e)
-
-    }// End public void StockScreenerLink()
 	
 }

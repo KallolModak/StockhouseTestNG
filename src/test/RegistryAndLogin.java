@@ -199,9 +199,6 @@ public class RegistryAndLogin extends BaseSetup {
 			Assert.assertTrue(homepage.isResendConfirmationEmailOnWelcomeToStockhousePresent());
 			Assert.assertEquals(homepage.getTxtOfLoggedinUser(), "Unverified");
 			BrowserInstance.driver.get("https://www.mailinator.com/inbox2.jsp?public_to=mtest"+num+"#/#public_maildirdiv");
-			//BrowserInstance.driver.get("https://mailinator.com/inbox2.jsp#/public_to=mtest"+num);
-			                          //  https://mailinator.com/inbox2.jsp#/#public_maildirdiv
-			//BrowserInstance.driver.get("https://mailinator.com/inbox.jsp?to=mtest"+num);
 			Thread.sleep(10000);
 			MailinatorInbox mailinatorInbox = PageFactory.initElements(BrowserInstance.driver, MailinatorInbox.class);
 			mailinatorInbox.clickOnRegistractionRequest();
@@ -210,7 +207,6 @@ public class RegistryAndLogin extends BaseSetup {
 			Thread.sleep(10000);
 			String password=ReadInputData.HM_inputData.get("Password");
 			registrationPage.typeAddYourPassword(password);
-			System.out.println("password==="+password);
 			registrationPage.typeConfirmYourPassword(password);
 			registrationPage.clickOnNextStep();
 			Thread.sleep(10000);
@@ -273,48 +269,14 @@ public class RegistryAndLogin extends BaseSetup {
 		}//End catch(Exception e)
 	}// End public void SignInFromHomePage()
 	
-//	/*
-//	 * Test case to check login functionality from login page.
-//	 */
-//	@Test( priority =5)
-//	public void SignInFromLoginPage()
-//	{
-//		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 5 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//		try{
-//			BrowserInstance.driver.get(ReadInputData.HM_inputData.get("URL")+"login");
-//			Thread.sleep(20000);
-//			LoginPage loginPage = PageFactory.initElements(BrowserInstance.driver, LoginPage.class);
-//			String username=ReadInputData.HM_inputData.get("UserIdForHomePage");
-//			String password=ReadInputData.HM_inputData.get("Password");
-//			loginPage.EnterUserName(username);
-//			loginPage.EnterPassword(password);
-//			loginPage.clickOnSignInBtn();
-//			Thread.sleep(15000);
-//			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
-//			homepage.cancelLoading();
-//			Assert.assertEquals(homepage.getTxtOfLoggedinUser(), "testForLogin1");
-//			FlyinSideBar flyingSideBar = PageFactory.initElements(BrowserInstance.driver, FlyinSideBar.class);
-//			Thread.sleep(20000);
-//			homepage.cancelLoading();
-//			if(flyingSideBar.getTxtOfCurrentEmailAddressSection().contains("testForLogin@mailinator.com"))
-//				Assert.assertEquals(1, 1);
-//			else
-//				Assert.assertEquals(1, 0);
-//			Assert.assertTrue(loginPage.isLogoutButtonPresent());
-//			
-//			}catch(Exception e){
-//				LoggerInstance.logger.info("Test case SignInFromLoginPage is failed. "+e); 
-//				Assert.fail("Test case SignInFromLoginPage is failed. "+e);
-//		}//End catch(Exception e)
-//	}// End public void SignInFromLoginPage()
 	
 	/*
 	 * Test case to check functionality of login from Flyin Side bar.
 	 */
-	@Test( priority =6)
+	@Test( priority =5)
 	public void SignInFromFlyinSideBar()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 6 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 5 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			FlyinSideBar flyingSideBar = PageFactory.initElements(BrowserInstance.driver, FlyinSideBar.class);
 			Thread.sleep(15000); 
@@ -360,10 +322,10 @@ public class RegistryAndLogin extends BaseSetup {
 	/*
 	 * Test case to check login functionality from bullboard page.
 	 */
-	@Test( priority =7)
+	@Test( priority =6)
 	public void SignInFromBullboard()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 7 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 6 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			BrowserInstance.driver.get(ReadInputData.HM_inputData.get("URL")+"companies/bullboard/t.bb/blackberry");
 			Thread.sleep(15000);
@@ -388,10 +350,10 @@ public class RegistryAndLogin extends BaseSetup {
 	/*
 	 * Test case to check Sign out functionality from navigation on home page.
 	 */
-	@Test( priority =8)
+	@Test( priority =7)
 	public void SignOutFromHomePage()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 8 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 7 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
@@ -419,10 +381,10 @@ public class RegistryAndLogin extends BaseSetup {
 	/*
 	 * Test case to check sign out functionality from login page.
 	 */
-	@Test( priority =9)
+	@Test( priority =8)
 	public void SignOutFromLoginPage()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 9 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 8 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			BrowserInstance.driver.get(ReadInputData.HM_inputData.get("URL")+"login");
 			Thread.sleep(15000);
@@ -447,10 +409,10 @@ public class RegistryAndLogin extends BaseSetup {
 	/*
 	 * Test case to check functionality of log out from Flyin Side bar.
 	 */
-	@Test( priority =10)
+	@Test( priority =9)
 	public void SignOutFromFlyinSideBar()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 10 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 9 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			FlyinSideBar flyingSideBar = PageFactory.initElements(BrowserInstance.driver, FlyinSideBar.class);
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
@@ -482,10 +444,10 @@ public class RegistryAndLogin extends BaseSetup {
 	/*
 	 * Test case to check log out functionality from bullboard page.
 	 */
-	@Test( priority =11)
+	@Test( priority =10)
 	public void SignOutFromBullboard()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 11 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 10 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			BrowserInstance.driver.get(ReadInputData.HM_inputData.get("URL")+"companies/bullboard/t.bb/blackberry");
 			Thread.sleep(15000);
@@ -516,10 +478,10 @@ public class RegistryAndLogin extends BaseSetup {
 	 * Go to Sign in and select for I don't know password.
 	 * Send mail to email address for recovering forgotten password.
 	 */
-	@Test( priority =12)
+	@Test( priority =11)
 	public void HomePageForgotPassword()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 12 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 11 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			MailinatorInbox mailinator= PageFactory.initElements(BrowserInstance.driver, MailinatorInbox.class);
@@ -543,7 +505,7 @@ public class RegistryAndLogin extends BaseSetup {
 			//
 			BrowserInstance.driver.get("https://www.mailinator.com/inbox2.jsp?public_to=testForForgotPassword#/#public_maildirdiv");
 			mailinator.clickOnForgotPasswordRequest();
-			Thread.sleep(10000);
+			Thread.sleep(2000);
 			mailinator.clickOnLinkForGenerateNewPassword();
 			Thread.sleep(20000);
 			resetPassword.putTextInNewPasswordBox("M()dak11");
@@ -597,10 +559,10 @@ public class RegistryAndLogin extends BaseSetup {
 	 * Go to Login page and select for forgot password.
 	 * Send mail to email address for recovering forgotten password.
 	 */
-	@Test( priority =13)
+	@Test( priority =12)
 	public void LoginPageForgotPassword()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 13 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 12 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			LoginPage loginPage = PageFactory.initElements(BrowserInstance.driver, LoginPage.class);
 			ResetPasswordPage resetPassword= PageFactory.initElements(BrowserInstance.driver, ResetPasswordPage.class);
@@ -621,9 +583,9 @@ public class RegistryAndLogin extends BaseSetup {
 			BrowserInstance.driver.get("https://www.mailinator.com/inbox2.jsp?public_to=testForForgotPassword#/#public_maildirdiv");
 			MailinatorInbox mailinator= PageFactory.initElements(BrowserInstance.driver, MailinatorInbox.class);
 			mailinator.clickOnForgotPasswordRequest();
-			Thread.sleep(10000);
+			Thread.sleep(5000);
 			mailinator.clickOnLinkForGenerateNewPassword();
-			Thread.sleep(30000);
+			Thread.sleep(10000);
 			resetPassword.putTextInNewPasswordBox("M()dak11");
 			resetPassword.putTextInConfirmNewPasswordBox("M()dak11");
 			resetPassword.clickOnResetButton();
@@ -636,10 +598,6 @@ public class RegistryAndLogin extends BaseSetup {
 			Thread.sleep(20000);
 			HomePage homepage = PageFactory.initElements(BrowserInstance.driver, HomePage.class);
 			Assert.assertEquals(homepage.getTxtOfLoggedinUser(), "forgotPassword");
-			// Reset the changes.
-//			homepage.clickOnLoggedinUser(5);
-//			Thread.sleep(2000);
-//			homepage.clickOnLogout();
 			loginPage.clickOnLogoutButton();
 			Thread.sleep(2000);
 			resetPasswordLoginPage();
@@ -655,10 +613,10 @@ public class RegistryAndLogin extends BaseSetup {
 	 * Go to Login page and do login.
 	 * Click on View profile page and verify name and my profile information.
 	 */
-	@Test( priority =14)
+	@Test( priority =13)
 	public void ViewProfile()
 	{
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 14 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Test Case 13 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		try{
 			LoginPage loginPage = PageFactory.initElements(BrowserInstance.driver, LoginPage.class);
 			
@@ -718,7 +676,6 @@ public class RegistryAndLogin extends BaseSetup {
 				String password=ReadInputData.HM_inputData.get("Password");
 				Thread.sleep(30000);
 				mailinator.switchToNewWindow();
-				System.out.println("password==="+password);
 				resetPassword.putTextInNewPasswordBox(password);
 				resetPassword.putTextInConfirmNewPasswordBox(password);
 				resetPassword.clickOnResetButton();
@@ -732,14 +689,6 @@ public class RegistryAndLogin extends BaseSetup {
 				try {
 					homepage.clickOnSignInBtnOnSigninPopup();
 				} catch (UnhandledAlertException f) {
-//				    try {
-//				        Alert alert = BrowserInstance.driver.switchTo().alert();
-//				        String alertText = alert.getText();
-//				        System.out.println("Alert data: " + alertText);
-//				        alert.accept();
-//				    } catch (NoAlertPresentException e) {
-//				        e.printStackTrace();
-//				    }
 				}
 				Thread.sleep(10000);
 				 try {
@@ -781,8 +730,6 @@ public class RegistryAndLogin extends BaseSetup {
 			String password=ReadInputData.HM_inputData.get("Password");
 			Thread.sleep(20000);
 			mailinator.switchToNewWindow();
-//			ArrayList<String> tabs2 = new ArrayList<String> (BrowserInstance.driver.getWindowHandles());
-//			BrowserInstance.driver.switchTo().window(tabs2.get(1));
 			resetPassword.putTextInNewPasswordBox(password);
 			resetPassword.putTextInConfirmNewPasswordBox(password);
 			resetPassword.clickOnResetButton();

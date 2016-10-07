@@ -2,6 +2,7 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 
+import common.BrowserInstance;
 import common.WebdriverUtility;
 
 public class MarketPage extends WebdriverUtility{
@@ -17,7 +18,7 @@ public class MarketPage extends WebdriverUtility{
 	 * Locator for market update.
 	 */
 	private By marketUpdate(){
-		return By.xpath("//td[contains(text(),'Market Update')]");
+		return By.xpath("//h1[contains(text(),'Markets')]");
 	}
 	/*
 	 * Function to check the presence of market update header.
@@ -29,7 +30,7 @@ public class MarketPage extends WebdriverUtility{
 	 * Locator for market news today.
 	 */
 	private By marketNewsToday(){
-		return By.xpath("//td[contains(text(),'Market News Today')]");
+		return By.xpath("//div[contains(text(),'S&P TSX Composite')]");
 	}
 	/*
 	 * Function to check the presence of market update header.
@@ -37,6 +38,12 @@ public class MarketPage extends WebdriverUtility{
 	public boolean isMarketNewsTodayHeadPresent(){
 		return isElementPresent(marketNewsToday(), MEDIUMWAIT);
 	}
-
+	/*
+	 * Locator for iframe for full page.
+	 */
+	public void switchToFrameInMarket(){
+		   BrowserInstance.driver.switchTo().frame(BrowserInstance.driver.findElement(By.xpath("//div[@class='frame-container']/iframe")));
+		BrowserInstance.driver.switchTo().frame(BrowserInstance.driver.findElement(By.xpath("//iframe[contains(@id,'QSAPI_IFRAME')]")));
+	}
 
 }

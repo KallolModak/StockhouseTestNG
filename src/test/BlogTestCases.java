@@ -59,7 +59,6 @@ public class BlogTestCases extends BaseSetup {
 				homepage.clickOnNavigationSubLink(2,"Community",2,"Blogs");//2,2
 				Thread.sleep(20000);
 				homepage.cancelLoading();
-				//common.clickOnReadSharedDiscussedHead(1);
 				Assert.assertTrue(common.isreadSharedDiscussedHeadPresent(1));
 				Assert.assertTrue(common.isreadSharedDiscussedSectionPresent(1));
 			}catch(Exception e){
@@ -135,15 +134,14 @@ public class BlogTestCases extends BaseSetup {
 				Thread.sleep(20000);
 				homepage.cancelLoading();
 				homepage.clickOnNavigationSubLink(2,"Community",2,"Blogs"); //2,2
-				Thread.sleep(20000);
+				Thread.sleep(10000);
 				homepage.cancelLoading();
 				//blog.clickOnOrderByCombo();
 				blog.selectOrderByComboOptions("Blog name");
-				Thread.sleep(50000);
+				Thread.sleep(10000);
 				String txt1= blog.getTextOfBlogSummaryHead(1);
-				//blog.clickOnOrderByCombo();
 				blog.selectOrderByComboOptions("Date created");
-				Thread.sleep(50000);
+				Thread.sleep(10000);
 				String txt2= blog.getTextOfBlogSummaryHead(1);
 				Assert.assertNotEquals(txt1, txt2);
 			}catch(Exception e){
@@ -169,7 +167,6 @@ public class BlogTestCases extends BaseSetup {
 				Thread.sleep(20000);
 				homepage.cancelLoading();
 				String txt1= blog.getTextOfBlogSummaryHead(1);
-				//blog.clickOnOrderByCombo();
 				blog.selectOrderByComboOptions("Blog name");
 				Thread.sleep(20000);
 				homepage.cancelLoading();
@@ -198,7 +195,6 @@ public class BlogTestCases extends BaseSetup {
 				Thread.sleep(20000);
 				homepage.cancelLoading();
 				String txt1= blog.getTextOfBlogSummaryHead(1);
-				//blog.clickOnOrderByCombo();
 				blog.selectOrderByComboOptions("Trending");
 				Thread.sleep(20000);
 				homepage.cancelLoading();
@@ -227,7 +223,6 @@ public class BlogTestCases extends BaseSetup {
 				Thread.sleep(20000);
 				homepage.cancelLoading();
 				String txt1= blog.getTextOfBlogSummaryHead(1);
-				//blog.clickOnOrderByCombo();
 				blog.selectOrderByComboOptions("Author name");
 				Thread.sleep(20000);
 				homepage.cancelLoading();

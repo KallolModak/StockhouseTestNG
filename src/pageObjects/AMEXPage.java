@@ -2,6 +2,7 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 
+import common.BrowserInstance;
 import common.WebdriverUtility;
 
 public class AMEXPage extends WebdriverUtility{
@@ -19,7 +20,6 @@ public class AMEXPage extends WebdriverUtility{
 	private By AMEXVolActivities(){
 		
 		return By.xpath("//div[text()='TSX Composite Intraday']");
-		//return By.xpath("//td[text()='NYSE MKT AMX Volume Actives']");
 	}
 	/*
 	 * Function to check the presence of AMEX volume activities table header.
@@ -27,5 +27,8 @@ public class AMEXPage extends WebdriverUtility{
 	public boolean isAMEXVolActivitiesHeadPresent(){
 		return isElementDisplayed(AMEXVolActivities());
 	}
-
+	public void marketAMEXframe(){
+		BrowserInstance.driver.switchTo().frame(driver.findElement(By.xpath("//div[@class='frame-container']/iframe")));
+		BrowserInstance.driver.switchTo().frame(driver.findElement(By.xpath("//div[@id='iframe-container-widget']/iframe")));
+	}
 }

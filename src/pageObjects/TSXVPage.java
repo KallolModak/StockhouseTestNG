@@ -17,7 +17,7 @@ public class TSXVPage extends WebdriverUtility{
 	 * Locator for TSXV volume activities table header.
 	 */
 	private By TSXVentureVolActivities(){
-		return By.xpath("//td[text()='TSXV Volume Actives']");
+		return By.xpath("//h1[contains(text(),'TSX Venture')]");
 	}
 	/*
 	 * Function to check the presence of TSXV volume activities table header.

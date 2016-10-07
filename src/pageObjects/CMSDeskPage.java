@@ -10,14 +10,14 @@ import common.LoggerInstance;
 import common.WebdriverUtility;
 
 public class CMSDeskPage extends WebdriverUtility{
-	
+
 	/*
 	 * Method for expanding Quick link and click the sub links
 	 */
-	
+
 	public CMSDeskPage()
 	{}//End public CMSDeskPage(WebDriver driver)
-	
+
 	/*
 	 * Locator for iframe for full page.
 	 */
@@ -29,9 +29,9 @@ public class CMSDeskPage extends WebdriverUtility{
 	 */
 	public void switchToFrame2(){
 		BrowserInstance.driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='m_c_contentview']")));
-		
+
 	}
-	
+
 	/*
 	 * Function to switch to tags pop-up iframe.
 	 */
@@ -80,7 +80,7 @@ public class CMSDeskPage extends WebdriverUtility{
 	 */
 	public void clickOnNewButton(){
 		//safeClick(newButton(), SHORTWAIT);
-		  BrowserInstance.driver.findElement(newButton()).click();
+		BrowserInstance.driver.findElement(newButton()).click();
 	}
 	/*
 	 * Locator for "!Content Item" appearing after new button click.
@@ -93,8 +93,8 @@ public class CMSDeskPage extends WebdriverUtility{
 	 */
 	public void clickOnContentItem(){
 		try{
-        safeJavaScriptClick(contentItem(), MEDIUMWAIT);
-		//BrowserInstance.driver.findElement(contentItem()).click();
+			safeJavaScriptClick(contentItem(), MEDIUMWAIT);
+			//BrowserInstance.driver.findElement(contentItem()).click();
 		}catch(Exception e){}
 	}
 	/*
@@ -109,7 +109,7 @@ public class CMSDeskPage extends WebdriverUtility{
 	public void clickOnMainTree(){
 		safeClick(mainTree(), MEDIUMWAIT);
 	}
-	
+
 	/*
 	 * Locator for form table.
 	 */
@@ -117,30 +117,30 @@ public class CMSDeskPage extends WebdriverUtility{
 		if(title.equalsIgnoreCase("title")){
 			title="//table[@class='EditingFormTable']/tbody/tr["+num+"]/td[@class='EditingFormValueCell']/div[@class='EditingFormControlNestedControl']/input";
 		}
+		else{
+			if(title.equalsIgnoreCase("author")){
+				title="//table[@class='EditingFormTable']/tbody/tr["+num+"]/td[2]/div/select";
+			}
 			else{
-				if(title.equalsIgnoreCase("author")){
-					title="//table[@class='EditingFormTable']/tbody/tr["+num+"]/td[2]/div/select";
+				if(title.equalsIgnoreCase("deck")){
+					title="//table[@class='EditingFormTable']/tbody/tr["+num+"]/td[2]/div/textarea";
 				}
 				else{
-					if(title.equalsIgnoreCase("deck")){
-						title="//table[@class='EditingFormTable']/tbody/tr["+num+"]/td[2]/div/textarea";
+					if(title.equalsIgnoreCase("content")){
+						//title="//table[@class='EditingFormTable']/tbody/tr["+num+"]/td[2]/div";
+						title="/html/body[@class='cke_show_borders']";
 					}
 					else{
-						if(title.equalsIgnoreCase("content")){
-							//title="//table[@class='EditingFormTable']/tbody/tr["+num+"]/td[2]/div";
-							title="/html/body[@class='cke_show_borders']";
+						if(title.equalsIgnoreCase("feedPublished")){// feed published check-box
+							title="//table[@class='EditingFormTable']/tbody/tr["+num+"]/td[2]/div/span/input";
 						}
-						else{
-							if(title.equalsIgnoreCase("feedPublished")){// feed published check-box
-								title="//table[@class='EditingFormTable']/tbody/tr["+num+"]/td[2]/div/span/input";
-							}
-							else{ // publish date's now option.
-								title="//table[@class='EditingFormTable']/tbody/tr["+num+"]/td[2]/div/span/a";
-							}
+						else{ // publish date's now option.
+							title="//table[@class='EditingFormTable']/tbody/tr["+num+"]/td[2]/div/span/a";
 						}
 					}
 				}
 			}
+		}
 
 		return By.xpath(title);
 
@@ -164,18 +164,18 @@ public class CMSDeskPage extends WebdriverUtility{
 	 * Function to set the value text for content.
 	 */
 	public void setFormTableContent(int num, String title, String textToType){
-		
+
 		BrowserInstance.driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@title='Rich text editor, m_c_f_f_Content_editor, press ALT 0 for help.']")));
 		scrollIntoViewThroughJavaScriptExecuter(formTable(num, title));
 		//safeClick(formTable(num, title), SHORTWAIT);
 		safeType(formTable(num, title), textToType, MEDIUMWAIT);
-		}
+	}
 	/*
 	 * Function to select author in form table.
 	 */
 	public void selectAuthor(int num, String title, String optionToSelect){
 		safeSelectOptionInDropDown(formTable(num, title), optionToSelect, MEDIUMWAIT);
-		
+
 	}
 	/*
 	 * Function to select checkbox of feed published.
@@ -194,9 +194,9 @@ public class CMSDeskPage extends WebdriverUtility{
 			if(option.equalsIgnoreCase("symbolButton")){
 				option="//table[@class='EditingFormTable']/tbody/tr["+num+"]/td[2]//table/tbody/tr[2]/td[2]/div/input";
 			}
-//			else{ // symbol from list.
-//				option="//table[@class='EditingFormTable']/tbody/tr["+num+"]/td[2]//table/tbody/tr[2]/td[1]/ul/li";
-//			}
+			//			else{ // symbol from list.
+			//				option="//table[@class='EditingFormTable']/tbody/tr["+num+"]/td[2]//table/tbody/tr[2]/td[1]/ul/li";
+			//			}
 		}
 		return By.xpath(option);	
 	}
@@ -223,13 +223,13 @@ public class CMSDeskPage extends WebdriverUtility{
 	private By tagsTextAndButton(String option,int num){
 		if(option.equalsIgnoreCase("tagText")){
 			option="//table[@class='EditingFormTable']/tbody/tr["+num+"]/td[2]//table/tbody/tr/td[1]/input";
-			
+
 		}
 		else{ // tags select button
 			option="//table[@class='EditingFormTable']/tbody/tr["+num+"]/td[2]//table/tbody/tr/td[2]/input";
 		}
 		return By.xpath(option);
-			
+
 	}
 	/*
 	 * Function to type text in tags text-box.
@@ -239,13 +239,13 @@ public class CMSDeskPage extends WebdriverUtility{
 		try{
 			Thread.sleep(4000);
 		}catch(Exception e){}
-		
+
 		driver.findElement(tagsTextAndButton(option, num)).sendKeys(Keys.ARROW_DOWN);
 		driver.findElement(tagsTextAndButton(option, num)).sendKeys(Keys.ENTER);
 	}
-	
+
 	public void switchToDefaultFrame(){
-		
+
 		driver.switchTo().defaultContent();
 	}
 	/*{
@@ -254,19 +254,19 @@ public class CMSDeskPage extends WebdriverUtility{
 	public void clickOnTagsSelect(String option, int num){
 		safeJavaScriptClick(tagsTextAndButton(option, num), MEDIUMWAIT);
 	}
-	
+
 	/*
 	 * Locator for tags pop-up.
 	 */
 	private By tagsPopUp(int num){
 		return By.xpath("//a[contains(text(),'Kallol')]");
-		
+
 	}
-	
+
 	private By tagNameTextBox(){
 		return By.xpath("//input[@id='m_c_gridElem_TagNameTextValue']");
 	}
-	
+
 	private By showButton(){
 		return By.xpath("//input[@id='m_c_gridElem_btnShow']");
 	}
@@ -293,7 +293,7 @@ public class CMSDeskPage extends WebdriverUtility{
 	 */
 	public void clickOnTagsPopupOk(){
 		safeClick(tagsPopupOk(), MEDIUMWAIT);
-		
+
 	}
 	/*
 	 * Function to click on now infront of publish date.
@@ -313,8 +313,8 @@ public class CMSDeskPage extends WebdriverUtility{
 	 * Function to click on save button.
 	 */
 	public void clickOnSaveButton(){
-//		switchToDefaultFrame();
-//		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class='ui-layout-pane ui-layout-pane-center']")));
+		//		switchToDefaultFrame();
+		//		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class='ui-layout-pane ui-layout-pane-center']")));
 		//BrowserInstance.driver.switchTo().frame( BrowserInstance.driver.findElement(By.id("m_c_contentview")));
 		safeJavaScriptClick(saveButton(), MEDIUMWAIT);
 	}
@@ -332,5 +332,5 @@ public class CMSDeskPage extends WebdriverUtility{
 		LoggerInstance.logger.info("Click on tools in menu bar on CMS Desk Page "); 
 		return(PageFactory.initElements(BrowserInstance.driver, CMSToolsPage.class));
 	}
-	
+
 }

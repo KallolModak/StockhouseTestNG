@@ -2,6 +2,7 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 
+import common.BrowserInstance;
 import common.WebdriverUtility;
 
 public class CSEPage extends WebdriverUtility{
@@ -17,7 +18,8 @@ public class CSEPage extends WebdriverUtility{
 	 * Locator for CSE volume activities table header.
 	 */
 	private By CSEVolActivities(){
-		return By.xpath("//td[text()='CSE Volume Actives']");
+		return By.xpath("//div[@id='market-movers-container']");
+		//return By.xpath("//td[text()='CSE Volume Actives']");
 	}
 	/*
 	 * Function to check the presence of CSE volume activities table header.
@@ -25,5 +27,5 @@ public class CSEPage extends WebdriverUtility{
 	public boolean isCSEVolActivitiesHeadPresent(){
 		return isElementPresent(CSEVolActivities(),MEDIUMWAIT);
 	}
-
+	
 }

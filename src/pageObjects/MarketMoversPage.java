@@ -18,7 +18,7 @@ public class MarketMoversPage extends WebdriverUtility{
 	 *Locator for Exchange header. 
 	 */
 	private By exchangeHead(){
-		return By.xpath("//b[text()='Exchange:']");
+		return By.xpath("//td[text()='Exchange']");
 	}
 	/*
 	 * Function to check the presence of Exchange header.
